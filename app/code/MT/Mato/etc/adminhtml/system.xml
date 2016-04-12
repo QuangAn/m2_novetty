@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mtmato" translate="label" sortOrder="180">
+            <label>MT Theme</label>
+        </tab>
+        <section id="mtmato" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Theme Settings</label>
+            <tab>mtmato</tab>
+            <resource>MT_Mato::config_mato</resource>
+            <group id="header" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header</label>
+                <field id="sticky_enable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Sticky Header</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="sticky_logo" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Sticky logo</label>
+                </field>
+                <field id="hide_on_mobile" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Hide Cart on Mobile Devices</label>
+                    <comment>Empty cart can be hidden on mobile devices (if browser viewport is narrower than 480 pixels).</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="compare" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Block "Compare" in the Header</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="layout" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Header Layout</label>
+                    <source_model>MT\Mato\Model\System\Config\Source\Layout\Header\Header</source_model>
+                </field>
+            </group>
+            <group id="menu" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main Menu</label>
+                <field id="effect" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Menu Animation</label>
+                    <source_model>MT\Mato\Model\System\Config\Source\Mainmenu\Menuanimation</source_model>
+                </field>
+                <field id="home" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Home Link in Mainmenu</label>
+                    <comment>Empty cart can be hidden on mobile devices (if browser viewport is narrower than 480 pixels).</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="heading_menuleft" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Menu Left/Right</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="menuleft_effect" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Menu Animation</label>
+                    <source_model>MT\Mato\Model\System\Config\Source\Mainmenu\Menuleftanimation</source_model>
+                </field>
+                <field id="heading_menucustom" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Custom Main Menu</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="enable_custom" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Custom Menu</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="static_identifier" translate="label comment" type="textarea" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Static block identifier:</label>
+                    <comment>
+                        <![CDATA[Which static block you want they show on menu (Seperate by Semicolon And you want to put it right added up :right after Identifier). <br/>Example: custom_menu:right]]></comment>
+                </field>
+                <field id="url_key" translate="label comment" type="textarea" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>CMS Page Url Key:</label>
+                    <comment>
+                        <![CDATA[Which cms page you want they show on menu (Seperate by Semicolon And you want to put it right added up :right after url key). <br/>Example: about-magento-demo-store:right ]]></comment>
+                </field>
+                <field id="heading_label_category" translate="label comment" type="textarea" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Category Labels</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+
+            </group>
+            <group id="category" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category View</label>
+                <field id="heading_images" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Images</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="aspect_ratio" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Keep Image Aspect Ratio</label>
+                    <comment>Set "Yes", to keep aspect ratio of the product images (height of the images will be
+                        calculated automatically based on width).
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="aspect_ratio_size" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Image aspect ratio size</label>
+                    <source_model>MT\Mato\Model\System\Config\Source\Category\Grid\Ratioimage</source_model>
+                    <comment>If set to "Yes", custom Category Blocks will be displayed in the drop-down box even
+                        if the category doesn't have any sub-categories.</comment>
+                </field>
+                <field id="alt_image" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Alternative Image</label>
+                    <comment>Show alternative image on mouse hover over the main image.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="alt_image_column" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Select Alt. Image By Column</label>
+                    <comment>
+                        <![CDATA[Which column of the product image gallery will mark alternative images of your products.]]>
+                    </comment>
+                    <source_model>MT\Mato\Model\System\Config\Source\Category\Altimagecolumn</source_model>
+                </field>
+                <field id="alt_image_column_value" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Alt. Image Column Value</label>
+                    <comment>
+                        <![CDATA[Specify the value which will mark alternative images of your products. E.g.: if <strong>Select Alt. Image By Column</strong> is set to "Sort Order", specify the number which will mark (in "Sort Order" column of the product image gallery) alternative images, for example: "2".]]>
+                    </comment>
+                    <depends>
+                        <field id="alt_image">1</field>
+                    </depends>
+                </field>
+                <field id="image_width" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Image Width</label>
+                    <comment>Set width image in page products list.</comment>
+                </field>
+                <field id="image_height" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Image Height</label>
+                    <comment>Set height image in page products list.</comment>
+                </field>
+            </group>
+            <group id="category_grid" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category View (Grid Mode)</label>
+                <field id="column_count" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Number of Columns</label>
+                    <comment><![CDATA[Number of products displayed in a single row.]]></comment>
+                    <source_model>MT\Mato\Model\System\Config\Source\Category\Grid\Columncount</source_model>
+                </field>
+                <field id="column_count_768" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Number of Columns Below 768px</label>
+                    <comment>Number of columns displayed if browser viewport width is between 640 px and 768
+                        px.
+                    </comment>
+                    <source_model>MT\Mato\Model\System\Config\Source\Category\Grid\Columnbelow</source_model>
+                </field>
+                <field id="column_count_640" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Number of Columns Below 640px</label>
+                    <source_model>MT\Mato\Model\System\Config\Source\Category\Grid\Columnbelow</source_model>
+                    <comment>Number of columns displayed if browser viewport width is between 480px and 640
+                        px.
+                    </comment>
+                </field>
+                <field id="column_count_480" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Number of Columns Below 640px</label>
+                    <source_model>MT\Mato\Model\System\Config\Source\Category\Grid\Columnbelow</source_model>
+                    <comment>Number of columns displayed if browser viewport width is between 320 px and 480 px.
+                        Below that width products are displayed in a single column.
+                    </comment>
+                </field>
+                <field id="equal_height" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Equal Height of Grid Items (Products)</label>
+                    <comment>If enabled, all grid items have the same height and "Add to cart" button is
+                        displayed at the bottom edge of the item.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+               <!-- <field id="hover_effect" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product Hover Effect</label>
+                    <comment>
+                        <![CDATA[Effect is visible on mouse hover over the product. <strong style="color:red;">Important:</strong> enable in order to use "Display On Hover" in <strong>Display Selected Elements</strong>.]]>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="heading_display" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Display Selected Elements</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="display_rating" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Ratings</label>
+                    <source_model>MT\Mato\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+                <field id="display_addtocart" translate="label comment" type="select" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Add To Cart</label>
+                    <source_model>MT\Mato\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>
+                <field id="display_addtolinks" translate="label comment" type="select" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>"Add to" Links</label>
+                    <comment>"Add to wishlist" and "Add to compare" links.</comment>
+                    <source_model>MT\Mato\Model\System\Config\Source\Layout\Element\Displayonhover</source_model>
+                </field>-->
+            </group>
+<!--            <group id="category_list" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category View (List Mode)</label>
+                <field id="hover_effect" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product Hover Effect</label>
+                    <comment>Effect is visible on mouse hover over the product.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="addtolinks_simple" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Show "Add to" Links as Simple Icons</label>
+                    <comment>If set to "No", "Add to wishlist" and "Add to compare" links will be displayed as
+                        text links with icons.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>-->
+            <group id="product_labels" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Labels</label>
+                <field id="new" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Show "New" Label</label>
+                    <source_model>MT\Mato\Model\System\Config\Newlabel</source_model>
+                </field>
+                <field id="sale" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Show "Sale" Label</label>
+                    <source_model>MT\Mato\Model\System\Config\Salelabel</source_model>
+                </field>
+            </group>
+            <group id="footer" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Footer</label>
+                <field id="links_column_auto_width" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Automatic Column Width Calculation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="product_slider" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Sliders</label>
+                <comment>This section is related to product sliders. "Speed" will be applied for all existing
+                    product sliders, also on product page. Other settings are only applied to Featured Products
+                    Slider blocks and New Products blocks.
+                </comment>
+                <field id="timeout" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Timeout</label>
+                    <comment>To enable automatic scrolling of the product sliders, specify time (in
+                        milliseconds) between slide transitions. Leave empty to disable automatic scrolling.
+                        Note that 1000 miliseconds = 1 second.
+                    </comment>
+                </field>
+                <field id="speed" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Speed</label>
+                    <comment>Duration (in milliseconds) of scrolling animation.</comment>
+                </field>
+                <field id="move_items" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Move Items</label>
+                    <comment>Number of items that should move on animation. Enter 0 to move all visible items.</comment>
+                    <depends>
+                        <field id="zoom_enable">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="magento_blocks" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Default Magento Blocks</label>
+                <comment>In this section you can disable default Magento blocks.</comment>
+                <field id="top_links" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Top Links</label>
+                    <comment>Links in the header: Accoun, Wishlist, Log In etc.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="footer_newsletter" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Newsletter Subscribe Form</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="related_products_checkbox" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product Page: Related Products Checkbox</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+            <group id="sidebar_blocks_home" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Disable Sidebar Blocks (On Home Page)</label>
+                <comment>In this section you can disable blocks which are displayed in sidebars. These setting only
+                    affect the home page.
+                </comment>
+                <field id="heading_left" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Left Sidebar</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="compare" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable: Compare</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="compared" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable: Compared Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="viewed" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable: Viewed Products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="wishlist" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable: Wishlist</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="poll" translate="label comment" type="select" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable: Poll</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="tags" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable: Tags</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="paypal" translate="label comment" type="select" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Disable: Paypal</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="customization" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Customization Settings</label>
+                <comment>In this section you can disable default Magento blocks.</comment>
+                <field id="custom_css" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Load Custom CSS</label>
+                    <comment>Enable this option to load "custom.css" file in which you can override the default
+                        styling of the theme. To create "custom.css" you can use the file "SAMPLE.custom.css"
+                        which is located in skin/frontend/mtmato/default/css directory.
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="mtmato_design" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Theme Design</label>
+            <tab>mtmato</tab>
+            <resource>MT_Mato::config_mato</resource>
+            <group id="colors" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="heading_basic_colors" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Basic Colors</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="js" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Js</frontend_model>
+                </field>
+                <field id="primary_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Primary Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="text_color" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_color" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_hover_color" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Hover Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_buttons" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Buttons Color</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="button_bg_color" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Button Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="button_color" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Button Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="button_border_color" translate="label comment" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Button Border Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="button_hover_color" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Hover Button Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="button_bg_hover_color" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Hover Button Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                    <comment>Selected emphasized buttons, e.g. "Add to cart" on product page, "Proceed to
+                        checkout" etc.
+                    </comment>
+                </field>
+                <field id="button_border_hover_color" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Hover Button Border Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                    <comment>Selected emphasized buttons, e.g. "Add to cart" on product page, "Proceed to
+                        checkout" etc.
+                    </comment>
+                </field>
+                <field id="heading_misc" translate="label comment" type="text" sortOrder="210" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Other</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="price_color" translate="label comment" type="text" sortOrder="220" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Price Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_color_title" translate="label comment" type="text" sortOrder="230" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Heading Color Title</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="page" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Page</label>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="header" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Header</label>
+                <field id="heading_general" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>General</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="bg_top_color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Top Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="inner_bg_color" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Inner Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_color" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_hover_color" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Hover Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_logo" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Logo</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="logo_upload" translate="label comment" type="image" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Upload Default Logo</label>
+                    <comment>JPG,PNG,GIF</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media">wysiwyg/mato/logo</upload_dir>
+                    <base_url type="media" scope_info="1">wysiwyg/mato/logo</base_url>
+                </field>
+                <field id="logo_retina_upload" translate="label comment" type="image" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Upload Retina Logo</label>
+                    <comment>JPG,PNG,GIF</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media">wysiwyg/mato/logo</upload_dir>
+                    <base_url type="media" scope_info="1">wysiwyg/mato/logo</base_url>
+                </field>
+            </group>
+            <group id="nav" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main Menu</label>
+                <field id="inner_bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="font_size" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Font Size</label>
+                    <comment>Top-level items</comment>
+                    <validate>validate-number validate-number-range number-range-8-25</validate>
+                </field>
+                <field id="font_uppercase" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Uppercase</label>
+                    <comment>Top-level items</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="heading_menubar" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Colors</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Item Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Item Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="hover_bg_color" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Hover Item Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="hover_color" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Hover Item Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_canvasmenu" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Canvas Menu</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="canvas_title_color" translate="label comment" type="text" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Canvas title Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="canvas_bg_content_color" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Canvas Background Content Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="canvas_bg_color" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Item Canvas Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="canvas_color" translate="label comment" type="text" sortOrder="130" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Item Canvas Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="canvas_hover_bg_color" translate="label comment" type="text" sortOrder="140" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Canvas Hover Item Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="canvas_hover_color" translate="label comment" type="text" sortOrder="150" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Canvas Hover Item Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="heading_verticalmenu" translate="label comment" type="text" sortOrder="160" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Vertical Menu</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+                <field id="vertical_bg_title_color" translate="label comment" type="text" sortOrder="170" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Vertical Background Title Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="vertical_title_color" translate="label comment" type="text" sortOrder="180" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Vertical Title Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="vertical_link_color" translate="label comment" type="text" sortOrder="190" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Vertical Link Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="vertical_link_hover_color" translate="label comment" type="text" sortOrder="210" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Vertical Link Hover Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="main" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Main</label>
+                <comment>In this tab, you can configure the main section of the page (the section located
+                    between the header and the footer).
+                </comment>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="page_footer" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Page Footer </label>
+                <comment>In this tab, you can configure the entire footer of the page. Settings from this tab are
+                    inherited by all the other sub-sections of the footer. Some of the settings can be overridden in
+                    sub-sections.
+                </comment>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="hover_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Hover Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="footer_container" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Page Footer Container</label>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="hover_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Hover Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+            <group id="footer_copyright" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Footer - Copyright</label>
+                <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Background Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="link_active_color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Link Active Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+                <field id="color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Text Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\Color</frontend_model>
+                </field>
+            </group>
+        </section>
+        <section id="mtmato_layout" translate="label" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Theme Layout</label>
+            <tab>mtmato</tab>
+            <resource>MT_Mato::config_mato</resource>
+            <group id="responsive" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Responsive Layout</label>
+                <field id="responsive" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Responsive Layout</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="rtl_language" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>RTL Language</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="fluid_width" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Fluid Width</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

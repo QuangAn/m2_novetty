@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /* @var $block \Magento\Catalog\Block\Product\View\AbstractView */?>
+<?php $_product = $block->getProduct() ?>
+
+<?php if ($block->displayProductStockStatus()): ?>
+    <?php if ($_product->isAvailable()): ?>
+        <div class="stock available" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+            <span class="stock-label"><?php /* @escapeNotVerified */ echo __('Availability') ?>:</span> <span> <?php /* @escapeNotVerified */ echo __('In stock') ?></span>
+            <p style="color:#ff3333; font-size: 12px;"><?php /* @escapeNotVerified */ echo __('* Required Field') ?></p>
+        </div>
+    <?php else: ?>
+        <div class="stock unavailable" title="<?php /* @escapeNotVerified */ echo __('Availability') ?>">
+            <span class="stock-label"><?php /* @escapeNotVerified */ echo __('Availability') ?>:</span><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span>
+            <p style="color:#ff3333; font-size: 12px;"><?php /* @escapeNotVerified */ echo __('* Required Field') ?></p>
+
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

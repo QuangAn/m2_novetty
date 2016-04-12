@@ -1,0 +1,93 @@
+<?php
+/**
+ * @category    MT
+ * @package     MT_Widget
+ * Copyright (C) 2008-2015 ZooExtension.com. All Rights Reserved.
+ * @license     GNU General Public License version 2 or later
+ * @author ZooExtension.com
+ * @email       magento@cleversoft.co
+ */
+?>
+<?php
+$blog = $this->getBlog();
+$id         = $this->getConfig('id');
+$scroll     = $this->getConfig('scroll');
+$title      = $this->getConfig('widget_title');
+$helper = Mage::helper('mtwidget');
+$date = Mage::getModel('core/date');
+$showtitle  = $this->getConfig('showtitle');
+$count              = $blog ? $blog->count() : 0;
+$carousel           = $this->getData('scroll');
+$row                = $this->getData('rowblog');
+$column             = $carousel == 1 && $row == 1 ? $count : ($carousel == 1 && $row > 1 ? $row : $this->getData('column'));
+?>
+<div class="<?php echo $this->getConfig('classes') ?>" id="<?php echo $id ?>">
+    <?php if ($title && $showtitle): ?>
+    <div class="main-heading">
+        <div class="heading-wrapper-title">
+            <h3><span><?php echo $title ?></h3>
+        </div>
+    </div>
+    <?php endif ?>
+        <?php $i = 0; foreach ($blog as $_item): ?>
+        <?php if ($carousel == 1 && $row > 1 && $i == 0): ?>
+            <div class="owl-carousel">
+        <?php endif ?>
+         <?php if ($i % $column == 0 || ($row > 1 && $i % $row == 0)): ?>
+            <div class="category-products collection-position01">
+            <ul class="products-grid <?php echo ($carousel == 1 && $row == 1) ? ' owl-carousel' : '' ?>">
+         <?php endif ?>
+         <?php $i++ ?>
+            <li class="blog item">
+                <?php $img = $helper->getImgBlog($_item->getShortContent()); ?>
+                <?php if ($img): ?>
+                    <?php if ($scroll): ?>
+                        <img class="img-responsive lazyOwl" data-src="<?php echo $img; ?>"
+                             src="<?php echo $this->getSkinUrl('images/loader.gif') ?>"/>
+                    <?php else: ?>
+                        <img class="img-responsive lazy" data-src="<?php echo $img; ?>"
+                             src="<?php echo $this->getSkinUrl('images/loader.gif') ?>"/>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <div class="main_content">
+                    <h3><a href="<?php echo $_item->getAddress(); ?>"><?php echo $_item->getTitle(); ?></a></h3>
+                    <span class="midle_content">
+                        <?php if($this->getConfig('showauthor')): ?>
+                        <span class="user"><i class="fa fa-user"></i> <?php echo substr($_item->getUser(), 0, 10); ?></span>
+                        <?php endif; ?>
+                        <?php if($this->getConfig('showdate')): ?>
+                        <span class="date"><i class="fa fa-calendar"></i> <?php echo $date->date('Y/M/d', $_item->getCreatedTime()); ?></span>
+                        <?php endif; ?>
+                        <?php if($this->getConfig('showcomment')): ?>
+                        <span class="comment"><i class="fa fa-comment"></i> <?php echo (int)$_item->getCommentCount() > 0 ? $_item->getCommentCount() : '0'; ?> <?php echo $this->__('Comments'); ?></span>
+                        <?php endif; ?>
+                    </span>
+                    <?php if($this->getConfig('showintro')): ?>
+                    <span class="content">
+                        <?php echo $_item->getPostContent(); ?>
+                    </span>
+                    <?php endif; ?>
+                    <?php if($this->getConfig('showreadmore')): ?>
+                    <span class="readmore"><a href="<?php echo $_item->getAddress(); ?>"><?php echo $this->__('Read More'); ?></a> </span>
+                    <?php endif; ?>
+                </div>
+                </li>
+                <?php if ($i == $count || $i % $column == 0 || ($row > 1 && $i % $row == 0)): ?>
+                </ul>
+                </div>
+            <?php endif ?>
+            <?php if ($carousel == 1 && $row > 1 && $i == $count): ?>
+                </div>
+            <?php endif ?>
+        <?php endforeach ?>
+    <script type="text/javascript" src="<?php echo Mage::getBaseUrl('js') ?>mt/widget/frontend.js"></script>
+    <script type="text/javascript">
+        new MT.Widget('<?php echo $id ?>', {
+            animation: <?php echo $this->getConfig('animation') ?>,
+            parallax: <?php echo $this->getConfig('parallax') ?>,
+            carousel: <?php echo $this->getConfig('carousel') ?>,
+            carouselConfig: null,
+            kenburns: <?php echo $this->getConfig('kenburns') ?>
+        });
+    </script>
+</div>

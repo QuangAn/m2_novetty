@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MT_Mato::mato" title="Magenthemes" module="MT_Mato" sortOrder="35"  resource="MT_Mato::mato"/>
+        <add id="MT_Mato::settings" title="Theme Settings" module="MT_Mato" sortOrder="10" parent="MT_Mato::mato" action="adminhtml/system_config/edit/section/mtmato" resource="MT_Mato::settings"/>
+        <add id="MT_Mato::design" title="Theme Design" module="MT_Mato" sortOrder="20" parent="MT_Mato::mato" action="adminhtml/system_config/edit/section/desgin" resource="MT_Mato::design"/>
+    </menu>
+</config>

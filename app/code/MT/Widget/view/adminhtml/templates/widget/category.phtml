@@ -1,0 +1,62 @@
+<?php
+/**
+ * @category    MT
+ * @package     MT_Widget
+ * Copyright (C) 2008-2015 ZooExtension.com. All Rights Reserved.
+ * @license     GNU General Public License version 2 or later
+ * @author ZooExtension.com
+ * @email       magento@cleversoft.co
+ */
+?>
+<?php
+
+$element = $block->getElement();
+$note = $element->getNote() ? '<div class="note" id="' . $element->getId() . '-note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox admin__control-checkbox' || $element->getExtType() == 'radio admin__control-radio';
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "admin__field field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($element->getRequired()) ? ' required _required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+$fieldClass .= (!$element->getLabelHtml()) ? ' no-label' : '';
+
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId())
+    . ($element->getFieldExtraAttributes() ? ' ' . $element->getFieldExtraAttributes() : '');
+$ranId = $block->getRandom()->getUniqueHash('categories');
+?>
+<div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+    <?php echo $element->getLabelHtml() ?>
+    <div class="admin__field-control control">
+        <input style="width: 25%;" type="text" class="input-text admin__control-text element-value-changer input-text entities <?php if ($this->getElement()->getRequired()):?>required-entry<?php endif ?>" name="<?php echo $element->getName()?>" readonly id="<?php echo $element->getHtmlId()?>" value="<?php echo $element->getValue()?>">
+        <label class="addafter"><a class="rule-chooser-trigger" href="javascript:void(0)" onclick="mtWidgetCategory.displayEntityChooser('<?php echo $ranId ?>')" title="<?php echo __('Open Chooser')?>">
+            <img class=rule-chooser-trigger" src="<?php echo $block->getViewFileUrl('MT_Widget::images/rule_chooser_trigger.gif')?>"/>
+        </a></label>
+        <a class="rule-param-apply" href="javascript:void(0)" onclick="mtWidgetCategory.hideEntityChooser('<?php echo $ranId ?>')" title="<?php echo __('Apply')?>">
+            <img class="v-middle" src="<?php echo $block->getViewFileUrl('MT_Widget::images/rule_component_apply.gif')?>"/>
+        </a>
+        <a class="rule-param-remove" href="javascript:void(0)" onclick="mtWidgetCategory.clearEntityValue('<?php echo $ranId ?>')" title="<?php echo __('Clear value')?>">
+            <img class="v-middle" src="<?php echo $block->getViewFileUrl('MT_Widget::images/rule_component_remove.gif')?>"/>
+        </a>
+        <div id="<?php echo $ranId ?>" class="tree"></div>
+    </div>
+</div>
+
+<style type="text/css">
+    a.n-underline{text-decoration: none}
+    #loading-mask{z-index: 2000}
+</style>
+<script>
+    require([
+        "MT_Widget/js/widget",
+        "prototype"
+    ],function(MTWidgetChooser) {
+        window.mtWidgetCategory = new MTWidgetChooser('<?php echo $block->getCategoriesChooserUrl()?>');
+
+        jQuery(function(){
+            Event.observe(document, 'CategoryNode:changed', function(event){
+                window.mtWidgetCategory.checkCategory(event);
+            });
+        });
+    });
+</script>

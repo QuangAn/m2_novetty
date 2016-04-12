@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mtmegamenu" translate="label" sortOrder="190">
+            <label>MT Megamenu</label>
+        </tab>
+        <section id="mtmegamenu" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Settings</label>
+            <tab>mtmegamenu</tab>
+            <resource>MT_Megamenu::config_megamenu</resource>
+            <group id="menu" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Mega Menu</label>
+                <field id="show_if_no_children" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Show Category Blocks if No Sub-categories</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>If set to "Yes", custom Category Blocks will be displayed in the drop-down box even
+                        if the category doesn't have any sub-categories.</comment>
+                </field>
+                <field id="label1" translate="label comment" type="text" sortOrder="110" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label 1</label>
+                    <comment>
+                        <![CDATA[Define the text of the category label 1. Labels can be assigned to every category in Catalog > Manage Categories.]]>
+                    </comment>
+                </field>
+                <field id="label2" translate="label comment" type="text" sortOrder="120" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Label 2</label>
+                    <comment>
+                        <![CDATA[Define the text of the category label 2. Labels can be assigned to every category in Catalog > Manage Categories.]]>
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

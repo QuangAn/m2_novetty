@@ -1,0 +1,434 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php
+$compareHeader = $block->getConfig('mtmato/header/compare');
+$headerLayout = $block->getConfig('mtmato/header/layout');
+$stickyEnable = $block->getConfig('mtmato/header/sticky_enable');
+$mobileCart = $block->getConfig('mtmato/header/hide_on_mobile');
+$logo = $block->getConfig('mtmato_design/header/logo_upload');
+$logo_retina = $block->getConfig('mtmato_design/header/logo_retina_upload');
+
+$mediaUrl = $block->getStoreManager()->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$class = $mobileCart ? 'hidden-xs':'';
+$sessionCustomer = $block->getCustomerSession();
+?>
+<?php
+$header_class = "";
+if ($headerLayout == "layout1") {
+    $header_class = "header-layout-1 header-layout-default";
+}  else {
+    $header_class = "header-layout-2";
+}
+?>
+<header class="header-container">
+    <?php if ($headerLayout == "layout1"): ?>
+    <!--Begin Header Layout 1-->
+    <div class="header">
+        <div class="header-top">
+            <div class="header-top-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="header-top-right col-lg-5 col-md-4 col-sm-4 col-xs-12 v-grid">
+                            <div class="social">
+                                <?php //echo $this->getLayout()->createBlock('cms/block')->setBlockId('social')->toHtml(); ?>
+                            </div>
+                        </div>
+                        <div class="hidden-xs col-xs-12 col-sm-8 col-md-7 col-lg-7">
+                            <div class="top-bar">
+                                <!-- <div class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></div> -->
+                                <?php if ($sessionCustomer->isLoggedIn()) : ?>
+                                <div class="login-topbar">
+                                    <a href="<?php echo Mage::getUrl('customer/account/logout'); ?>"><i aria-hidden="true" class="icon_lock-open_alt"></i><span class="hidden-xs"><?php echo $this->__('Logout'); ?></span></a>
+                                </div>
+                                <?php else: ?>
+                                <div class="login-topbar">
+                                    <a href="<?php echo Mage::getUrl('customer/account/login'); ?>"><i aria-hidden="true" class="icon_lock_alt"></i><span class="hidden-xs"><?php echo $this->__('Login'); ?></span></a>
+                                </div>
+                                <?php endif; ?>
+                                <div class="acc-topbar">
+                                    <div class="acc-btn">
+                                        <i aria-hidden="true" class="icon_profile"></i><span class="hidden-xs"><?php echo $this->__('My Account') ?></span><i class="fa fa-caret-down"></i>
+                                    </div>
+                                    <div class="acc-list">
+                                        <ul>
+                                            <li><a href="<?php echo $this->getUrl('customer/account')?>"><i aria-hidden="true" class="icon_profile"></i><span><?php echo $this->__('My Account') ?></span></a></li>
+                                            <li><a href="<?php echo $this->getUrl('wishlist') ?>"><i aria-hidden="true" class="icon_heart_alt"></i><span><?php echo $this->__('My Wishlist') ?></span></a></li>
+                                            <li><a href="<?php echo $this->getUrl('checkout/cart')?>"><i aria-hidden="true" class="icon_cart_alt"></i><span><?php echo $this->__('Shopping Cart') ?></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="checkout-topbar">
+                                    <a href="<?php echo $this->getUrl('checkout')?>"><i aria-hidden="true" class="icon_box-checked"></i><span class="hidden-xs"><?php echo $this->__('Checkout'); ?></span></a>
+                                </div>
+                                <?php echo $this->getChildHtml('currency') ?>
+                                <?php echo $this->getChildHtml('store_language') ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-content">
+            <div class="container">
+                <div class="header-inner">
+                        <div class="container-none">
+                            <div class="header-act row">
+                                <div class="header-content-left col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="logo-home">
+                                        <?php if ($this->getIsHomePage()):?>
+                                            <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+                                                    <img class="img-responsive" src="<?php echo $mediaUrl.'wysiwyg/magenthemes/mtmato/logo/'.$logo; ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                                            </h1>
+                                        <?php else:?>
+                                            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
+                                                <img class="img-responsive" src="<?php echo $mediaUrl.'wysiwyg/magenthemes/mtmato/logo/'.$logo; ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                                            </a>
+                                        <?php endif?>
+                                    </div>
+                                </div>
+                                <div class="header-content-right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="header-right-inner clearfix">
+                                        <div class="top-seach">
+                                            <div class="quick-access">
+                                                <?php echo $this->getChildHtml('topSearch') ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="visible-xs col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="mobile-bar">
+                                        <div class="menu-bar-btn navbar">
+                                            <div class="navbar navbar-inverse">
+                                                    <div class="navbar-toggle" type="button" data-toggle="collapse">
+                                                        <div class="collapsed-icon">
+                                                            <!--<span class="sr-only"><?php //echo $this->__('Navigation');?></span>-->
+                                                            <span class="icon-bar"></span>
+                                                            <span class="icon-bar"></span>
+                                                            <span class="icon-bar"></span>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        <?php if ($sessionCustomer->isLoggedIn()) : ?>
+                                        <div class="login-topbar">
+                                            <a href="<?php echo Mage::getUrl('customer/account/logout'); ?>"><i aria-hidden="true" class="icon_lock-open_alt"></i></a>
+                                        </div>
+                                        <?php else: ?>
+                                        <div class="login-topbar">
+                                            <a href="<?php echo Mage::getUrl('customer/account/login'); ?>"><i aria-hidden="true" class="icon_lock_alt"></i></a>
+                                        </div>
+                                        <?php endif; ?>
+                                        <div class="acc-topbar">
+                                            <div class="acc-btn">
+                                                <i aria-hidden="true" class="icon_profile"></i><i class="fa fa-caret-down"></i>
+                                            </div>
+                                            <div class="acc-list">
+                                                <ul>
+                                                    <li><a href="<?php echo $this->getUrl('customer/account')?>"><i aria-hidden="true" class="icon_profile"></i><span><?php echo $this->__('My Account') ?></span></a></li>
+                                                    <li><a href="<?php echo $this->getUrl('wishlist') ?>"><i aria-hidden="true" class="icon_heart_alt"></i><span><?php echo $this->__('My Wishlist') ?></span></a></li>
+                                                    <li><a href="<?php echo $this->getUrl('checkout/cart')?>"><i aria-hidden="true" class="icon_cart_alt"></i><span><?php echo $this->__('Shopping Cart') ?></span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="checkout-topbar">
+                                            <a href="<?php echo $this->getUrl('checkout')?>"><i aria-hidden="true" class="icon_box-checked"></i></a>
+                                        </div>
+                                        <?php echo $this->getChildHtml('store_language') ?>
+                                        <?php echo $this->getChildHtml('currency') ?>
+                                        <!-- <p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p> -->
+                                        <?php if($compareHeader) { ?>
+                                            <div class="compare-topbar">
+                                                <?php $_helper = $this->helper('catalog/product_compare'); ?>
+                                                <div class="compare-btn">
+                                                    <i aria-hidden="true" class="icon_documents_alt"></i>
+                                                    <span class="compare-title hidden-xs"><?php echo $this->__('Compare');?></span>
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                                <div class="compare-list">
+                                                    <?php echo $this->getChildHtml('compareajax') ?>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                        <div class="mt-top-cart-bar mt-top-cart <?php echo $class;?>">
+                                            <div class="mt-maincart-bar mt-maincart">
+                                                <?php echo $this->getChildHtml('ajaxcart'); ?>
+                                            </div>
+											<div style="display: none">
+											   <div id="inline">
+												   <div class="cart-ajax-title"></div>
+												   <div class="add-cart-notice"><?php echo $this->__('The product quantity has been updated');?></div>
+												   <div class="action mt-ajax-checkout">
+													   <button class="continue button" onclick="$mt.colorbox.close();"><span><?php echo $this->__('Continue shopping');?></span></button>
+													   <a class="show-cart" href="<?php echo $this->getUrl('checkout/cart') ?>"><span><?php echo $this->__('Show cart');?></span></a>
+												   </div>
+											   </div>
+										   </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+        <!--End Header Layout 1-->
+    <?php endif ?>
+
+    <?php if ($headerLayout == "layout2"): ?>
+    <!--Begin Header Layout 2-->
+        <div class="header">
+            <div class="hidden-xs header-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="top-notification">
+                                <div class="title">
+                                    <i class="fa fa-rss"></i>
+                                    <span><?php echo $this->__('News') ?></span>
+                                </div>
+                                <div class="text">
+                                    <marquee behavior="scroll" direction="left"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('break-new')->toHtml(); ?></marquee>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bar-content hidden-xs col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="top-bar">
+                                <!-- <div class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></div> -->
+                                <?php if ($sessionCustomer->isLoggedIn()) : ?>
+                                    <div class="acc-topbar">
+                                        <div class="acc-btn">
+                                            <i aria-hidden="true" class="icon_profile"></i><span class="hidden-sm"><?php echo $this->__('My Account') ?></span><i class="fa fa-caret-down"></i>
+                                        </div>
+                                        <div class="acc-list">
+                                            <ul>
+                                                <li><a href="<?php echo $this->getUrl('customer/account')?>"><i aria-hidden="true" class="icon_profile"></i><span><?php echo $this->__('My Account') ?></span></a></li>
+                                                <li><a href="<?php echo $this->getUrl('wishlist') ?>"><i aria-hidden="true" class="icon_heart_alt"></i><span><?php echo $this->__('My Wishlist') ?></span></a></li>
+                                                <li><a href="<?php echo $this->getUrl('checkout/cart')?>"><i aria-hidden="true" class="icon_cart_alt"></i><span><?php echo $this->__('Shopping Cart') ?></span></a></li>
+                                                <li><a href="<?php echo Mage::getUrl('customer/account/logout'); ?>"><i aria-hidden="true" class="icon_lock-open_alt"></i><span><?php echo $this->__('Log Out') ?></span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                <?php else: ?>
+                                    <div class="login-topbar">
+                                        <a href="<?php echo Mage::getUrl('customer/account/login'); ?>"><i aria-hidden="true" class="icon_lock_alt"></i><span class="hidden-sm"><?php echo $this->__('Login'); ?></span></a>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div class="checkout-topbar">
+                                    <a href="<?php echo $this->getUrl('checkout')?>"><i aria-hidden="true" class="icon_box-checked"></i><span class="hidden-sm"><?php echo $this->__('Checkout'); ?></span></a>
+                                </div>
+                                <?php echo $this->getChildHtml('currency') ?>
+                                <?php echo $this->getChildHtml('store_language') ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-content">
+                <div class="container">
+                    <div class="header-inner">
+                        <div class="container-none">
+                            <div class="header-act row">
+                                <div class="header-content-left col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                    <div class="logo-home">
+                                        <?php if ($this->getIsHomePage()):?>
+                                            <h2 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+                                                    <img class="img-responsive" src="<?php echo $mediaUrl.'wysiwyg/magenthemes/mtquartz07/logo/'.$logo; ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+                                            </h2>
+                                        <?php else:?>
+                                            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong>
+                                                <img class="img-responsive" src="<?php echo $mediaUrl.'wysiwyg/magenthemes/mtquartz07/logo/'.$logo; ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+                                            </a>
+                                        <?php endif?>
+                                    </div>
+                                </div>
+                                <div class="visible-xs col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="mobile-bar">
+                                        <div class="menu-bar-btn navbar">
+                                            <div class="navbar navbar-inverse">
+                                                <div class="navbar-toggle" >
+                                                    <div class="collapsed-icon">
+                                                        <!--<span class="sr-only"><?php //echo $this->__('Navigation');?></span>-->
+                                                        <span class="icon-bar"></span>
+                                                        <span class="icon-bar"></span>
+                                                        <span class="icon-bar"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php if ($sessionCustomer->isLoggedIn()) : ?>
+                                            <div class="acc-topbar">
+                                                <div class="acc-btn">
+                                                    <i aria-hidden="true" class="icon_profile"></i><i class="fa fa-caret-down"></i>
+                                                </div>
+                                                <div class="acc-list">
+                                                    <ul>
+                                                        <li><a href="<?php echo $this->getUrl('customer/account')?>"><i aria-hidden="true" class="icon_profile"></i><span><?php echo $this->__('My Account') ?></span></a></li>
+                                                        <li><a href="<?php echo $this->getUrl('wishlist') ?>"><i aria-hidden="true" class="icon_heart_alt"></i><span><?php echo $this->__('My Wishlist') ?></span></a></li>
+                                                        <li><a href="<?php echo $this->getUrl('checkout')?>"><i aria-hidden="true" class="icon_box-checked"></i><span><?php echo $this->__('Checkout') ?></span></a></li>
+                                                        <li><a href="<?php echo Mage::getUrl('customer/account/logout'); ?>"><i aria-hidden="true" class="icon_lock-open_alt"></i><span><?php echo $this->__('Log Out') ?></span></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        <?php else: ?>
+                                            <div class="login-topbar">
+                                                <a href="<?php echo Mage::getUrl('customer/account/login'); ?>"><i aria-hidden="true" class="icon_lock_alt"></i></a>
+                                            </div>
+                                        <?php endif; ?>
+
+                                        <div class="checkout-topbar">
+                                            <a href="<?php echo $this->getUrl('checkout/cart')?>"><i aria-hidden="true" class="icon_cart_alt"></i></a>
+                                            <div class="ajaxcart">
+                                                <div class="search-form-border"></div>
+                                                <div class="mt-ajax-container">
+                                                    <?php
+                                                    if(count($_items)):
+                                                        ?>
+                                                        <ul class="clearfix">
+                                                            <?php foreach($_items as $_item): ?>
+                                                                <?php echo $this->getItemHtml($_item) ?>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                        <p class="subtotal">
+                                                            <?php if ($this->canApplyMsrp()): ?>
+                                                                <span class="map-cart-sidebar-total"><?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?></span>
+                                                            <?php else: ?>
+                                                                <span class="label"><?php echo $this->__('Total:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?>
+                                                                <?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+                                                                    <br />(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        </p>
+                                                        <div class="mt-ajax-checkout">
+                                                            <a href="<?php echo $this->getUrl('checkout/cart') ?>" class="view-cart">
+                                                                <span><?php echo $this->__('View cart') ?></span>
+                                                            </a>
+                                                            <?php if(Mage::getStoreConfig('opc/global/status')){?>
+                                                                <a href="<?php echo $this->getUrl('onepage') ?>"><span><?php echo $this->__('Checkout') ?></span></a>
+                                                            <?php }else{?>
+                                                                <a href="<?php echo $this->getCheckoutUrl() ?>"><span><?php echo $this->__('Checkout') ?></span></a>
+                                                            <?php }?>
+                                                        </div>
+                                                    <?php else: ?>
+                                                        <p class="no-items-in-cart"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+                                                    <?php endif ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="compare-topbar">
+                                            <div class="mt-maincompare">
+                                                <div class="compare-btn">
+                                                    <i aria-hidden="true" class="icon_documents_alt"></i>
+                                                    <span class="compare-title hidden-xs">Compare</span>
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                                <div class="compare-list block-top-compare">
+                                                    <?php echo $this->getChildHtml('compareajax') ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php echo $this->getChildHtml('store_language') ?>
+                                        <?php echo $this->getChildHtml('currency') ?>
+                                        <!-- <p class="welcome-msg"><?php echo $this->getWelcome() ?> <?php echo $this->getAdditionalHtml() ?></p> -->
+                                    </div>
+                                </div>
+                                <div class="header-search-right col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="top-seach clearfix">
+                                        <div class="quick-access">
+                                            <?php echo $this->getChildHtml('topSearch') ?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="header-right-block col-xs-12 col-sm-3 col-md-3 col-lg-3 hidden-xs">
+                                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('contact-info-header')->toHtml(); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Header Layout 2-->
+    <?php endif ?>
+    <div class="menu-full" id="mt-sticky-header">
+        <div class="header-menu">
+            <div class="nav-top v-grid ">
+                <div class="container box-menu">
+                    <div class="nav-top-inner clearfix">
+                        <?php echo $this->getChildHtml('topMenu') ?>
+                    </div>
+                    <div class="header-dropdow">
+                        <div class="mt_getcart">
+                            <?php if($compareHeader) { ?>
+                                <div class="top-compare">
+                                    <div class="mt-maincompare">
+                                        <?php $_helper = $this->helper('catalog/product_compare'); ?>
+                                        <span class="mt-icon mt-icon-compareajax"><i class="fa fa-retweet"></i></span>
+                                        <span class="mt-text-compare mt-icon"><?php echo $this->__('Compare');?></span>
+
+                                        <div class="block-top-compare">
+                                            <?php echo $this->getChildHtml('compareajax') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                            <div class="mt-top-cart <?php echo $class;?>">
+                                <div class="mt-maincart">
+                                    <?php echo $this->getChildHtml('ajaxcart'); ?>
+
+                                </div>
+                                <div id="notification"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grey-promo">
+        <div class="container">
+            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('grey-promo')->toHtml(); ?>
+        </div>
+    </div>
+    <?php if($stickyEnable){?>
+        <script type="text/javascript">
+            var showPopupCart = '<?php echo Mage::getStoreConfig('ajaxcart/ajaxcart_config/enable_popupcart');?>';
+            $mt(window).load(function(){
+                $mt("#mt-sticky-header").sticky({ topSpacing: 0 });
+                var $logoImg = $mt('.mt-wrapper .header .logo img');
+                if($logoImg.css('min-height') == '1px') {
+                    $logoImg.attr('src', $logoImg.attr('src').replace('<?php echo $logo;?>', '<?php echo $logo_retina;?>'));
+                }
+            });
+        </script>
+    <?php }?>
+</header>

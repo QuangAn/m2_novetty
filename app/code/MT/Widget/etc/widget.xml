@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* @category    MT
+* @package     MT_Widget
+* Copyright (C) 2008-2015 ZooExtension.com. All Rights Reserved.
+* @license     GNU General Public License version 2 or later
+* @author ZooExtension.com
+* @email       magento@cleversoft.co
+*/
+-->
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="mt_widget" class="MT\Widget\Block\Widget" is_email_compatible="true">
+        <label translate="true">MT Widgets</label>
+        <description>Show products, photos, blocks in widget</description>
+        <parameters>
+            <parameter name="widget_title" xsi:type="text" required="false" visible="true">
+                <label translate="true">Widget Title</label>
+            </parameter>
+            <parameter name="cache" xsi:type="text" required="false" visible="true">
+                <label translate="true">Cache Lifetime</label>
+                <description translate="true">If set, caching this widget (in seconds)</description>
+            </parameter>
+            <parameter name="classes" xsi:type="text" required="false" visible="true">
+                <label translate="true">Widget Classes</label>
+                <description translate="true">Custom classes</description>
+            </parameter>
+            <parameter name="widget_type" xsi:type="select" required="true" visible="true"
+                       source_model="MT\Widget\Model\Widget\Source\Type">
+                <label translate="true">Widget Type</label>
+                <description translate="true">Select widget content</description>
+            </parameter>
+            <parameter name="block_ids" xsi:type="multiselect" required="true" visible="true"
+                       source_model="MT\Widget\Model\Widget\Source\Block">
+                <label translate="true">Blocks</label>
+                <description translate="true">Choose blocks to show</description>
+                <depends>
+                    <parameter name="widget_type" value="block" />
+                </depends>
+            </parameter>
+            <parameter name="attribute" xsi:type="select" required="true" visible="true"
+                       source_model="MT\Widget\Model\Widget\Source\Attribute">
+                <label translate="true">Attribute</label>
+                <description translate="true">Select attribute to show</description>
+                <depends>
+                    <parameter name="widget_type" value="attribute" />
+                </depends>
+            </parameter>
+            <parameter name="attribute_options" xsi:type="conditions" class="MT\Widget\Block\Adminhtml\Widget\Renderer\Attribute\Option"  visible="true">
+                <label translate="true">Attribute Options</label>
+                <description translate="true">Select attribute options to show</description>
+                <depends>
+                    <parameter name="widget_type" value="attribute" />
+                </depends>
+            </parameter>
+            <parameter name="attribute_link" xsi:type="select" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Search Link</label>
+                <description translate="true">Enable link to search result page for attribute option value</description>
+                <depends>
+                    <parameter name="widget_type" value="attribute" />
+                </depends>
+            </parameter>
+            <parameter name="block_lg" xsi:type="text"  visible="false">
+            </parameter>
+            <parameter name="block_md" xsi:type="text"  visible="false">
+            </parameter>
+            <parameter name="block_sm" xsi:type="text"  visible="false">
+            </parameter>
+            <parameter name="block_xs" xsi:type="text"  visible="false">
+            </parameter>
+
+            <parameter name="widget_tab" xsi:type="select" required="true" visible="true"
+                       source_model="MT\Widget\Model\Widget\Source\Tab">
+                <label translate="true">Enable Tabs</label>
+                <description translate="true">Enable tab on widget</description>
+                <depends>
+                    <parameter name="widget_type" value="product" />
+                </depends>
+            </parameter>
+            <parameter name="mode" xsi:type="select" required="true" visible="true"
+                       source_model="MT\Widget\Model\Widget\Source\Mode">
+                <label translate="true">Product Collection</label>
+                <description translate="true">The product collection</description>
+                <depends>
+                    <parameter name="widget_tab" value="none" />
+                </depends>
+            </parameter>
+            <parameter name="countdown" xsi:type="select" required="true" visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Countdown</label>
+                <description translate="true">Enable countdown on product if available</description>
+                <depends>
+                    <parameter name="widget_type" value="product" />
+                </depends>
+            </parameter>
+            <parameter name="product_ids" xsi:type="conditions" class="MT\Widget\Block\Adminhtml\Widget\Renderer\Product" required="true" visible="true">
+                <label translate="true">Product</label>
+                <description>Specific product ids here</description>
+                <depends>
+                    <parameter name="mode" value="id" />
+                </depends>
+            </parameter>
+            <parameter name="collections" xsi:type="conditions" class="MT\Widget\Block\Adminhtml\Widget\Form\Element\Collection" required="true" visible="true">
+                <label translate="true">Product Collections</label>
+                <description translate="true"><![CDATA[The product collections for tabs. Drag & drop for order of collections]]></description>
+                <depends>
+                    <parameter name="widget_tab" value="collections" />
+                </depends>
+            </parameter>
+            <parameter name="category_ids" xsi:type="conditions" class="MT\Widget\Block\Adminhtml\Widget\Renderer\Category" visible="true">
+                <label translate="true">Categories</label>
+                <description translate="true">If category is selected, the product collection will be filtered by this categories</description>
+                <depends>
+                    <parameter name="widget_type" value="product" />
+                </depends>
+            </parameter>
+            <parameter name="labels" xsi:type="text"  visible="true" >
+                <label translate="true">Custom Labels</label>
+                <description translate="true">Separator by: ||</description>
+                <depends>
+                    <parameter name="widget_type" value="product" />
+                </depends>
+                <value>10</value>
+            </parameter>
+            <parameter name="limit" xsi:type="text"  visible="true" required="true">
+                <label translate="true">Limit</label>
+                <description translate="true">Limit number of products show on widget or tab</description>
+                <depends>
+                    <parameter name="widget_type" value="product" />
+                </depends>
+                <value>10</value>
+            </parameter>
+            <parameter name="scroll" xsi:type="select" required="true"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Enable Carousel</label>
+                <description translate="true">Enable Carousel</description>
+            </parameter>
+            <parameter name="autoplay" xsi:type="text" visible="true">
+                <label translate="true">Slideshow</label>
+                <description translate="true">Change to any integrer for example 5000 to play every 5 seconds. Leave empty to disable autoplay.</description>
+                <depends>
+                    <parameter name="scroll" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="preview_lg" xsi:type="conditions" class="MT\Widget\Block\Adminhtml\Widget\Renderer\Preview" visible="true">
+                <label translate="true">Layout Large Devices (≥1200px)</label>
+                <depends>
+                    <parameter name="widget_type" value="block" />
+                </depends>
+            </parameter>
+            <parameter name="preview_md" xsi:type="conditions" class="MT\Widget\Block\Adminhtml\Widget\Renderer\Preview" visible="true">
+                <label translate="true">Layout Medium Devices (≥992px)</label>
+                <depends>
+                    <parameter name="widget_type" value="block" />
+                </depends>
+            </parameter>
+            <parameter name="preview_sm" xsi:type="conditions" class="MT\Widget\Block\Adminhtml\Widget\Renderer\Preview" visible="true">
+                <label translate="true">Layout Small Devices (≥768px)</label>
+                <depends>
+                    <parameter name="widget_type" value="block" />
+                </depends>
+            </parameter>
+            <parameter name="preview_xs" xsi:type="conditions" class="MT\Widget\Block\Adminhtml\Widget\Renderer\Preview" visible="true" >
+                <label translate="true"><![CDATA[Layout Extra Small Devices (<768px)]]></label>
+                <depends>
+                    <parameter name="widget_type" value="block" />
+                </depends>
+            </parameter>
+            <parameter name="layout_lg" xsi:type="block" visible="false">
+                <block class="MT\Widget\Block\Adminhtml\Widget\Renderer\Layout">
+                    <data>
+                        <item name="target" xsi:type="string">lg</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="layout_md" xsi:type="block" visible="false">
+                <block class="MT\Widget\Block\Adminhtml\Widget\Renderer\Layout">
+                    <data>
+                        <item name="target" xsi:type="string">md</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="layout_sm" xsi:type="block" visible="false">
+                <block class="MT\Widget\Block\Adminhtml\Widget\Renderer\Layout">
+                    <data>
+                        <item name="target" xsi:type="string">sm</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="layout_xs" xsi:type="block" visible="false">
+                <block class="MT\Widget\Block\Adminhtml\Widget\Renderer\Layout">
+                    <data>
+                        <item name="target" xsi:type="string">xs</item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="paging" xsi:type="select"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Show Paging</label>
+                <description translate="true">Show pagination</description>
+                <depends>
+                    <parameter name="scroll" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="navigation" xsi:type="select"  visible="true"
+                       source_model="Magento\Config\Model\Config\Source\Yesno">
+                <label translate="true">Show Navigation</label>
+                <description translate="true">Show Navigation</description>
+                <depends>
+                    <parameter name="scroll" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="navigation_prev" xsi:type="text"  visible="true">
+                <label translate="true">Prev Navigation</label>
+                <description translate="true">Prev navigation text</description>
+                <depends>
+                    <parameter name="scroll" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="navigation_next" xsi:type="text"  visible="true">
+                <label translate="true">Next Navigation</label>
+                <description translate="true">Next navigation text</description>
+                <depends>
+                    <parameter name="scroll" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="row" xsi:type="text"  visible="true">
+                <label translate="true">Rows</label>
+                <description translate="true">Limit number of rows on widget</description>
+                <depends>
+                    <parameter name="scroll" value="1" />
+                </depends>
+            </parameter>
+            <parameter name="column" xsi:type="text"  visible="true">
+                <label translate="true">Columns</label>
+                <description translate="true">Limit number of columns on widget</description>
+                <value>4</value>
+            </parameter>
+            <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="10">
+                <label translate="true">Template</label>
+                <options>
+                    <option name="default" value="widget/position01.phtml">
+                        <label translate="true">Product Collection 01</label>
+                    </option>
+                    <option name="countdown01" value="widget/position02.phtml">
+                        <label translate="true">Product Collection 02</label>
+                    </option>
+                    <option name="countdown02" value="widget/position03.phtml">
+                        <label translate="true">Product Collection 03</label>
+                    </option>
+                    <option name="tab" value="widget/tab.phtml">
+                        <label translate="true">collection-tab</label>
+                    </option>
+                    <option name="block" value="widget/block.phtml">
+                        <label translate="true">block</label>
+                    </option>
+                    <option name="attribute" value="widget/attribute.phtml">
+                        <label translate="true">attribute</label>
+                    </option>
+                </options>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

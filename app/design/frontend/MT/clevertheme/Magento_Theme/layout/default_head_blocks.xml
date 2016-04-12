@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <!-- <remove src="css/styles-m.css" />
+        <remove src="css/styles-l.css" /> -->
+        <css src="css/font-awesome.min.css"/>
+        <css src="css/themify-icons.css"/>
+        <css src="css/bootstrap.css"/>
+        <css src="css/ct-icon-theme.css"/>
+        <css src="css/styles.css"/>
+        <css src="css/megamenu.css"/>
+        <css src="css/clevertheme.css"/>
+        <script src="jquery.js" />
+        <script src="js/ct-icon.js" />
+        <script src="js/clevertheme.js" />
+        <!-- <script src="js/bootstrap.min.js"/> -->
+    </head>
+</page>

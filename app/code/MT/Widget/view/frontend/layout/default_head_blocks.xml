@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="MT_Widget/js/owl-carousel/owl.theme.css"/>
+        <css src="MT_Widget/js/owl-carousel/owl.carousel.css"/>
+        <css src="MT_Widget/css/style.css"/>
+        <css src="Magento_Swatches/css/swatches.css"/>
+        <script src="Magento_Catalog/js/catalog-add-to-cart.js"/>
+
+        <!--<script src="requirejs/require.js"/>-->
+    </head>
+</page>

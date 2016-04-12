@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="MT_Widget::widget_content" title="Widget" module="MT_Widget" sortOrder="55" parent="Magento_Backend::marketing" resource="MT_Widget::widget" />
+        <add id="MT_Widget::post" title="Widget List" module="MT_Widget" sortOrder="0" parent="MT_Widget::widget_content" action="mtwidget/widget/categories" resource="MT_Widget::widget"/>
+    </menu>
+</config>

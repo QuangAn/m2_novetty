@@ -1,0 +1,50 @@
+<?php
+$theme = $this->helper('MT\Mato\Helper\Data');
+$equalHeight = $theme->getCfg('category_grid/equal_height');
+$displayAddtocart = $theme->getCfg('category_grid/display_addtocart');
+$displayAddtolink = $theme->getCfg('category_grid/display_addtolinks');
+$compareHeader = $theme->getCfg('header/compare');
+?>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "MT_Quickview/js/jquery.lib.min"
+    ],function(){
+        jQuery(function($) {
+            //Quickview
+            $('.product-quickview').on('click', function() {
+                $.colorbox({
+                    iframe: true,
+                    href:this.href,
+                    opacity:    0.5,
+                    speed:      300,
+                    current:    '{current} / {total}',
+                    close:      "close",
+                    innerWidth:'940px',
+                    innerHeight:'635px',
+                    onOpen: function(){
+                        $('#cboxLoadingGraphic').addClass('box-loading');
+                    },
+                    onComplete: function(){
+                        setTimeout(function(){
+                            $('#cboxLoadingGraphic').removeClass('box-loading');
+                        },1300);
+                    }
+                });
+            });
+
+            $('.show-quickview').on('click', function(e){
+                if($('.btn-cart-mobile').length == 0){
+                    $(this).next().trigger('click');
+                }else{
+                    return window.location.href=$(this).attr('data-submit');
+                }
+            });
+        });
+        // JavaScript Document
+        jQuery(window).load(function(){
+            jQuery(".mt-tooltip").tooltip();
+        });
+    });
+
+</script>

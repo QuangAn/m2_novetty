@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mtnewsletter" translate="label" sortOrder="190">
+            <label>MT Newsletter</label>
+        </tab>
+        <section id="mtnewsletter" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Newsletter Setting</label>
+            <tab>mtnewsletter</tab>
+            <resource>MT_Newsletter::config_mtnewsletter</resource>
+            <group id="display_options" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Display Options</label>
+                <field id="js" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <frontend_model>MT\Newsletter\Block\Adminhtml\System\Config\Form\Field\Js</frontend_model>
+                </field>
+                <field id="enable" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Newsletter Popup:</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="background_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Primary Color</label>
+                    <frontend_model>MT\Mato\Block\Adminhtml\System\Config\Form\Field\color</frontend_model>
+                </field>
+                <field id="background_image" translate="label comment" type="image" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Upload Default Logo</label>
+                    <comment>JPG,PNG,GIF</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media">wysiwyg/mato/newsletter</upload_dir>
+                    <base_url type="media" scope_info="1">wysiwyg/mato/newsletter</base_url>
+                </field>
+                <field id="intro" translate="label comment" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Description newsleter: </label>
+                </field>
+                <field id="width" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Popup width</label>
+                </field>
+                <field id="height" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Popup height</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
