@@ -51,6 +51,15 @@ module.exports = {
         ],
         dsl: 'less'
     },
+    clevertheme: {
+        area: 'frontend',
+        name: 'MT/clevertheme',
+        locale: 'en_US',
+        files: [
+            'css/styles'
+        ],
+        dsl: 'less'
+    },
     backend: {
         area: 'adminhtml',
         name: 'Magento/backend',
