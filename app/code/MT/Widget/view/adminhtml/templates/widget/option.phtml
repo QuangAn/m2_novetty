@@ -50,6 +50,22 @@ $fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
                          jQuery('.field-'+uiid+'labels').hide();
                      }
                  }
+
+                if(jQuery('#'+uiid+'navigation').val() != 1){
+                    jQuery('.field-'+uiid+'navigation_prev').hide();
+                    jQuery('.field-'+uiid+'navigation_next').hide();
+                }
+            });
+
+            jQuery('#'+uiid+'navigation').on('change',function(){
+                if(jQuery(this).val() != 1){
+                    jQuery('.field-'+uiid+'navigation_prev').hide();
+                    jQuery('.field-'+uiid+'navigation_next').hide();
+                }
+                else {
+                    jQuery('.field-'+uiid+'navigation_prev').show();
+                    jQuery('.field-'+uiid+'navigation_next').show();
+                }
             });
 
             jQuery('#'+uiid+'widget_tab').on('change',function(){

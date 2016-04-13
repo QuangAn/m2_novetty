@@ -576,8 +576,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
     public function getDate($product){
         $date = $product->getData('special_to_date');
         if ($date){
-            $model = Mage::getSingleton('core/date');
-            $today = $model->date('Y-m-d H:i:s');
+            $today = $this->_localeDate->date()->setTime(0, 0, 0)->format('Y-m-d H:i:s');
             if ($date > $today){
                 return date('F j, Y', strtotime($date));
             }

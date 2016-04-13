@@ -26,7 +26,6 @@ class ThemeDesignObserver implements ObserverInterface
 
     public function execute(\Magento\Framework\Event\Observer $observer){
         $section = $observer->getEvent()->getRequest()->getParam('section');
-
         if ($section == 'mtmato_design')
         {
             $websiteCode = $observer->getEvent()->getRequest()->getParam('website');

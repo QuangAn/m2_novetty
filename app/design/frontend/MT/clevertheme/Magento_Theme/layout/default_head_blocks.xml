@@ -10,9 +10,7 @@
         <css src="css/ct-icon-theme.css"/>
         <css src="css/styles.css"/>
         <css src="css/megamenu.css"/>
-        <css src="css/responsive.css"/>
         <css src="css/clevertheme.css"/>
-        <css src="css/style.less"/>
         <script src="jquery.js" />
         <script src="js/ct-icon.js" />
         <script src="js/clevertheme.js" />

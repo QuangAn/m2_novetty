@@ -61,6 +61,13 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
     protected $_catalogConfig;
 
     /**
+     * Initialize dependencies
+     *
+     * @var \Magento\Catalog\Model\Config
+     */
+    protected $_coreSession;
+
+    /**
      * @var \Magento\Framework\Json\EncoderInterface
      */
     protected $_jsonEncoder;
@@ -112,10 +119,12 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
         \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate,
         \MT\Mato\Helper\Image $imageHelper,
         \Magento\Framework\View\ConfigInterface $viewConfig,
+        \Magento\Framework\Session\SessionManager $coreSession,
         CustomerSession $customerSession
     ) {
         $this->_resource = $resource;
         $this->_customerSession = $customerSession;
+        $this->_coreSession = $coreSession;
         $this->storeManager = $storeManager;
         $this->_coreRegistry = $registry;
         $this->_checkoutSession = $checkoutSession;
@@ -313,10 +322,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
 
         $prodId = $currentProduct->getId();
 
-        $positions = Mage::getSingleton('core/session')
-            ->getPrevNextProductCollection();
-        if (!$positions) {
-
+        //$positions = $this->_coreSession->getPrevNextProductCollection();
+        //if (!$positions) {
             $currentCategory = $this->_coreRegistry->registry('current_category');
 
             if (!$currentCategory) {
@@ -329,7 +336,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
             }
 
             $positions = array_reverse(array_keys($this->_coreRegistry->registry('current_category')->getProductsPosition()));
-        }
+        //}
+
+
 
         $cpk = @array_search($prodId, $positions);
 
@@ -344,6 +353,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
             }
         }
 
+
+
         return false;
     }
 
@@ -357,11 +368,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
 
         $prodId = $currentProduct->getId();
 
-        $positions = Mage::getSingleton('core/session')
-            ->getPrevNextProductCollection();
+        //$positions = $this->_coreSession->getPrevNextProductCollection();
 
-        if (!$positions) {
-
+        //if (!$positions) {
             $currentCategory = $this->_coreRegistry->registry('current_category');
             if (!$currentCategory) {
                 $categoryIds = $currentProduct->getCategoryIds();
@@ -374,7 +383,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
             }
 
             $positions = array_reverse(array_keys($this->_coreRegistry->registry('current_category')->getProductsPosition()));
-        }
+        //}
+
 
         $cpk = @array_search($prodId, $positions);
 

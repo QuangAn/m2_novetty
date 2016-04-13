@@ -16,10 +16,18 @@ $helper = $this->helper('Magento\Search\Helper\Data');
     <div class="block block-content">
         <form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>" method="get">
             <div class="field search">
+                <div class="search-dropdown">
+                    <span class="search-select" value="">All categories</span>
+                    <ul class="search-option-list">
+                        <li class="selected" value=""><span>All categories</a></span>
+                            <?php echo $block->categoryListHtml(); ?>
+                    </ul>
+                </div>
                 <label class="label" for="search" data-role="minisearch-label">
                     <span><?php /* @escapeNotVerified */ echo __('Search'); ?></span>
                 </label>
                 <div class="control">
+                    <input type="hidden" name="cat" id="cat-search" value="" />
                     <input id="search"
                            data-mage-init='{"quickSearch":{
                                 "formSelector":"#search_mini_form",
@@ -49,4 +57,23 @@ $helper = $this->helper('Magento\Search\Helper\Data');
             </div>
         </form>
     </div>
+    <script>
+        require([
+            "jquery",
+        ],function(){
+            jQuery(document).ready(function() {
+                jQuery('.search-dropdown').click(function(event) {
+                    jQuery(this).children('.search-option-list').toggle();
+                    jQuery('.search-option-list span').click(function(){
+                        var select = jQuery(this).text();
+                        var vs = jQuery(this).parent("li").val();
+                        jQuery('.search-option-list li').removeClass('selected');
+                        jQuery(this).parent("li").addClass('selected');
+                        jQuery(this).closest('.search-dropdown').children('.search-select').text(select);
+                        jQuery('#cat-search').val(vs);
+                    });
+                });
+            });
+        });
+    </script>
 </div>

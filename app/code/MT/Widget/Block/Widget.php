@@ -56,12 +56,8 @@ class Widget extends \Magento\Catalog\Block\Product\AbstractProduct implements  
 
     /**
      * @param \Magento\Catalog\Block\Product\Context $context
-     * @param \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory
      * @param \Magento\Catalog\Model\Product\Visibility $catalogProductVisibility
-     * @param \Magento\Framework\App\Http\Context $httpContext
      * @param \Magento\Rule\Model\Condition\Sql\Builder $sqlBuilder
-     * @param \Magento\CatalogWidget\Model\Rule $rule
-     * @param \Magento\Widget\Helper\Conditions $conditionsHelper
      * @param array $data
      */
     public function __construct(
@@ -153,29 +149,6 @@ class Widget extends \Magento\Catalog\Block\Product\AbstractProduct implements  
         return $out;
     }
 
-
-
-    /**
-     * Get key pieces for caching block content
-     *
-     * @return array
-     */
-    public function getCacheKeyInfo()
-    {
-        $conditions = $this->getData('conditions')
-            ? $this->getData('conditions')
-            : $this->getData('conditions_encoded');
-
-        return [
-            'CATALOG_PRODUCTS_LIST_WIDGET',
-            $this->_storeManager->getStore()->getId(),
-            $this->_design->getDesignTheme()->getId(),
-            $this->httpContext->getValue(\Magento\Customer\Model\Context::CONTEXT_GROUP),
-            intval($this->getRequest()->getParam(self::PAGE_VAR_NAME, 1)),
-            $this->getProductsPerPage(),
-            $conditions
-        ];
-    }
 
 
     /**
@@ -419,7 +392,7 @@ class Widget extends \Magento\Catalog\Block\Product\AbstractProduct implements  
                     'hourSingularText'  => __('hour'),
                     'minSingularText'   => __('min'),
                     'secSingularText'   => __('sec'),
-                    'engineSrc'         => $this->getViewFileUrl('MT_Extensions::js/jquery/plugins/jquery.jcountdown.min.js')
+                    'engineSrc'         => $this->getViewFileUrl('MT_Widget::js/jquery.jcountdown.min.js')
                 ));
                 break;
             case 'kenburns':
@@ -427,7 +400,7 @@ class Widget extends \Magento\Catalog\Block\Product\AbstractProduct implements  
                     'enable'    => $this->getData('background') == 'kenburns',
                     //'images'    => $this->_getKenburnsImages(),
                     'overlay'   => $this->getData('background_overlay'),
-                    'engineSrc' => $this->getViewFileUrl('MT_Extensions::js/jquery/plugins/kenburns.js')
+                    'engineSrc' => $this->getViewFileUrl('MT_Widget::js/kenburns.js')
                 ));
                 break;
             case 'parallax':
@@ -486,8 +459,8 @@ class Widget extends \Magento\Catalog\Block\Product\AbstractProduct implements  
                     'lazyLoad'      => true,
                     'lazyEffect'    => false,
                     'addClassActive'=> true,
-                    'navigation'    => (bool) $this->getData('navigation'),
-                    'navigationText'=> array($this->getData('navigation_prev'), $this->getData('navigation_next')),
+                    'nav'    => (bool) $this->getData('navigation'),
+                    'navText'=> array($this->getData('navigation_prev'), $this->getData('navigation_next')),
                     'engineSrc'     => $this->getViewFileUrl('MT_Widget::js/owl-carousel/owl.carousel.js')
                 ));
                 break;

@@ -1,5 +1,4 @@
 /*Style*/
-body{background: red;height: 400px; overflow: hidden;}
 .page-wrapper {
   background-color: #EDEDED;
   .header.content {
@@ -1895,4 +1894,49 @@ body{background: red;height: 400px; overflow: hidden;}
 /*Block Minicart*/
 .block-minicart {
 
+}
+
+/* Long product name can be clipped */
+.product-items.list .product-item-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.product-items.list:hover .product-item-name {
+    overflow: visible;
+    white-space: normal;
+}
+
+/* countdown product */
+.product-date {
+  background-color:#c3e425;
+  display:inline-block;
+  width:90%;
+  position:absolute;
+  bottom:150px;
+  left:0;
+  z-index:99;
+}
+.product-date > div {
+  float:left;
+  width:25%;
+  text-align:center;
+  color:#000000;
+  display:block;
+  padding:7px;
+  border-right:1px solid #d9e795;
+}
+.product-date > div.second { border-right:none; }
+.product-date > div span.no {
+  float:left;
+  width:100%;
+  font-size:130%;
+  font-weight:bold;
+}
+.product-date > div span.text {
+  float:none;
+  display:inline-block;
+  width:100%;
+  text-align:center;
+  text-transform:capitalize;
 }

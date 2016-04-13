@@ -211,6 +211,7 @@ use Magento\Framework\App\Action\Action;
                                 </div>
                             <?php endif; ?>
                         </div>
+                        <div class="product-date" data-date="<?php echo $this->helper('MT\Widget\Helper\Data')->getDate($_item) ?>"></div>
                     </div>
                 </div>
                 <?php echo ($i == count($items)) ? '</li>' : '' ?>
