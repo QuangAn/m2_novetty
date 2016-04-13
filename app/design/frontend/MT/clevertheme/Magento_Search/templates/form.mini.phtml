@@ -15,18 +15,16 @@ $helper = $this->helper('Magento\Search\Helper\Data');
     <div class="block block-title"><strong><?php /* @escapeNotVerified */ echo __('Search'); ?></strong></div>
     <div class="block block-content">
         <form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>" method="get">
-            <div class="field search">
-                <div class="search-dropdown">
-                    <span class="search-select" value="">All categories</span>
-                    <ul class="search-option-list">
-                        <li class="selected" value=""><span>All categories</a></span>
-                            <?php echo $block->categoryListHtml(); ?>
-                    </ul>
-                </div>
-                <label class="label" for="search" data-role="minisearch-label">
-                    <span><?php /* @escapeNotVerified */ echo __('Search'); ?></span>
-                </label>
+            <div class="field search"> 
                 <div class="control">
+                
+                    <div class="search-dropdown">
+                        <span class="search-select" value=""><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span>All categories</span></span>
+                        <ul class="search-option-list">
+                            <li class="selected" value=""><span>All categories</a></span>
+                                <?php echo $block->categoryListHtml(); ?>
+                        </ul>
+                    </div>
                     <input type="hidden" name="cat" id="cat-search" value="" />
                     <input id="search"
                            data-mage-init='{"quickSearch":{
