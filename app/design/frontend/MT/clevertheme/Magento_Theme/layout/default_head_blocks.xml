@@ -10,10 +10,7 @@
         <css src="css/ct-icon-theme.css"/>
         <css src="css/styles.css"/>
         <css src="css/megamenu.css"/>
-<<<<<<< Updated upstream
-=======
 		<css src="css/responsive.css"/>
->>>>>>> Stashed changes
         <css src="css/clevertheme.css"/>
         <script src="jquery.js" />
         <script src="js/ct-icon.js" />
