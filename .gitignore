@@ -1,2 +1,4 @@
 /app/etc/env.php
+/
 /var/*
+pub/static/*
