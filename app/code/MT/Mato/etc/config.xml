@@ -118,6 +118,9 @@
                 <heading_color_title>#272727</heading_color_title>
 
             </colors>
+            <font>
+                 <font_size>13px</font_size>
+             </font>
             <page>
                 <bg_color>#ffffff</bg_color>
             </page>
