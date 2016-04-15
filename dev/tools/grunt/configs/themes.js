@@ -37,7 +37,9 @@ module.exports = {
         locale: 'en_US',
         files: [
             'css/styles',
-            'css/responsive'
+            'css/responsive',
+            'css/typo',
+            'css/clevertheme'
         ],
         dsl: 'less'
     },
