@@ -10,11 +10,14 @@
         <css src="css/ct-icon-theme.css"/>
         <css src="css/styles.css"/>
         <css src="css/megamenu.css"/>
-		<css src="css/responsive.css"/>
-        <css src="css/clevertheme.css" />
+		<css src="css/responsive.css"/> 
+        <css src="css/bootstrap-material-design.css" />
+        <css src="css/ripples.min.css" />
         <script src="jquery.js" />
-        <script src="js/ct-icon.js" />
-        <script src="js/clevertheme.js" />
-        <!-- <script src="js/bootstrap.min.js"/> -->
+        <script src="js/ct-icon.js" /> 
+        <script src="js/ripples.min.js" />
+        <script src="js/material.min.js" /> 
+        <script src="js/jquery.js" />
+ 
     </head>
-</page>
+</page> 
