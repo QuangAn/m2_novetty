@@ -38,8 +38,8 @@ module.exports = {
         files: [
             'css/styles',
             'css/responsive',
-            'css/typo',
-            'css/clevertheme'
+            'css/megamenu',
+            'css/typo'
         ],
         dsl: 'less'
     },
