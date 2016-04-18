@@ -9,21 +9,23 @@
 /** @var $block \Magento\Checkout\Block\Cart\Sidebar */
 ?>
 
-<div data-block="minicart" class="minicart-wrapper">
-	<span class="head-minicart"><?php /* @escapeNotVerified */ echo __('CART'); ?></span>
-    <a class="action showcart" href="<?php /* @escapeNotVerified */ echo $block->getShoppingCartUrl(); ?>"
-       data-bind="scope: 'minicart_content'">
-        <span class="counter qty empty"
-              data-bind="css: { empty: cart().summary_count == 0 }, blockLoader: isLoading">
-            <span class="counter-number"><!-- ko text: cart().summary_count --><!-- /ko --></span>
-            <span class="counter-label">
-            <!-- ko if: cart().summary_count -->
-                <!-- ko text: cart().summary_count --><!-- /ko -->
-                <!-- ko i18n: 'items' --><!-- /ko -->
-            <!-- /ko -->
+<div data-block="minicart" class="minicart-wrapper" >
+	
+    <div class="action showcart" data-bind="scope: 'minicart_content'">
+        <span class="head-minicart"><?php /* @escapeNotVerified */ echo __('CART'); ?><span class="subtotal-minicart" data-bind="html : cart().subtotal_header"></span></span>
+        <a  href="<?php /* @escapeNotVerified */ echo $block->getShoppingCartUrl(); ?>">
+            <span class="counter qty empty"
+                  data-bind="css: { empty: cart().summary_count == 0 }, blockLoader: isLoading">
+                <span class="counter-number"><!-- ko text: cart().summary_count --><!-- /ko --></span>
+                <span class="counter-label">
+                <!-- ko if: cart().summary_count -->
+                    <!-- ko text: cart().summary_count --><!-- /ko -->
+                    <!-- ko i18n: 'items' --><!-- /ko -->
+                <!-- /ko -->
+                </span>
             </span>
-        </span>
-    </a>
+        </a>
+    </div>
     <?php if ($block->getIsNeedToDisplaySideBar()): ?>
         <div class="block block-minicart empty"
              data-role="dropdownDialog"
