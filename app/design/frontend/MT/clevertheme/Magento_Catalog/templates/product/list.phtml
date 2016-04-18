@@ -21,6 +21,9 @@ $_helper = $this->helper('Magento\Catalog\Helper\Output');
 $showWishlist = true;
 $showCompare = true;
 $showCart = true;
+ $theme = $this->helper('MT\Mato\Helper\Data');
+    $imgWidth = $theme->getCfg('category/image_width') ? $theme->getCfg('category/image_width') : '';
+    $imgHeight = $theme->getCfg('category/image_height') ? $theme->getCfg('category/image_height') : '';
 ?>
 <?php if (!$_productCollection->count()): ?>
     <div class="message info empty">
@@ -60,18 +63,19 @@ $showCart = true;
                     <div class="inner-product-item-info">
                         <div class="mt-product-image">
 
-                            <?php
-                            $productImage = $block->getImage($_product, $image);
-                            if ($pos != null) {
-                                $position = ' style="left:' . $productImage->getWidth() . 'px;'
-                                    . 'top:' . $productImage->getHeight() . 'px;"';
-                            }
-                            ?>
+                        
                             <?php // Product Image ?>
-                            <a href="<?php /* @escapeNotVerified */
-                            echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
-                                <?php echo $productImage->toHtml(); ?>
-                            </a>
+                           
+							 <a href="<?php /* @escapeNotVerified */
+								echo $_product->getProductUrl() ?>" class="product-item-photo">
+									<?php echo $theme->getLabel($_product); ?>
+									<?php echo $block->getImage($_product, $image)->toHtml(); ?>
+									<?php if (!$theme->getCfg('category/alt_image')): ?>
+										<span class="product-img-additional alt-image">
+												 <?php echo $theme->getAltImgHtml($_product, $imgWidth, $imgHeight, $image); ?>
+											</span>
+									<?php endif; ?>
+								</a>
                         </div>
                         <div class="product details product-item-details">
                             <?php

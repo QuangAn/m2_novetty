@@ -128,6 +128,11 @@
                 <container htmlClass="container" htmlTag="div">
                     <container name="footer.top" as="footer.top" label="Page Footer Top" htmlTag="div"
                                htmlClass="inner-footer-top" before="-"/>
+                     <block class="Magento\Cms\Block\Block" name="home01.footer.top" as="home01.footer.top">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">home01-footer-top</argument>
+                        </arguments>
+                    </block>
                 </container>
             </container>
             <container htmlTag="div" htmlClass="footer-bottom" name="footer.bottom.container">
