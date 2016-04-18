@@ -394,15 +394,15 @@
                 </field>
             </group>
             <group id="font" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Font</label>
-                <field id="font_size" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Basic Font Size</label>
-                    <source_model>MT\Mato\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
-                    <comment>Size of the regular text. Font size of most of the other elements will be
-                        calculated relative to this value.
-                    </comment>
-                </field>
-            </group>
+                 <label>Font</label>
+                 <field id="font_size" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                     <label>Basic Font Size</label>
+                     <source_model>MT\Mato\Model\System\Config\Source\Design\Font\Size\Basic</source_model>
+                     <comment>Size of the regular text. Font size of most of the other elements will be
+                         calculated relative to this value.
+                     </comment>
+                 </field>
+             </group>
             <group id="page" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Page</label>
                 <field id="bg_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">

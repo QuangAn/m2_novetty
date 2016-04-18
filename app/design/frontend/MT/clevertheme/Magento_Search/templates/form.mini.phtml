@@ -15,19 +15,16 @@ $helper = $this->helper('Magento\Search\Helper\Data');
     <div class="block block-title"><strong><?php /* @escapeNotVerified */ echo __('Search'); ?></strong></div>
     <div class="block block-content">
         <form class="form minisearch" id="search_mini_form" action="<?php /* @escapeNotVerified */ echo $helper->getResultUrl() ?>" method="get">
-            <div class="field search">
-                <div class="search-dropdown">
-                    <span class="search-select" value="">All categories</span>
-                    <ul class="search-option-list">
-                        <li class="selected" value=""><span>All categories</a></span>
-                            <?php echo $block->categoryListHtml(); ?>
-                    </ul>
-                </div>
-                <label class="label" for="search" data-role="minisearch-label">
-                    <span><?php /* @escapeNotVerified */ echo __('Search'); ?></span>
-                </label>
+            <div class="field search"> 
                 <div class="control">
-                    <input type="hidden" name="cat" id="cat-search" value="" />
+                
+                    <div class="search-dropdown">
+                        <span class="search-select" value=""><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span>All categories</span></span>
+                        <ul class="search-option-list" style="display: none;">
+                            <li class="selected" value=""><span>All categories</a></span>
+                                <?php echo $block->categoryListHtml(); ?>
+                        </ul>
+                    </div>
                     <input id="search"
                            data-mage-init='{"quickSearch":{
                                 "formSelector":"#search_mini_form",
@@ -37,7 +34,7 @@ $helper = $this->helper('Magento\Search\Helper\Data');
                            type="text"
                            name="<?php /* @escapeNotVerified */ echo $helper->getQueryParamName() ?>"
                            value="<?php /* @escapeNotVerified */ echo $helper->getEscapedQueryText() ?>"
-                           placeholder="<?php /* @escapeNotVerified */ echo __('Search entire store here...'); ?>"
+                           placeholder="<?php /* @escapeNotVerified */ echo __('Search for Products'); ?>"
                            class="input-text"
                            maxlength="<?php /* @escapeNotVerified */ echo $helper->getMaxQueryLength();?>"
                            role="combobox"
@@ -46,15 +43,15 @@ $helper = $this->helper('Magento\Search\Helper\Data');
                            autocomplete="off"/>
                     <div id="search_autocomplete" class="search-autocomplete"></div>
                     <?php echo $block->getChildHtml() ?>
-                </div>
-                <div class="actions">
+                </div> 
                     <button type="submit"
                             title="<?php echo $block->escapeHtml(__('Search')) ?>"
                             class="action search">
                         <span><?php /* @escapeNotVerified */ echo __('Search'); ?></span>
-                    </button>
-                </div>
+                    </button> 
             </div>
+            
+                    <input type="hidden" name="cat" id="cat-search" value="" />
         </form>
     </div>
     <script>
@@ -63,7 +60,7 @@ $helper = $this->helper('Magento\Search\Helper\Data');
         ],function(){
             jQuery(document).ready(function() {
                 jQuery('.search-dropdown').click(function(event) {
-                    jQuery(this).children('.search-option-list').toggle();
+                    jQuery(this).children('.search-option-list').slideToggle();
                     jQuery('.search-option-list span').click(function(){
                         var select = jQuery(this).text();
                         var vs = jQuery(this).parent("li").val();
