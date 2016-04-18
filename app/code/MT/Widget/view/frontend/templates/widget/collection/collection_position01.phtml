@@ -35,7 +35,7 @@ use Magento\Framework\App\Action\Action;
     $showWishlist = true;
     $showCompare = true;
     $showCart = true;
-    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::DEFAULT_VIEW;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
     $description = false;
     $theme = $this->helper('MT\Mato\Helper\Data');
     $imgWidth = $theme->getCfg('category/image_width') ? $theme->getCfg('category/image_width') : '';
@@ -113,7 +113,7 @@ use Magento\Framework\App\Action\Action;
                             ?>
 
                             <?php if ($templateType): ?>
-                                <?php echo $block->getReviewsSummaryHtml($_item, $templateType) ?>
+                                <?php echo $block->getReviewsSummaryHtml($_item, $templateType, true) ?>
                             <?php endif; ?>
                             <?php echo $block->getColorSwatchDetailsHtml($_item); ?>
 
