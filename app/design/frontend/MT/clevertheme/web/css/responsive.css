@@ -1,7 +1,1 @@
-@media screen and (min-width: 768px) {
-    .logo {
-        margin: 0;
-        padding: 12px 0px;
-        margin-right: 225px;
-    }
-}
+@media (min-width:768px),print{.header .logo{margin:0!important;padding:12px 0;margin-right:225px!important}}
