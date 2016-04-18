@@ -319,7 +319,8 @@
 }
 
 .products.wrapper ~ .toolbar .limiter {
-  float: left !important;
+
+  display: none;
 }
 
 .page-products .toolbar .limiter {
@@ -371,11 +372,12 @@
   }
 }
 
-.page-with-filter {
+.products.wrapper ~ .toolbar  {
   .toolbar-amount {
     font-size: 14px;
     color: #666666;
     line-height: 30px;
+    display: block;
   }
 }
 
@@ -2145,6 +2147,48 @@
   height: 45px;
   padding: 0 15px;
   margin: 0;
+}
+.filter-options-title:after{display: none;}
+.filter-options-content{
+  .count{
+    float: right;
+  }
+  a{
+    
+    position: relative;
+    padding-left: 35px;
+    color: #666666;
+    &:before{
+      -webkit-transition: .3s all ease 0s;
+      -moz-transition: .3s all ease 0s;
+      -ms-transition: .3s all ease 0s;
+      -o-transition: .3s all ease 0s;
+      transition: .3s all ease 0s;
+      width:19px;
+      height: 19px;
+      content: '';
+      display: inline-block;
+      background:url('../images/icon-layer-listing/filter-option-img.png') no-repeat center center;
+      background-position: 0 0;
+      position: absolute;
+      left: 5px;
+      top: -2px;
+    }
+    &:hover{
+      color: #666666;
+      background:none;
+    }
+    &:hover:before{
+      background-position:  0 -19px;
+    }
+  }
+}
+.color-listing-filter{
+  .filter-options-content{
+    a{
+      &:before{display:none;}
+    }
+  }
 }
 .sidebar {
   .product-items {
