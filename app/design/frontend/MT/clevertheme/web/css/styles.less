@@ -1,5 +1,5 @@
 /*Style*/
-@import 'typo';
+@import 'typo.less';
 .page-wrapper {
   background-color: #f4f4f4;
   .header.content {
@@ -870,6 +870,7 @@
         letter-spacing: 4px;
     }
     button {
+        border: none;
           background-color: #ff4081; 
         font-size: 14px;
         text-transform: uppercase;
@@ -879,6 +880,7 @@
         height: 50px;
         &:hover{
             background-color: #039BE5;
+            background-color: lighten(#ff4081, 5%); 
         }
     }
   }
@@ -930,7 +932,7 @@
       &:hover,
       &:focus,
       &:active {
-        background: #039BE5!important;
+        background-color: lighten(#ff4081, 5%)!important; 
         color: #Fff;
       }
     }
@@ -1535,7 +1537,8 @@
       outline: none;
     }
     &:hover { 
-        background-color: lighten(#ff4081, 15%); 
+        background-color: lighten(#ff4081, 5%); 
+        box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18),0 4px 15px 0 rgba(0,0,0,0.15);
     }
   }
   .control {
@@ -1872,12 +1875,10 @@
   }
 }
 
-// Cart
 .minicart-wrapper .action.showcart .counter.qty.empty {
   display: inline-block;
 }
 
-//Popup Newsletter
 
 .newsletterbox {
   button#cboxClose {
