@@ -37,6 +37,7 @@
     float: left;
     padding: 0;
     text-align: left;
+    margin: 0;
 }
 
 #mtnav li.parent-sub:hover {
@@ -55,7 +56,7 @@
     display: block; 
     padding: 0px;
     position: static;
-     a{    line-height: 50px;}
+    > .level-top a{    line-height: 47px;}
 }
 
 #mtnav li.level0.mega_align_justify {
@@ -65,16 +66,20 @@
 #mtnav li a {
     float: left;
     margin: 0;
-    padding: 0 15px;
+    padding: 0 10px;
+    margin: 0 10px;
     font-weight: 600;
+    &:hover{
+       color: #ff4081;  
+    }
 }
-
-#mtnav li  a {
-    padding-left: 0;
+#mtnav > li > a {
+    text-align: center;
 }
-#mtnav li.level0:last-child a {
-    padding-right: 0;
-}
+#mtnav > li:first-child   a{
+    padding-left: 0; 
+    margin-left: 0; 
+} 
 .rtl #mtnav li.level0:first-child a {
     padding-left: 15px;
     padding-right: 0;
@@ -99,10 +104,7 @@
 
 #mtnav li.level0 > a > span {
 }
-
-#mtnav li.home a.level-top {
-    line-height: 50px;
-}
+ 
 
 #mtnav li.active a.level-top {
     outline: none;
@@ -207,6 +209,11 @@ div.shown-sub {
     top: 50px;
     width: 100%;
     background-color: #fff;
+    &.level0{
+        ul li.groups{
+                border-right: 1px solid #e1e1e1;
+        }
+    }
 }
 
 #mtnav .sub-wrapper .mm-item-base {
@@ -265,7 +272,7 @@ div.shown-sub {
     float: left;
     outline: none;
     position: relative;
-    margin-right: 2%;
+    margin-right: 2%; 
 }
 
 #mtnav ul li, #mtnav ul li.active {
@@ -278,14 +285,17 @@ div.shown-sub {
     margin: 0 0 0 5px;
 }
 
-#mtnav li.level0 ul li.groups a {
-    font-size: 110%;
+#mtnav li.level0 ul li.groups a { 
     font-weight: normal;
     line-height: 20px;
     margin-bottom: 10px;
     margin-top: 10px;
     padding: 10px;
     color: #3f3f43;
+    
+    &:hover{
+       color: #ff4081;  
+    }
 }
 
 #mtnav li.level0 ul li.groups > a { 
@@ -570,7 +580,7 @@ ul.products-posts .block-posts-menu.last {
 }
 
 .mtmenu-block-left, .mtmenu-block-center {
-    padding: 0px 0 20px;
+    padding: 20px;
 }
 
 .mtmenu-block-left img {

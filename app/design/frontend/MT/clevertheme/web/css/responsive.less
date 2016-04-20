@@ -4,7 +4,16 @@
         padding: 12px 0px;
         margin-right: 225px !important;
     }
-    .navigation .level0.active > .level-top, .navigation .level0.has-active > .level-top {
+    .navigation .level0 > .level-top, .navigation .level0 > .level-top,
+    .navigation .level0 > .level-top, .navigation .level0 > .level-top {
+        border-color: transparent; 
+        border-style: solid;
+        border-width: 0 0 3px;
+        transition: 200ms;
+    }
+    .navigation .level0.active > .level-top, .navigation .level0.has-active > .level-top,
+    .navigation .level0:hover > .level-top, .navigation .level0.has-active > .level-top {
+        border-width: 0 0 3px;
         border-color: #ff4081; 
     }
 }

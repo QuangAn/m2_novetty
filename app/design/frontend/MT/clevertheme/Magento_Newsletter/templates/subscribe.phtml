@@ -18,24 +18,24 @@
               data-mage-init='{"validation": {"errorClass": "mage-error"}}'
               id="newsletter-validate-detail">
             <div class="field newsletter">
-                <div class="control">
-                    <label class="label" for="newsletter"><span><?php /* @escapeNotVerified */
-                            echo __('Sign up to the newsletter') ?></span></label>
-
-                    <input name="email" type="email" id="newsletter"
-                           placeholder="<?php /* @escapeNotVerified */
-                           echo __('Enter your email address') ?>"
-                           data-validate="{required:true, 'validate-email':true}"/>
-                </div>
+                <div class="form-group label-floating">
+                    <label for="i5" class=" control-label" for="newsletter"><?php /* @escapeNotVerified */
+                            echo __('Sign up to the newsletter') ?></label>
+                    <input name="email" type="email" id="newsletter" class="form-control" id="i5" 
+                           data-validate="{required:true, 'validate-email':true}"/> 
+                  </div>
             </div>
             <div class="actions">
-                <button class="waves-effect waves-red btn action subscribe primary"
+                <button class="waves-effect waves-red btn btn-raised action subscribe "
                         title="<?php /* @escapeNotVerified */
                         echo __('Subscribe') ?>" type="submit">
-                    <span><?php /* @escapeNotVerified */
-                        echo __('Subscribe') ?></span>
+                 <?php /* @escapeNotVerified */
+                        echo __('Subscribe') ?>
                 </button>
             </div>
         </form>
     </div>
 </div>
+
+              
+           

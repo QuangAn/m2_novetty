@@ -36,7 +36,7 @@
                                     <?php if ($_product->isSaleable()): ?>
                                         <?php if ($_product->getTypeInstance()->hasRequiredOptions($_product)): ?>
                                             <button type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>"
-                                                    class="action tocart primary"
+                                                    class="action tocart primary heheh"
                                                     data-mage-init='{"redirectUrl":{"url":"<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($_product) ?>"}}'>
                                                 <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
                                             </button>
@@ -46,7 +46,7 @@
                                                 $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_product), ['product' => $_product->getEntityId()]);
                                         ?>
                                             <button type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>"
-                                                    class="action tocart primary"
+                                                    class="action tocart primary aaaaaaa"
                                                     data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'>
                                                 <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
                                             </button>

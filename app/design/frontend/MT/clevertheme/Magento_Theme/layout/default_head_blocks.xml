@@ -13,6 +13,8 @@
 		<css src="css/responsive.css"/> 
         <css src="css/bootstrap-material-design.min.css" />
         <css src="css/ripples.min.css" />
+        <css src="css/typo.css" />
+        <css src="css/effect.css" />
         <script src="jquery.js" />
         <script src="js/ct-icon.js" /> 
         <script src="js/ripples.min.js" />

@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { color:#333333; }
 #mtnav li.level0 { background-color:rgba(0,0,0,0); }
 #mtnav li.level0:hover { background-color:rgba(0,0,0,0); }
 #mtnav li a { color:#ffffff; }
-#mtnav li a:hover { color:#ffffff; }
+#mtnav li a:hover { color:#ff4081; }
 .mt-menu { background-color:#2d2d2d; }
 .title-canvas { color:#ffffff; }
 .mt-menu a { background-color:rgba(0,0,0,0); }
