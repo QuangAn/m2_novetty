@@ -15,6 +15,9 @@
  */
 ?>
 <?php $_menu = $block->renderCategoriesMenuHtml(false, false, 0, 'level-top', 'sub-wrapper', false );
+$routeName = $block->getRequest()->getRouteName();
+$identifier = $block->getCmsIdentifier();
+
 ?>
 
 <nav class="navigation" role="navigation">

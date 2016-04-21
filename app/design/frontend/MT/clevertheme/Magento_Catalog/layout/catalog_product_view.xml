@@ -10,9 +10,15 @@
         <script src="Magento_Catalog::js/jquery.zoom.min.js"/>
     </head>
     <body>
+        <referenceContainer name="footer-container">
+         <referenceBlock name="home01.footer.top" remove="true"/>
+            
+        </referenceContainer>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <referenceBlock name="product.attributes" remove="true"/>
         <referenceBlock name="product.info.stock.sku" remove="true"/>
         <referenceBlock name="catalog.product.related" remove="true"/>
-        <move element="product.info.review" destination="product.info.main" before="-"/>
+        <move element="product.info.review" destination="product.info.main" after="product.prev.next"/>
         <move element="product.info.overview" destination="product.info.main" after="product.info.review"/>
         <move element="product.info.type" destination="product.info.price" after="product.info.price"/>
     </body>
