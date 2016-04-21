@@ -286,6 +286,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
                 }
                 break;
         }
+        
+        if ($collection){
+            $collection->setPage(1, $limit);
+        }
 
         return $collection;
     }
