@@ -24,7 +24,7 @@ $title = $block->getConfig('widget_title');
             </div>
         <?php endif ?>
 
-        <div class="<?php echo $scroll == 1 ? 'owl-carousel ' : '' ?>">
+        <div class="<?php echo $scroll == 1 ? 'owl-carousel ' : 'row' ?>">
             <?php foreach ($blocks as $block): ?>
                 <div class="<?php echo $scroll == 1 ? 'block-content' : $block['class'] ?>">
                     <?php echo $block['content'] ?>
