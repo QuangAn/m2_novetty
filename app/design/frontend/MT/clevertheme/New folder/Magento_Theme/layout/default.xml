@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel">
+            <referenceBlock name="skip_to_content" remove="true"/>
+            <container htmlClass="container" htmlTag="div">
+                <container htmlClass="row topbar-container" htmlTag="div" name="top.bar.container">
+
+                    <block class="Magento\Cms\Block\Block" name="Top Contact">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">top_contact</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                        <arguments>
+                            <argument name="css_class" xsi:type="string">header links</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </referenceContainer>
+        <move element="store_language" destination="top.bar.container"/>
+        <move element="currency" destination="top.bar.container"/>
+
+        <referenceContainer name="page.top">
+            <!--            <container name="vertical.wrapper" htmlTag="div" htmlClass=" vertical-navigation-wrapper container">
+                                <container name="vertical.navigation" htmlTag="div" htmlClass="wrapper-vertical">
+                                    <block class="MT\Megamenu\Block\Menu" name="catalog.verticalnav"
+                                           template="html/verticalmenu.phtml"
+                                           ttl="3600"/>
+                                </container>
+                        </container>-->
+            <container name="navigation.row" htmlTag="div" htmlClass="row">
+                <container name="topnav.navigation" htmlTag="div" htmlClass="col-lg-9">
+                    <block class="MT\Megamenu\Block\Menu" name="catalog.topnav" template="html/topmenu.phtml"
+                           ttl="3600"/>
+                </container>
+            </container>
+            <container name="top.container" as="topContainer" label="After Page Header Top" htmlTag="div"
+                       htmlClass="top-container"/>
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+        </referenceContainer>
+
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">148</argument>
+                <argument name="logo_img_height" xsi:type="number">43</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceContainer name="page.wrapper" as="page_wrapper" htmlTag="div" htmlClass="page-wrapper">
+            <container name="main.top" htmlClass="main_top" htmlTag="div" before="main.content.pallarax">
+                <container htmlTag="div" htmlClass="container">
+                    <container htmlTag="div" htmlClass="row">
+                        <container name="content.top" label="Main Content Top"/>
+                    </container>
+                </container>
+            </container>
+            <container htmlClass="main_content_pallarax" name="main.content.pallarax" htmlTag="div"
+                       before="main.content">
+                <container name="content.parallax" label="Main Content Parallax"/>
+            </container>
+         
+
+            <container htmlClass="main_aside" htmlTag="div" after="main.content" name="main.aside">
+                <container name="content.aside" label="Main Content Aside"/>
+            </container>
+            <container htmlClass="main_bottom" htmlTag="div" after="main.aside">
+                <container htmlTag="div" htmlClass="container">
+                    <container htmlTag="div" htmlClass="row">
+                        <container name="content.bottom" label="Main Content Bottom"/>
+                    </container>
+                </container>
+            </container>
+            <container name="page.bottom.container" as="page_bottom_container" label="Before Page Footer Container"
+                       after="main.content" htmlTag="div" htmlClass="page-bottom"/>
+        </referenceContainer>
+
+        <referenceContainer name="main">
+            <container htmlClass="main_content_area" htmlTag="div" name="main.content.wrapper">
+                        <container name="content" label="Main Content Area"/>
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"
+                   template="Magento_Customer::js/section-config.phtml"/>
+            <block name="customer.customer.data"
+                   class="Magento\Customer\Block\CustomerData"
+                   template="Magento_Customer::js/customer-data.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="design.css"
+                   template="MT_Mato::designcss.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="footer">
+            <referenceBlock name="footer_links" remove="true"/>
+            <referenceBlock name="form.subscribe" remove="true"/>
+            <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links"
+                   template="switch/stores.phtml"/>
+        </referenceContainer>
+
+        <referenceBlock name="report.bugs" remove="true"/>
+
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\FormKey" name="formkey"/>
+        </referenceContainer>
+
+        <referenceContainer name="footer-container">
+            <container htmlTag="div" htmlClass="footer-top" name="footer.top.container">
+                <container htmlClass="container" htmlTag="div">
+                    <container name="footer.top" as="footer.top" label="Page Footer Top" htmlTag="div"
+                               htmlClass="inner-footer-top" before="-"/>
+                     <block class="Magento\Cms\Block\Block" name="home01.footer.top" as="home01.footer.top">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">home01-footer-top</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+            <container htmlTag="div" htmlClass="footer-bottom" name="footer.bottom.container">
+                <container htmlClass="container" htmlTag="div">
+                    <container name="footer.bottom" as="footer.bottom" label="Page Footer Bottom" htmlTag="div"
+                               htmlClass="inner-footer-bottom"/>
+                </container>
+            </container>
+        </referenceContainer>
+        <move element="copyright" destination="footer-container" after="-" />
+    </body>
+</page>
