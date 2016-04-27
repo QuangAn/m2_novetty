@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { color:#333333; }
 #mtnav li.level0 { background-color:rgba(0,0,0,0); }
 #mtnav li.level0:hover { background-color:rgba(0,0,0,0); }
 #mtnav li a { color:#ffffff; }
-#mtnav li a:hover { color:#ff4081; }
+#mtnav li a:hover { color:#ffffff; }
 .mt-menu { background-color:#2d2d2d; }
 .title-canvas { color:#ffffff; }
 .mt-menu a { background-color:rgba(0,0,0,0); }
@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { color:#333333; }
 .mt-menu ul.nav-accordion li a { color:#ffffff; }
 .mt-menu ul.nav-accordion li a:hover { color:#ffffff; }
 .mt-navigation-vertical .block-title {
-  background-color:#cfb985;
+  background-color:#ff4081;
   color:#343434;
 }
 .mt-main-menu-vertical .megamenu-vertical li a { color:#3b3b3b; }

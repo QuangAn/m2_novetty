@@ -81,9 +81,16 @@ class Menu extends \Magento\Catalog\Block\Navigation
                                                         $isOutermost = false, $outermostItemClass = '', $childrenWrapClass = '', $noEventAttributes = false, $vertical = false)
     {
         $catdetail = $this->_getCatInfo($category->getId());
-        if (!$category->getIsActive() || ($catdetail->getData('mtmenu_is_category')==0 && $level==0 && $vertical == false)) {
-            return '';
+
+        if($vertical == false){
+           if (!$category->getIsActive() || ($catdetail->getData('mtmenu_is_category')==0 && $level==0) ) return '';
+            
         }
+
+        if($vertical == true){
+            if(!$category->getIsActive() || ($catdetail->getData('verticalmenu_is_category')==0 )) return '';
+        }
+        
         $html = array();
 
         // get all children
@@ -319,15 +326,30 @@ class Menu extends \Magento\Catalog\Block\Navigation
     }
 
     protected function _renderCategoryMenuItemHtml($category, $level = 0, $isLast = false, $isFirst = false,
-                                                   $isOutermost = false, $outermostItemClass = '', $childrenWrapClass = '', $noEventAttributes = false)
+                                                   $isOutermost = false, $outermostItemClass = '', $childrenWrapClass = '', $noEventAttributes = false, $vertical = false)
     {
         if (!$category->getIsActive()) {
             return '';
         }
         $catdetail = $this->_getCatInfo($category->getId());
-        if($catdetail->getData('mtmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0){
-            return '';
+
+        if($vertical == false) {
+            if($catdetail->getData('mtmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0){
+                return '';
+            } 
         }
+
+        if($vertical == true) {
+            if($catdetail->getData('verticalmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0){
+                return '';
+            } 
+        }
+
+        /*if($catdetail->getData('mtmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0 && $vertical = false 
+            || $catdetail->getData('verticalmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0 && $vertical = true){
+            return '';
+        }*/
+
 
         $html = array();
 
@@ -611,7 +633,8 @@ class Menu extends \Magento\Catalog\Block\Navigation
                             true,
                             $outermostItemClass,
                             $childrenWrapClass,
-                            true
+                            true,
+                            $vertical
                         );
                         break;
                     default:

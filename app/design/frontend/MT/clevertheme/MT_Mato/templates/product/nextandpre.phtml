@@ -7,10 +7,10 @@ $_next = $theme->getNextProduct();
 <div class="product-prev-next nav-wrapper col-lg-3 pull-right">
     <ul>
         <?php if($_prev): ?>
-            <li><a rel="prev" class="product-prev flex-prev left" title="<?php echo $block->escapeHtml($_prev->getName()); ?>" href="<?php echo $_prev->getProductUrl(); ?>">PRE <i class="fa fa-angle-left"></i></a></li>
+            <li><a rel="prev" class="product-prev flex-prev left" title="<?php echo $block->escapeHtml($_prev->getName()); ?>" href="<?php echo $_prev->getProductUrl(); ?>"><i class="fa fa-caret-left" aria-hidden="true"></i></a></li>
         <?php endif; ?>
         <?php if($_next): ?>
-            <li><a rel="next" class="product-next flex-next right" title="<?php echo $block->escapeHtml($_next->getName()); ?>" href="<?php echo $_next->getProductUrl(); ?>">Next <i class="fa fa-angle-right"></i></a></li>
+            <li><a rel="next" class="product-next flex-next right" title="<?php echo $block->escapeHtml($_next->getName()); ?>" href="<?php echo $_next->getProductUrl(); ?>"><i class="fa fa-caret-right" aria-hidden="true"></i></a></li>
         <?php endif; ?>
     </ul>
 </div>
