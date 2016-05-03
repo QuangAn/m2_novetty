@@ -12,7 +12,7 @@
 <div data-block="minicart" class="minicart-wrapper" >
 	
     <div class="action showcart" data-bind="scope: 'minicart_content'">
-        <span class="head-minicart"><?php /* @escapeNotVerified */ echo __('CART'); ?></span>
+        <span class="head-minicart"><?php /* @escapeNotVerified */ echo __('CART / '); ?></span>
         <span class="subtotal-minicart" data-bind="html : cart().subtotal_header"></span>
         <a  href="<?php /* @escapeNotVerified */ echo $block->getShoppingCartUrl(); ?>">
             <span class="counter qty empty"

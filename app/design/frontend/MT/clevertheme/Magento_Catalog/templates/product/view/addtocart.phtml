@@ -18,7 +18,7 @@
             <div class="control">
                 <div class="custom-qty pull-left">
                     <button type="button" class="reduced items  items-count" onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty ) && qty > 1 ) result.value--;return false;">
-                        <i class="fa fa-angle-left"></i>
+                        -
                     </button>
                 </div>
                 <input type="number"
@@ -31,7 +31,7 @@
                        />
                 <div class="custom-qty pull-right">
                     <button type="button"  class="increase items items-count" onclick="var result = document.getElementById('qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;">
-                        <i class="fa fa-angle-right"></i>
+                        +
                     </button>
                 </div>
             </div>
@@ -40,7 +40,7 @@
         <div class="actions">
             <button type="submit"
                     title="<?php /* @escapeNotVerified */ echo $buttonTitle ?>"
-                    class="action primary tocart waves-effect waves-light"
+                    class="action primary tocart btn-raised"
                     id="product-addtocart-button">
                 <span><?php /* @escapeNotVerified */ echo $buttonTitle ?></span>
             </button>

@@ -38,11 +38,11 @@ $identifier = $block->getCmsIdentifier();
                 if($static_block[1]) $class = 'menu-item-'.$static_block[1];
                 if($custom_menu->getIsActive()) {
                     echo '
-						<li class="level0 level-top parent custom-block '.$class.'">
+						<li class="level0 level-top m-'.$static_block[2].' parent custom-block '.$class.'">
 							<a href="#" class="level-top">
 								<span>'.$custom_menu->getTitle().'</span> <i class="fa fa-caret-down"></i>
 							</a>
-							<div class="sub-wrapper">'.$block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($static_block[0])->toHtml().'</div>
+							<div class="'. $static_block[2] .' sub-wrapper">'.$block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($static_block[0])->toHtml().'</div>
 						</li>';
                 }
             }

@@ -233,15 +233,7 @@ use Magento\Framework\App\Action\Action;
                 "catalogAddToCart": {}
             }
         }
-
-var tmp = 0;
-jQuery('ol.product-items li').parent().each(function(){
-var htmp = jQuery(this).find('.product-item-detail').height();
-if(tmp < htmp){ tmp = htmp; } 
-});
-jQuery('ol.product-items li').parent().each(function(){
-jQuery(this).find('.product-item-detail').height(tmp )
-});
+ 
 
     </script>
 <?php endif; ?>

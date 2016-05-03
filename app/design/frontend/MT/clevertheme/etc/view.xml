@@ -57,8 +57,8 @@
                 <height>75</height>
             </image>
             <image id="new_products_content_widget_grid" type="small_image">
-                <width>285</width>
-                <height>411</height>
+                <width>250</width>
+                <height>250</height>
             </image>
             <image id="new_products_content_widget_list" type="small_image">
                 <width>270</width>
@@ -78,12 +78,12 @@
             </image>
             <image id="product_page_image_large" type="image"/>
             <image id="product_page_image_medium" type="image">
-                <width>800</width>
-                <height>600</height>
+                <width>680</width>
+                <height>680</height>
             </image>
             <image id="product_page_image_small" type="thumbnail">
                 <width>80</width>
-                <height>110</height>
+                <height>80</height>
             </image>
             <image id="product_page_main_image" type="image">
                 <width>800</width>
