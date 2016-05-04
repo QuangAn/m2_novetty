@@ -70,7 +70,14 @@
          
 
             <container htmlClass="main_aside" htmlTag="div" after="main.content" name="main.aside">
-                <container name="content.aside" label="Main Content Aside"/>
+                <container  name="content.aside" label="Main Content Aside"/>
+            </container>
+            <container htmlClass="main_aside_detail" htmlTag="div" before="main.aside" name="main.aside.detail">
+                <container htmlTag="div" htmlClass="container">
+                    <container htmlTag="div" htmlClass="row">
+                        <container name="content.aside.detail" label="Main Content Aside Detail"/>
+                    </container>
+                </container>
             </container>
             <container htmlClass="main_bottom" htmlTag="div" after="main.aside">
                 <container htmlTag="div" htmlClass="container">

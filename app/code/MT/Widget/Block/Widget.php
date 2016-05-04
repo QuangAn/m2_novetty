@@ -459,6 +459,7 @@ class Widget extends \Magento\Catalog\Block\Product\AbstractProduct implements  
                     'lazyLoad'      => true,
                     'lazyEffect'    => false,
                     'addClassActive'=> true,
+                    'autoHeight'    => true,
                     'nav'    => (bool) $this->getData('navigation'),
                     'navText'=> array($this->getData('navigation_prev'), $this->getData('navigation_next')),
                     'engineSrc'     => $this->getViewFileUrl('MT_Widget::js/owl-carousel/owl.carousel.js')

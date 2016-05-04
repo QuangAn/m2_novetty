@@ -24,14 +24,7 @@
                 <span><?php echo $block->escapeHtml($block->getStoreName()) ?></span>
             </strong>
         </div>
-        <ul class="dropdown switcher-dropdown"
-            data-mage-init='{"dropdownDialog":{
-                "appendTo":"#switcher-language<?php /* @escapeNotVerified */ echo $id ?> > .options",
-                "triggerTarget":"#switcher-language-trigger<?php /* @escapeNotVerified */ echo $id ?>",
-                "closeOnMouseLeave": false,
-                "triggerClass":"active",
-                "parentClass":"active",
-                "buttons":null}}'>
+        <ul class="dropdown switcher-dropdown abc" >
             <?php foreach ($block->getStores() as $_lang): ?>
                 <?php if ($_lang->getId() != $block->getCurrentStoreId()): ?>
                     <li class="view-<?php echo $block->escapeHtml($_lang->getCode()); ?> switcher-option">

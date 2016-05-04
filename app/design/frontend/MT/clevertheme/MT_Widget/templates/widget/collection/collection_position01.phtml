@@ -70,7 +70,7 @@ use Magento\Framework\App\Action\Action;
                 if ($carousel == 1) echo ($i == 1) ? '<li>' : '</li><li>';
                 else echo ($i == 1) ? '<li class="' . $extClass . '">' : '</li><li class="' . $extClass . '">';
                 ?>
-                <div class="product-item-info">
+                <div class="product-item-info <?php if ($alternative_img = $theme->getAltImgHtml($_item, $imgWidth, $imgHeight, $image)): ?> have-alternative-image <?php endif; ?>">
                     <div class="inner-product-item-info">
                         <div class="mt-product-image">
                             <a href="<?php /* @escapeNotVerified */
@@ -81,7 +81,7 @@ use Magento\Framework\App\Action\Action;
                                 <?php echo $block->getImage($_item, $image)->toHtml(); ?>
                                 <?php if (!$theme->getCfg('category/alt_image')): ?>
                                     <span class="product-img-additional alt-image" style="width: <?php echo $imgWidth; ?>px ;">
-                                         <?php echo $theme->getAltImgHtml($_item, $imgWidth, $imgHeight, $image); ?>
+                                         <?php echo $alternative_img; ?>
                                     </span>
                                 <?php endif; ?>
                             </a>
@@ -237,3 +237,7 @@ use Magento\Framework\App\Action\Action;
 
     </script>
 <?php endif; ?>
+<script>
+  
+ 
+</script>

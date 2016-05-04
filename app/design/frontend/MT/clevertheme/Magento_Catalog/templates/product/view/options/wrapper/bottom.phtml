@@ -6,12 +6,4 @@
 ?>
 <div class="product-options-bottom">
     <?php echo $block->getChildHtml('', true);?>
-</div>
-<?php 
-   $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-   $category = $objectManager->get('Magento\Framework\Registry')->registry('current_category');//get current category
-   echo $category->getParentCategory()->getName();
-    
-    echo $category->getId();
-    echo $category->getName(); 
-?>
+</div> 
