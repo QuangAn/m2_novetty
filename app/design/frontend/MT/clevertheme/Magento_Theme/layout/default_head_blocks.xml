@@ -8,6 +8,7 @@
         <css src="css/themify-icons.css"/>
         <css src="css/bootstrap.css"/>
         <css src="css/ct-icon-theme.css"/>
+		<css src="css/elegant_font.css"/>
         <css src="css/styles.css"/>
         <css src="css/megamenu.css"/>
 		<css src="css/responsive.css"/> 

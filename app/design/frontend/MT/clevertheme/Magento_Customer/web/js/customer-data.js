@@ -118,7 +118,9 @@ define([
 
             if (_.isEmpty(storage.keys())) {                
                 this.reload([], false);
-                
+                if (!_.isEmpty(privateContent)) {
+                    this.reload([], false);
+                }
             } else if (this.needReload()) {
                 _.each(dataProvider.getFromStorage(storage.keys()), function (sectionData, sectionName) {
                     buffer.notify(sectionName, sectionData);

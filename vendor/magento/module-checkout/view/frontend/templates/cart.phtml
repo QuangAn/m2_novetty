@@ -12,7 +12,11 @@
  */
 
 if ($block->getItemsCount()) {
+?>
+<h2><?php echo __('<span class="active">SHOPPING CART</span> - <span>CHECKOUT DETAIL</span> - <span>ORDER COMPLETE</span>'); ?></h2>
+<?php
     echo $block->getChildHtml('with-items');
 } else {
     echo $block->getChildHtml('no-items');
 }
+?>

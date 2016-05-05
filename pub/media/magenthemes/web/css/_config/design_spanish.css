@@ -40,10 +40,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { color:#333333; }
 .mt-menu ul.nav-accordion li a:hover { color:#ffffff; }
 .mt-navigation-vertical .block-title {
   background-color:#ff4081;
-  color:#343434;
+  color:#666666;
 }
-.mt-main-menu-vertical .megamenu-vertical li a { color:#3b3b3b; }
-.mt-main-menu-vertical .megamenu-vertical li a:hover { color:#000000; }
+.mt-main-menu-vertical .megamenu-vertical li a { color:#666666; }
+.mt-main-menu-vertical .megamenu-vertical > li:hover > a { color:#ffffff; }
 body { background-color:#ffffff; }
 .main-container { background-color:#ffffff; }
 .page-footer .footer-top {

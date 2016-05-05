@@ -25,6 +25,11 @@
     padding: 0;
     position: relative;
     width: auto;
+    li.level0{
+        ul li.groups{
+                border-right: 1px solid #e1e1e1;
+        }
+    }
 }
 
 .megamenu .fa {
@@ -209,11 +214,6 @@ div.shown-sub {
     top: 50px;
     width: 100%;
     background-color: #fff;
-    &.level0{
-        ul li.groups{
-                border-right: 1px solid #e1e1e1;
-        }
-    }
 }
 
 #mtnav .sub-wrapper .mm-item-base {
@@ -226,11 +226,7 @@ div.shown-sub {
     margin-left: 0;
     padding: 0 2px;
 }
-
-#mtnav li.level0 ul li {
-    height: auto;
-}
-
+ 
 #mtnav li.level0 ul li.custom {
     border-bottom: 2px solid #cb2822 !important;
 }
@@ -1210,6 +1206,11 @@ ul.products-posts .block-posts-menu.last {
     height: auto !important;
 }
 
+.mt-main-menu-vertical div.shown-sub .menu-items {
+    padding: 25px;
+    ul{padding: 0;}
+}
+
 .mt-main-menu-vertical .m-dropdown li.level2 div.shown-sub,
 .mt-main-menu-vertical .dropdown li.level2 div.shown-sub {
     left: 200px;
@@ -1217,15 +1218,11 @@ ul.products-posts .block-posts-menu.last {
     width: 220px;
     padding: 10px 10px 15px;
 }
-
-.mt-main-menu-vertical li.level0 ul.level0 {
-    padding: 25px 10px;
-}
+ 
 
 .mt-main-menu-vertical li.level0 ul li.level1 {
-    margin: 0;
-    padding: 0 15px;
-    padding-bottom: 50px;
+    margin: 0; 
+    padding-bottom: 40px;
     background: #fff;
 }
 
@@ -1236,15 +1233,13 @@ ul.products-posts .block-posts-menu.last {
 }
 
 .mt-main-menu-vertical li.level0 ul li.level1 > a {
-    font-weight: bold;
-    font-size: 15px;
-    margin-bottom: 8px;
+    font-weight: bold; 
+    margin-bottom: 10px;
     display: block;
 }
 
 .mt-main-menu-vertical li.level0 ul li.level2 > a {
-    line-height: 30px;
-    font-size: 13px;
+    line-height: 30px; 
 }
 
 .mt-main-menu-vertical ul.level0 > li {
@@ -1260,8 +1255,7 @@ ul.products-posts .block-posts-menu.last {
 .mt-main-menu-vertical ul li ul.level2 li {
     border: 0;
     margin: 0;
-    width: 100%;
-    padding: 0 0 0 10px;
+    width: 100%; 
 }
 
 .block-vertial-top {

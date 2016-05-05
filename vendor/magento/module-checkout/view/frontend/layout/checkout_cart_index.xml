@@ -185,6 +185,9 @@
                 </container>
             </block>
         </referenceContainer>
+		<referenceContainer name="footer-container">
+            <referenceBlock name="home01.footer.top" remove="true"/> 
+        </referenceContainer>
         <block class="Magento\Checkout\Block\Cart\Additional\Info" name="additional.product.info" template="cart/additional/info.phtml"/>
     </body>
 </page>

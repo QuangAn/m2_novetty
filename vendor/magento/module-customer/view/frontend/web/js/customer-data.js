@@ -116,7 +116,8 @@ define([
             var countryData,
                 privateContent = $.cookieStorage.get('private_content_version');
 
-            if (_.isEmpty(storage.keys())) {
+            if (_.isEmpty(storage.keys())) {                
+                this.reload([], false);
                 if (!_.isEmpty(privateContent)) {
                     this.reload([], false);
                 }

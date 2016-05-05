@@ -9,6 +9,16 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'ElegantIcons';
+    src:    url('fonts/ElegantIcons.eot?1nilp');
+    src:    url('fonts/ElegantIcons.eot?1nilp#iefix') format('embedded-opentype'),
+    url('fonts/ElegantIcons.ttf?1nilp') format('truetype'),
+    url('fonts/ElegantIcons.woff?1nilp') format('woff'),
+    url('fonts/ElegantIcons.svg?1nilp#cleversoft') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 [class^="clever-icon-"], [class*=" clever-icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'cleversoft' !important;
