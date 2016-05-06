@@ -83,12 +83,14 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
             </td>
         <?php endif; ?>
         <td class="col qty" data-th="<?php echo $block->escapeHtml(__('Qty')); ?>">
+			<div class="box-tocart">
+			<div class="fieldset">
             <div class="field qty">
                 <label class="label" for="cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty">
                     <span><?php /* @escapeNotVerified */ echo __('Qty') ?></span>
                 </label>
                 <div class="control qty">
-					<div class="custom-qty pull-left">
+					<div class="custom-qty">
 						<button type="button" class="reduced items  items-count" onclick="var result = document.getElementById('cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty'); var qty = result.value; if( !isNaN( qty ) &amp;&amp; qty > 1 ) result.value--;return false;">
 							-
 						</button>
@@ -104,13 +106,15 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                            maxlength="12"
                            data-validate="{required:true,'validate-greater-than-zero':true}"
                            data-role="cart-item-qty"/>
-					<div class="custom-qty pull-right">
+					<div class="custom-qty">
                     <button type="button" class="increase items items-count" onclick="var result = document.getElementById('cart-<?php /* @escapeNotVerified */ echo $_item->getId() ?>-qty'); var qty = result.value; if( !isNaN( qty )) result.value++;return false;">
                         +
                     </button>
                 </div>
+				</div>
                 </div>
             </div>
+			</div>
         </td>
 
         <td class="col subtotal" data-th="<?php echo $block->escapeHtml(__('Subtotal'));?>">
@@ -120,9 +124,7 @@ $canApplyMsrp = $helper->isShowBeforeOrderConfirm($product) && $helper->isMinima
                 <?php echo $block->getRowTotalHtml($_item); ?>
             <?php endif; ?>
         </td>
-    </tr>
-    <tr class="item-actions">
-        <td colspan="100">
+		 <td>
             <div class="actions-toolbar">
                 <?php /* @escapeNotVerified */ echo $block->getActions($_item) ?>
             </div>

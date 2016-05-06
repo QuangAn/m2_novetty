@@ -29,6 +29,7 @@
                     <th class="col price" scope="col"><span><?php /* @escapeNotVerified */ echo __('Price') ?></span></th>
                     <th class="col qty" scope="col"><span><?php /* @escapeNotVerified */ echo __('Quantity') ?></span></th>
                     <th class="col subtotal" scope="col"><span><?php /* @escapeNotVerified */ echo __('Total') ?></span></th>
+					<th class="col actions" scope="col"><span><?php /* @escapeNotVerified */ echo __('') ?></span></th>
                 </tr>
             </thead>
             <?php foreach ($block->getItems() as $_item): ?>
@@ -43,7 +44,7 @@
                 data-cart-item-update=""
                 value="update_qty"
                 title="<?php echo $block->escapeHtml(__('UPDATE CART')); ?>"
-                class="action update">
+                class="btn btn-raised action  update">
             <span><?php /* @escapeNotVerified */ echo __('UPDATE CART'); ?></span>
         </button>
         <input type="hidden" value="" id="update_cart_action_container" data-cart-item-update=""/>

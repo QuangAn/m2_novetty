@@ -15,6 +15,9 @@
         <move element="checkout.cart.coupon" destination="cart.discount" />
         <move element="checkout.cart.shortcut.buttons" destination="checkout.cart.methods" after="checkout.cart.methods.onepage.bottom"/>
 		<referenceBlock name="page.main.title" remove="true"/>
+        <referenceContainer name="footer-container">
+            <referenceBlock name="home01.footer.top" remove="true"/> 
+        </referenceContainer>
     </body>
 </page>
 
