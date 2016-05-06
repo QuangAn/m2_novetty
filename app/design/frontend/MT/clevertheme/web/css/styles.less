@@ -314,15 +314,7 @@ a:visited, .alink:visited{  color: #ff4081;}
          margin-left: 20px;
     }
 }
-#top-cart-btn-checkout,.cart-summary .checkout-methods-items .action.primary.checkout{
-    background-color: #ff4081;  
-        color: #fff;
-        border:none;
-    &:hover{ 
-        background-color: lighten(#ff4081, 5%); 
-        border:none;
-    }
-}
+
 .page-wrapper {
   overflow: hidden; 
   .navigation {
@@ -530,6 +522,7 @@ a:visited, .alink:visited{  color: #ff4081;}
   .filter-content .item {
     line-height: 40px;
     margin: 0;
+    input[type=checkbox]{display: none;}
   }
   .filter-options-title {
     font-size: 18px;
@@ -2999,34 +2992,58 @@ button.action.primary.tocart {
     > tbody + tbody{border:none;border-bottom:1px solid #ebebeb;}
      > .item{
       border-color: #ebebeb;
+      .product-image-wrapper .product-image-photo{max-width: 100px;}
      }
      thead tr th.col{
       border-color: #ebebeb;
      }
  
-  tr td{vertical-align:middle;}
-  .product-item-details{vertical-align:middle;padding-bottom:0;}
+  tr td{vertical-align:middle;
+    .price{font-size: 16px;}
+  }
+  .product-item-details{
+    vertical-align:middle;padding-bottom:0;
+    .product-item-name{
+      a{
+        font-size: 14px;
+        color: #666666;
+      }
+
+    }
+    .item-options{
+        dt{color: #999999;}
+        dd{color:#333333;}
+      }
+  }
   .col.qty{
-    .box-tocart .fieldset .field.qty 
-    {
-      float:none;
-      .control{
-        margin:0;
-        display:table;
-        >*{display:table-cell;}
-        input{margin:0;}
+    .box-tocart {
+      margin: 0;
+      .fieldset .field.qty 
+      {
+        float:none;
+        .control{
+          margin:0;
+          display:table;
+          >*{display:table-cell;}
+          input{margin:0;font-size: 15px;padding:0;}
+        }
       }
     }
   }
   .actions-toolbar{
     min-width:60px;
+    padding:0;
     .action{
       margin:0;
-      &.action.edit{
-      margin-right:20px;
+      &.edit{
+        margin-right:20px;
       }
       i{color:#333333;font-style: normal;font-size:14px;}
+      &:hover{
+        i{color:#ff5a92;}
+      }
     }
+
   }
   }
    
@@ -3034,12 +3051,13 @@ button.action.primary.tocart {
 .cart-container .form-cart .cart.actions.main{text-align: center;}
 h2.title-cart {
   text-align: center;
+  margin: 0 0 40px 0;
   i{
     font-size: 30px;
     color:#c7c7c7;
     font-weight: 500;
   }
-  span{
+  span,a{
     font-size: 30px;
     padding: 0 40px;
     color:#c7c7c7;
@@ -3049,3 +3067,71 @@ h2.title-cart {
     }
   }
 }
+.cart-container{
+  .cart-summary{
+    background-color: #f4f4f4;
+    .summary.title{
+      font-size: 14px;font-weight: bold;
+    }
+    
+    .block {
+      .fieldset .field:not(.choice) > .label{color:#666666;font-weight: normal;}
+      > .title{
+        border-color: #e1e1e1;
+        #block-shipping-heading{font-size: 14px;font-weight: 500;}
+        &:after{
+          content:"\f0dd";
+          display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+          color:#333;
+        }
+      }
+    }
+    .cart-totals{border-color: #e1e1e1;
+      padding-top: 0;
+      .mark{background: none;padding:10px 0;}
+      .grand strong{
+        font-size: 14px;
+        color: #666666;
+        font-weight: normal;
+      }
+       tbody .amount{padding:10px 0;}
+    }
+     .checkout-methods-items .action.primary.checkout{
+        
+        background-color: #ff4081;  
+            color: #fff;
+            border:none;
+        &:hover{ 
+            background-color: lighten(#ff4081, 5%); 
+            border:none;
+        }
+    }
+    .price{font-weight: 500;font-size: 16px;}
+  }
+  .cart-discount{
+      padding: 35px;
+      border: 2px dotted #e7e7e7;
+      margin: 65px 0;
+      .block {
+        width: 100%;
+        > .title h2{
+          font-size: 18px;
+          font-weight: 500;
+          text-align: center;
+        }
+        #coupon_code{
+          height: 43px;
+          -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+          box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+          padding: 0 25px;
+        }
+        .actions-toolbar{
+          button{height: 43px;    margin: 0 0 0 20px;}
+        }
+      }
+  }
+}
+.cart-totals .grand .mark, .opc-block-summary .table-totals .grand .mark,.cart-totals .grand .amount, .opc-block-summary .table-totals .grand .amount{border-color: #e1e1e1;}
+#gift-options-cart{display: none;}

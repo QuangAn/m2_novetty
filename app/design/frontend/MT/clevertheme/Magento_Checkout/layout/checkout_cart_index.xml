@@ -8,6 +8,37 @@
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+	<referenceContainer name="checkout.cart.items">
+            <container name="checkout.cart.container" htmlTag="div" htmlClass="cart-container" before="-">
+                <container name="cart.summary" label="Cart Summary Container" htmlTag="div" htmlClass="cart-summary" after="-">
+                    <block class="Magento\Framework\View\Element\Template" name="checkout.cart.summary.title" before="-" template="Magento_Theme::text.phtml">
+                        <arguments>
+                            <argument translate="true" name="text" xsi:type="string">Cart Total</argument>
+                            <argument name="tag" xsi:type="string">strong</argument>
+                            <argument name="css_class" xsi:type="string">summary title</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </referenceContainer>
+	<referenceBlock name="breadcrumbs">
+		<action method="addCrumb">
+			<argument name="crumbName" xsi:type="string">Home</argument>
+			<argument name="crumbInfo" xsi:type="array">
+			<item name="title" xsi:type="string">Home</item>
+			<item name="label" xsi:type="string">Home</item>
+			<item name="link" xsi:type="string">/</item>
+			</argument>
+		</action>
+		<action method="addCrumb">
+			<argument name="crumbName" xsi:type="string">Shopping Cart</argument>
+			<argument name="crumbInfo" xsi:type="array">
+			<item name="title" xsi:type="string">Shopping Cart</item>
+			<item name="label" xsi:type="string">Shopping Cart</item>
+			<item name="link" xsi:type="string">/checkout/cart</item>
+			</argument>
+		</action>
+	</referenceBlock>
         <referenceContainer name="checkout.cart.container">
             <container name="cart.discount" label="Cart Discount Container" htmlTag="div" htmlClass="cart-discount" after="-" />
         </referenceContainer>
@@ -18,6 +49,7 @@
         <referenceContainer name="footer-container">
             <referenceBlock name="home01.footer.top" remove="true"/> 
         </referenceContainer>
+		
     </body>
 </page>
 
