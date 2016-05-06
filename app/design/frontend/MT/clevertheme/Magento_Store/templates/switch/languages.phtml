@@ -24,7 +24,7 @@
                 <span><?php echo $block->escapeHtml($block->getStoreName()) ?></span>
             </strong>
         </div>
-        <ul class="dropdown switcher-dropdown abc" >
+        <ul class="dropdown switcher-dropdown" >
             <?php foreach ($block->getStores() as $_lang): ?>
                 <?php if ($_lang->getId() != $block->getCurrentStoreId()): ?>
                     <li class="view-<?php echo $block->escapeHtml($_lang->getCode()); ?> switcher-option">
@@ -37,4 +37,4 @@
         </ul>
     </div>
 </div>
-<?php endif; ?>
+<?php endif; ?> 

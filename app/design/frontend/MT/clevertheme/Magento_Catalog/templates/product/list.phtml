@@ -186,4 +186,15 @@ $showCart = true;
 
         </script>
     <?php endif; ?>
+    <?php if($this->helper('MT\Mato\Helper\Data')->getCfg('category_grid/equal_height')): ?>
+    <script type="text/x-magento-init">
+    {
+        ".products-grid": {
+            "equalHeight": {
+                "target": ".product-item-info"
+            }
+        }
+    }
+</script>
+<?php endif;?>
 <?php endif; ?>

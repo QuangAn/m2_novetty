@@ -11,6 +11,7 @@
         <css src="mage/gallery/gallery.css"/>
     </head>
     <body>
+		<move element="page.main.title" destination="product.info.main" before="-"/>
         <referenceContainer name="page.top" remove="true"/>
         <referenceContainer name="header.container" remove="true"/>
         <referenceContainer name="content">
@@ -82,7 +83,7 @@
                         </container>
                     </container>
                     <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.overview"
-                           template="product/view/attribute.phtml" group="detailed_info" after="product.info.extrahint">
+                           template="product/view/attribute.phtml" group="detailed_info" after="product.info.price">
                         <arguments>
                             <argument name="at_call" xsi:type="string">getShortDescription</argument>
                             <argument name="at_code" xsi:type="string">short_description</argument>

@@ -5,8 +5,11 @@
 
 var config = {
     map: {
-        '*': {          
-            equalElement :        'MT_Mato/js/equalHeight'
-        }
+        '*': {
+            mtFrontend : 'MT_Widget/js/mtFrontend'
+        },
+        deps: [
+            "MT_Widget/js/owl-carousel/owl.carousel"
+        ]
     }
 };
