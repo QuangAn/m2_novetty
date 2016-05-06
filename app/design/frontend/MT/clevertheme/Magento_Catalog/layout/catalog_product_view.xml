@@ -52,8 +52,6 @@
                         <argument name="add_attribute" xsi:type="string">itemprop="description"</argument>
                     </arguments>
                 </block>
-                <block class="Magento\Catalog\Block\Product\View" name="product.info" template="product/view/form.phtml" after="product.info.overview" />
-                     
                 <container name="alert.urls" as="alert_urls" label="Alert Urls" after="product.price.tier"/> 
                 <container name="product.info.extrahint" as="extrahint" label="Product View Extra Hint">
                     <container name="product.info.social" label="Product social links container" htmlTag="div" htmlClass="product-social-links" after="product.info.overview">
