@@ -8,7 +8,9 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Model_Widget_Source_Background{
+namespace MT\Widget\Model\Widget\Source;
+
+class Background implements \Magento\Framework\Option\ArrayInterface{
     public function toOptionArray(){
         return array(
             array('value' => '', 'label' => 'No'),

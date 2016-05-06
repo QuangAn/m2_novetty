@@ -8,7 +8,9 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Model_Widget_Source_Parallax_Image_Repeat{
+namespace MT\Widget\Model\Widget\Source\Parallax\Image;
+
+class Repeat  implements \Magento\Framework\Option\ArrayInterface{
     public function toOptionArray(){
         $types[] = array('value' => 'no-repeat',    'label' => 'no-repeat');
         $types[] = array('value' => 'repeat',       'label' => 'repeat');

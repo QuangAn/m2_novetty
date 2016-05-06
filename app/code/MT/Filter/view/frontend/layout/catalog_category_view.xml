@@ -8,9 +8,10 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
         <css src="MT_Filter/js/nprogress.css"/>
+        <css src="MT_Filter/js/layer.css"/>
     </head>
     <body>
-        <referenceContainer name="after.body.start">
+        <referenceContainer name="before.body.end">
             <block class="Magento\Framework\View\Element\Template" name="mt_filter_js" template="MT_Filter::js.phtml" before="-" />
         </referenceContainer>
     </body>

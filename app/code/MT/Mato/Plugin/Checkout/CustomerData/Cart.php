@@ -58,7 +58,7 @@ class Cart
      */
     public function afterGetSectionData(\Magento\Checkout\CustomerData\Cart $subject,  $result )
     {
-        $result['subtotal_header'] = '<span class="total-cart-header">' . $this->checkoutHelper->formatPrice($this->getSubtotalHeader()) . '</span>';
+        $result['subtotal_header'] = '<div class="total-cart-header">' . $this->checkoutHelper->formatPrice($this->getSubtotalHeader()) . '</div>';
 
 
         return $result;

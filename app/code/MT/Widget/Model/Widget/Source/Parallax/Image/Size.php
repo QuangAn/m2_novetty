@@ -8,10 +8,12 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Model_Widget_Source_Parallax_Image_Size{
+namespace MT\Widget\Model\Widget\Source\Parallax\Image;
+
+class Size implements \Magento\Framework\Option\ArrayInterface{
     public function toOptionArray(){
-        $types[] = array('value' => 'cover',    'label' => Mage::helper('mtwidget')->__('cover'));
-        $types[] = array('value' => 'contain',   'label' => Mage::helper('mtwidget')->__('contain'));
+        $types[] = array('value' => 'cover',    'label' => __('cover'));
+        $types[] = array('value' => 'contain',   'label' => __('contain'));
 
         return $types;
     }

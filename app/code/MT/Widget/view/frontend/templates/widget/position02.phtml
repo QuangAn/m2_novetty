@@ -48,3 +48,14 @@ $t = microtime();
         });
     });
 </script>
+<?php if($this->helper('MT\Mato\Helper\Data')->getCfg('category_grid/equal_height')): ?>
+<script type="text/x-magento-init">
+    {
+        "#<?php echo $_id ?>": {
+            "equalHeight": {
+                "target": ".product-item-info"
+            }
+        }
+    }
+</script>
+<?php endif;?>

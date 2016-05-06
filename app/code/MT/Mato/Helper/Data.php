@@ -298,15 +298,10 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
 
         $product->load('media_gallery_images');
         $images = $product->getMediaGalleryImages();
-        $res = [];
-        foreach ($images->getItems() as $item) {
-            $res[] = $item->getData();
-        }
-        $image_position = $res['0']['position'];    
         $column = $this->getCfg('category/alt_image_column');
         $value = $this->getCfg('category/alt_image_column_value');
         if ($images instanceof \Magento\Framework\Data\Collection) {
-            if ($altImg = $images->getItemByColumnValue('position', $image_position + 1))
+            if ($altImg = $images->getItemByColumnValue('position', 2))
             {
                 $html =
                     '<span class="product-image-wrapper" style="padding-bottom: '. ($ratio * 100) .'%">' .

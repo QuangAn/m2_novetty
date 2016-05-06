@@ -4,7 +4,7 @@ $_prev = $theme->getPreviousProduct();
 $_next = $theme->getNextProduct();
 ?>
 <?php if($_prev || $_next): ?>
-<div class="product-prev-next nav-wrapper pull-right">
+<div class="product-prev-next nav-wrapper col-lg-3 pull-right">
     <ul>
         <?php if($_prev): ?>
             <li><a rel="prev" class="product-prev flex-prev left" title="<?php echo $block->escapeHtml($_prev->getName()); ?>" href="<?php echo $_prev->getProductUrl(); ?>">PRE <i class="fa fa-angle-left"></i></a></li>

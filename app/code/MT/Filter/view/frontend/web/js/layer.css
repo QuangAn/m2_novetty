@@ -1,0 +1,5 @@
+/* Make clicks pass-through */
+.swatch-layered .swatch-attribute-options a.selected div{
+  border: 1px solid #fff;
+  outline: 2px solid #ff5216;
+}

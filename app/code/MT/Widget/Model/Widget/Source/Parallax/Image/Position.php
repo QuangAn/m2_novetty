@@ -8,7 +8,9 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Model_Widget_Source_Parallax_Image_Position{
+namespace MT\Widget\Model\Widget\Source\Parallax\Image;
+
+class Position  implements \Magento\Framework\Option\ArrayInterface{
     public function toOptionArray(){
         $types[] = array('value' => 'center',       'label' => 'center');
         $types[] = array('value' => 'left top',     'label' => 'left top');

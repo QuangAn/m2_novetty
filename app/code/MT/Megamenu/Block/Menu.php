@@ -83,14 +83,21 @@ class Menu extends \Magento\Catalog\Block\Navigation
         $catdetail = $this->_getCatInfo($category->getId());
 
         if($vertical == false){
-           if (!$category->getIsActive() || ($catdetail->getData('mtmenu_is_category')==0 && $level==0) ) return '';
-            
+            if (!$category->getIsActive()
+                || ($catdetail->getData('mtmenu_is_category')==0 && $level==0)
+            ) {
+                return '';
+            }
         }
 
         if($vertical == true){
-            if(!$category->getIsActive() || ($catdetail->getData('verticalmenu_is_category')==0 )) return '';
+            if (!$category->getIsActive()
+                || ($catdetail->getData('verticalmenu_is_category')==0 && $level==0)
+            ) {
+                return '';
+            }
         }
-        
+
         $html = array();
 
         // get all children
@@ -333,22 +340,17 @@ class Menu extends \Magento\Catalog\Block\Navigation
         }
         $catdetail = $this->_getCatInfo($category->getId());
 
-        if($vertical == false) {
+        if($vertical == false){
             if($catdetail->getData('mtmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0){
                 return '';
-            } 
+            }
         }
 
-        if($vertical == true) {
+        if($vertical == true){
             if($catdetail->getData('verticalmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0){
                 return '';
-            } 
+            }
         }
-
-        /*if($catdetail->getData('mtmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0 && $vertical = false 
-            || $catdetail->getData('verticalmenu_is_category')==0 && $this->_isSmart == FALSE && $level==0 && $vertical = true){
-            return '';
-        }*/
 
 
         $html = array();
@@ -498,7 +500,8 @@ class Menu extends \Magento\Catalog\Block\Navigation
                 false,
                 $outermostItemClass,
                 $childrenWrapClass,
-                $noEventAttributes
+                $noEventAttributes,
+                $vertical
             );
             $j++;
         }
@@ -610,7 +613,6 @@ class Menu extends \Magento\Catalog\Block\Navigation
 
                 switch ($menutype) {
                     case 'group':
-                    case 'drop_group':
                         $html .= $this->_renderCategoryMenuGroupItemHtml(
                             $category,
                             $level,
@@ -623,7 +625,6 @@ class Menu extends \Magento\Catalog\Block\Navigation
                             $vertical
                         );
                         break;
-                    case 'classic':
                     case 'dropdown':
                         $html .= $this->_renderCategoryMenuItemHtml(
                             $category,

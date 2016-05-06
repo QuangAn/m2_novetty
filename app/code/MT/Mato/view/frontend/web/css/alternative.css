@@ -7,12 +7,12 @@
     visibility: hidden;
     width: 100%;
 }
-.product-item-info.have-alternative-image:hover .product-img-additional {
+.product-item-info:hover .product-img-additional {
     opacity: 1;
     visibility: visible;
 }
 
-.product-item-info.have-alternative-image:hover .main-image {
+.product-item-info:hover .main-image {
     opacity: 0;
     visibility: hidden;
 }

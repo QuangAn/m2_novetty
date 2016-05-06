@@ -9,5 +9,6 @@
     <head>
         <css src="Magento_Catalog::catalog/category-selector.css"/>
         <css src="MT_Widget/css/style.css"/>
+        <css src="lib/web/mage/adminhtml/browser.js"/>
     </head>
 </page>

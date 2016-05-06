@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<?php
+/**
+ * Template for filter items block
+ *
+ * @var $block \Magento\LayeredNavigation\Block\Navigation\FilterRenderer
+ */
+?>
+
+<ol class="items">
+    <?php foreach ($filterItems as $filterItem): ?>
+        <li class="item">
+            <?php $checked =  $this->checkedFilter($filterItem) ? ' checked' : ''; ?>
+            <input type="checkbox" class="filter_item_<?php echo $filterItem->getValue()?>" <?php echo $checked ?> />
+            <a href="<?php echo $block->escapeUrl($filterItem->getUrl()) ?>">
+
+                <?php echo $filterItem->getLabel() ?>
+                <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
+                    <span class="count"><?php echo $filterItem->getCount()?><span class="filter-count-label">
+                            <?php if ($filterItem->getCount() == 1):?> <?php echo __('item')?><?php else:?> <?php echo __('items') ?><?php endif;?></span></span>
+                <?php endif; ?>
+            </a>
+
+        </li>
+    <?php endforeach ?>
+</ol>

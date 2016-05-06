@@ -8,9 +8,12 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Block_Adminhtml_Widget_Form_Element_File
-    extends Mage_Adminhtml_Block_Widget
-    implements Varien_Data_Form_Element_Renderer_Interface{
+namespace MT\Widget\Block\Adminhtml\Widget\Form\Element;
+
+use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Data\Form\Element\Renderer\RendererInterface;
+
+class File extends \Magento\Backend\Block\Widget implements RendererInterface{
 
     protected $_element;
 
@@ -23,11 +26,11 @@ class MT_Widget_Block_Adminhtml_Widget_Form_Element_File
         return $this->_element;
     }
 
-    public function setElement(Varien_Data_Form_Element_Abstract $element){
+    public function setElement(AbstractElement $element){
         return $this->_element = $element;
     }
 
-    public function render(Varien_Data_Form_Element_Abstract $element){
+    public function render(AbstractElement $element){
         $this->setElement($element);
         return $this->toHtml();
     }
@@ -35,7 +38,7 @@ class MT_Widget_Block_Adminhtml_Widget_Form_Element_File
     protected function _beforeToHtml(){
         $browserBtn = $this->getLayout()->createBlock('adminhtml/widget_button', 'button',  array(
             'label'     => '...',
-            'title'     => Mage::helper('mtext')->__('Click to browser media'),
+            'title'     => __('Click to browser media'),
             'type'      => 'button',
             'onclick'   => sprintf('MT.MediabrowserUtility.openDialog(\'%s\')',
                 Mage::getSingleton('adminhtml/url')->getUrl('adminhtml/cms_wysiwyg_images/index', array(
@@ -48,7 +51,7 @@ class MT_Widget_Block_Adminhtml_Widget_Form_Element_File
         $this->setChild('browserBtn', $browserBtn);
         $clearBtn = $this->getLayout()->createBlock('adminhtml/widget_button', 'button',  array(
             'label'     => 'x',
-            'title'     => Mage::helper('mtext')->__('Click to clear value'),
+            'title'     => __('Click to clear value'),
             'type'      => 'button',
             'onclick'   => "on_{$this->getElement()->getHtmlId()}_clear_click();"
         ));

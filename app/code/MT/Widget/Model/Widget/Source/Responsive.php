@@ -8,11 +8,13 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Model_Widget_Source_Responsive{
+namespace MT\Widget\Model\Widget\Source;
+
+class Responsive implements \Magento\Framework\Option\ArrayInterface{
     public function toOptionArray(){
         return array(
-            array('value'=>'width', 'label'=>Mage::helper('mtwidget')->__('By Width')),
-            array('value'=>'breakpoint', 'label'=>Mage::helper('mtwidget')->__('By Breakpoints'))
+            array('value'=>'width', 'label'=>__('By Width')),
+            array('value'=>'breakpoint', 'label'=>__('By Breakpoints'))
         );
     }
 }

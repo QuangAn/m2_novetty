@@ -25,9 +25,7 @@ class Types extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
 		{
             return array(
                 array('value'=>'group', 'label'=>__('Group Style')),
-                array('value'=>'classic', 'label'=>__('Classic Style')),
                 array('value'=>'dropdown', 'label'=>__('Dropdown Style')),
-                array('value'=>'drop_group', 'label'=>__('Dropdown/Group Style'))
             );
         }
 		return $this->_options;

@@ -11,7 +11,6 @@
         <css src="MT_Widget/js/owl-carousel/owl.carousel.css"/>
         <css src="MT_Widget/css/style.css"/>
         <css src="Magento_Swatches/css/swatches.css"/>
-        <script src="Magento_Catalog/js/catalog-add-to-cart.js"/>
 
         <!--<script src="requirejs/require.js"/>-->
     </head>

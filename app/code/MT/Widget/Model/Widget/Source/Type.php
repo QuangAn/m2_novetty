@@ -13,8 +13,11 @@ namespace MT\Widget\Model\Widget\Source;
 
 class Type implements \Magento\Framework\Option\ArrayInterface{
     public function toOptionArray(){
-        $types = [['value' => 'product', 'label' => __('Product')],['value' => 'block', 'label' => __('Block')],['value' => 'attribute', 'label' => __('Attribute')],
-                ['value' => 'blog', 'label' => __('Blog')]];
+        $types = [
+                    ['value' => 'product', 'label' => __('Product')],
+                    ['value' => 'block', 'label' => __('Block')],
+                    ['value' => 'attribute', 'label' => __('Attribute')],
+                    ['value' => 'blog', 'label' => __('Blog')]];
 
         return $types;
     }

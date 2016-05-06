@@ -170,4 +170,54 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
     }
 
 
+    public function buildUrl(\Magento\Catalog\Model\Layer\Filter\FilterInterface $filter, $value)
+    {
+        $result = [];
+        $data = $this->_request->getParam($filter->getRequestVar());
+        if(!empty($data)){
+            $values = explode('-',$data);
+            foreach($values as $key=>$val){
+                if(empty($val)){
+                    unset($values[$key]);
+                }
+            }
+            $key = array_search($value, $values);
+
+            if ($this->_isMultiselectAllowed($filter)) {
+                if($key !== false) {
+                    unset($values[$key]);
+                    $result = $values;
+                }else{
+                    $result = $values;
+                    $result[] = $value;
+                }
+            } else {
+                if($key !== false) {
+                    $result = [];
+                } else {
+                    $result[] = $value;
+                }
+            }
+        } else {
+            $result = [$value];
+        }
+        if(!empty($result)){
+            $result = implode('-',$result);
+        }else{
+            $result = null;
+        }
+
+
+        $query[$filter->getRequestVar()] = $result;
+
+        return $this->_urlBuilder->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true, '_query' => $query]);
+    }
+
+    private function _isMultiselectAllowed(\Magento\Catalog\Model\Layer\Filter\FilterInterface $filter)
+    {
+        return true;
+//        $setting = $this->filterSettingHelper->getSettingByLayerFilter($filter);
+//        return $setting->isMultiselect();
+    }
+
 }

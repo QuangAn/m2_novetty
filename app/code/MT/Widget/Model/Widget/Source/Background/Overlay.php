@@ -8,13 +8,15 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Model_Widget_Source_Background_Overlay{
+namespace MT\Widget\Model\Widget\Source\Parallax\Background;
+
+class Overlay  implements \Magento\Framework\Option\ArrayInterface{
     public function toOptionArray(){
-        $types[] = array('value' => 'none', 'label' => Mage::helper('mtwidget')->__('None'));
-        $types[] = array('value' => 'js/mt/widget/images/gridtile.png', 'label' => Mage::helper('mtwidget')->__('2 x 2 Black'));
-        $types[] = array('value' => 'js/mt/widget/images/gridtile_white.png', 'label' => Mage::helper('mtwidget')->__('2 x 2 White'));
-        $types[] = array('value' => 'js/mt/widget/images/gridtile_3x3.png', 'label' => Mage::helper('mtwidget')->__('3 x 3 Black'));
-        $types[] = array('value' => 'js/mt/widget/images/gridtile_3x3_white.png', 'label' => Mage::helper('mtwidget')->__('3 x 3 White'));
+        $types[] = array('value' => 'none', 'label' => __('None'));
+        $types[] = array('value' => 'js/mt/widget/images/gridtile.png', 'label' => __('2 x 2 Black'));
+        $types[] = array('value' => 'js/mt/widget/images/gridtile_white.png', 'label' => __('2 x 2 White'));
+        $types[] = array('value' => 'js/mt/widget/images/gridtile_3x3.png', 'label' => __('3 x 3 Black'));
+        $types[] = array('value' => 'js/mt/widget/images/gridtile_3x3_white.png', 'label' => __('3 x 3 White'));
 
         return $types;
     }

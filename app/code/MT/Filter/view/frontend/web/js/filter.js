@@ -1,7 +1,8 @@
 define([
+    "MT_Filter/js/nprogress",
     "jquery",
-    "MT_Filter/js/nprogress"
-], function($, NProgress){
+    "jquery/ui"
+], function(NProgress, $){
     ;'use strict';
     var MTFilter = {
         container: null,
@@ -22,9 +23,10 @@ define([
             }
         },
         collect: function(){
-            this.container = $('.main-product-list').eq(0);
+            this.container = $('.main').eq(0);
             this.layer = $('#layered-filter-block');
             this.initLinkFilter();
+            this.initPriceFilter();
         },
         setConfig: function(obj){
             Object.extend(this.config, obj);
@@ -33,7 +35,6 @@ define([
             if ($('.toolbar-products:first').length){
                 $('.toolbar-products:first').find('a').each(function(){
                     $(this).on('click', function(ev){
-
                         ev.preventDefault();
                         MTFilter.sendRequest($(this).attr('href'));
                     });
@@ -41,44 +42,47 @@ define([
             }
 
             if (this.layer){
-                this.layer.find('a').each(function(){
+                this.layer.find('input[type="checkbox"]').each(function(){
+                    var  parent = $(this).parents('.item');
                     $(this).on('click', function(ev){
+                        MTFilter.sendRequest(parent.find('a').attr('href'));
+                    });
+                });
+
+                this.layer.find('a').each(function(){
+                    var parent = $(this).parents('.item');
+                    if($(this).attr('href') == '#') return ;
+                    $(this).on('click', function(ev){
+                        parent.find('input[type="checkbox"]').prop('checked', !parent.find('input[type="checkbox"]').prop('checked'));
+                        if($(this).parents('.swatch-attribute-options').length && !$(this).hasClass('selected')) $(this).addClass('selected')
+                        else $(this).removeClass('selected');
                         ev.preventDefault();
                         MTFilter.sendRequest($(this).attr('href'));
                     });
                 });
+
             }
         },
-        initPriceFilter: function(obj){
-            var slider      = $(obj.id),
-                handles     = slider.select('.price-slider-handle'),
-                minText     = $('layer-price-min'),
-                maxText     = $('layer-price-max'),
-                range       = $R(obj.min, obj.max),
-                URL         = new URI(obj.url);
+        initPriceFilter: function(){
+            var option = $("#mt_layer_filter").data();
 
-            minText.update(obj.values[0]);
-            maxText.update(obj.values[1]);
-            var sliderObj = new Control.Slider(handles, slider, {
-                range: range,
-                sliderValue: obj.values,
-                spans: slider.select('.price-slider-span'),
-                restricted: true,
-                onSlide: function(values){
-                    minText.update(Math.floor(values[0]));
-                    maxText.update(Math.ceil(values[1]));
+            $("#mt_layer_filter_display").html( MTFilter.renderLabel(option.template, option.from) + " - " + MTFilter.renderLabel(option.template, option.to) );
+            $('#mt_layer_filter').slider({
+                range: true,
+                min: option.min,
+                max: option.max,
+                values: [ option.from, (option.to)],
+                slide: function( event, ui ) {
+                    $("#mt_layer_filter_display").html( MTFilter.renderLabel(option.template, ui.values[ 0 ]) + " - " + MTFilter.renderLabel(option.template, ui.values[ 1 ]) );
                 },
-                onChange: function(values){
-                    var priceMin = Math.floor(values[0]),
-                        priceMax = Math.ceil(values[1]);
-
-                    sliderObj.setDisabled();
-                    URL.setQuery('price', priceMin + '-' + priceMax);
-                    this.sendRequest(URL.toString(), function(){
-                        sliderObj.setEnabled();
-                    });
-                }.bind(this)
+                change: function( event, ui ) {
+                    var href = option.url.replace('slider_from', ui.values[ 0 ]).replace('slider_to', ui.values[1]);
+                    MTFilter.sendRequest(href);
+                }
             });
+        },
+        renderLabel:function(template, value) {
+            return template.replace('{amount}', value);
         },
         getParams: function(){
             return {
@@ -124,7 +128,6 @@ define([
                         try{
                             var   main = response.main ? response.main.replace(/setLocation/g, this.name+'.setAjaxLocation') : null,
                                 layer = response.layer || null;
-
                             if (main && MTFilter.container) MTFilter.container.html(main);
                             if (layer && MTFilter.layer) MTFilter.layer.html(layer);
                             //setGridItem($mt);

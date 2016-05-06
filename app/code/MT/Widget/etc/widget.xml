@@ -238,6 +238,44 @@
                 <description translate="true">Limit number of columns on widget</description>
                 <value>4</value>
             </parameter>
+            <parameter name="background" xsi:type="select"  visible="true"
+                       source_model="MT\Widget\Model\Widget\Source\Background">
+                <label>Background</label>
+            </parameter>
+            <parameter name="parallax_type" xsi:type="select"  visible="true"
+                source_model="MT\Widget\Model\Widget\Source\Parallax\Type">
+                <label translate="true">Parallax Background Type</label>
+                <depends>
+                    <parameter name="background" value="parallax" />
+                </depends>
+            </parameter>
+            <parameter name="parallax_video_src" xsi:type="conditions"  visible="true" class="MT\Widget\Block\Adminhtml\Widget\Form\Element\Video">
+                <label translate="true">Parallax Video Source</label>
+                <description translate="true">Ex: http://www.youtube.com/watch?v=UVOpiKiCEeY or http://vimeo.com/81979871</description>
+                <depends>
+                    <parameter name="parallax_type" value="video" />
+                </depends>
+            </parameter>
+
+            <parameter name="parallax_image_src" xsi:type="conditions"  visible="true" class="MT\Widget\Block\Adminhtml\Widget\Form\Element\Browser">
+                <label translate="true">Parallax Background Source</label>
+                <depends>
+                    <parameter name="parallax_type" value="image" />
+                </depends>
+            </parameter>
+            <parameter name="kenburns_images" xsi:type="conditions"  visible="true" class="MT\Widget\Block\Adminhtml\Widget\Form\Element\Images">
+                <label translate="true">Ken Burns Images</label>
+                <description translate="true">Limit number of columns on widget</description>
+                <depends>
+                    <parameter name="background" value="kenburns" />
+                </depends>
+            </parameter>
+            <parameter name="background_overlay" xsi:type="text"  visible="true">
+                <label translate="true">Background Overlay</label>
+                <depends>
+                    <parameter name="background" value="kenburns" />
+                </depends>
+            </parameter>
             <parameter name="template" xsi:type="select" visible="true" required="true" sort_order="10">
                 <label translate="true">Template</label>
                 <options>

@@ -8,43 +8,45 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Block_Adminhtml_Widget_Form_Element_Images
-    extends Mage_Adminhtml_Block_Widget
-    implements Varien_Data_Form_Element_Renderer_Interface{
+namespace MT\Widget\Block\Adminhtml\Widget\Form\Element;
+
+use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Data\Form\Element\Renderer\RendererInterface;
+
+class Images extends \Magento\Backend\Block\Widget implements RendererInterface{
 
     protected $_element;
+
     protected $_images;
 
-    public function __construct(){
-        parent::__construct();
-        $this->setTemplate('mt/widget/adminhtml/widget/form/element/images.phtml');
-    }
+    protected $_template = 'widget/form/element/images.phtml';
+
 
     public function getElement(){
         return $this->_element;
     }
 
-    public function setElement(Varien_Data_Form_Element_Abstract $element){
+    public function setElement(AbstractElement $element){
         return $this->_element = $element;
     }
 
-    public function render(Varien_Data_Form_Element_Abstract $element){
+    public function render(AbstractElement $element){
         $this->setElement($element);
         return $this->toHtml();
     }
 
     protected function _beforeToHtml(){
-        $addBtn = $this->getLayout()->createBlock('adminhtml/widget_button')->setData(array(
-            'label'     => Mage::helper('mtwidget')->__('Add Image'),
+        $addBtn = $this->getLayout()->createBlock('Magento\Backend\Block\Widget\Button')->setData([
+            'label'     => __('Add Image'),
             'onclick'   => 'window.kenburnsImages.add()',
             'class'     => 'add'
-        ));
+        ]);
         $this->setChild('addBtn', $addBtn);
 
-        $delBtn = $this->getLayout()->createBlock('adminhtml/widget_button')->setData(array(
+        $delBtn = $this->getLayout()->createBlock('Magento\Backend\Block\Widget\Button')->setData([
             'onclick'   => 'window.kenburnsImages.remove({{id}})',
             'class'     => 'delete'
-        ));
+        ]);
         $this->setChild('delBtn', $delBtn);
 
         return parent::_beforeToHtml();
@@ -62,5 +64,10 @@ class MT_Widget_Block_Adminhtml_Widget_Form_Element_Images
         }
 
         return $this->_images;
+    }
+
+    public function getStoreManager()
+    {
+        return $this->_storeManager;
     }
 }

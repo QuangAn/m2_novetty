@@ -28,7 +28,10 @@
 <script>
     require([
         "MT_Filter/js/filter",
-    ], function (Filter) {
-        Filter.init('mtFilter', <?php echo $this->helper('MT\Filter\Helper\Data')->getConfig()?>);
+        "jquery"
+    ], function (Filter, $) {
+        $(document).ready(function(){
+            Filter.init('mtFilter', <?php echo $this->helper('MT\Filter\Helper\Data')->getConfig()?>);
+        });
     });
 </script>

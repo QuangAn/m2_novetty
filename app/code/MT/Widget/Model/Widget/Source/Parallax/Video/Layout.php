@@ -8,11 +8,13 @@
  * @email       magento@cleversoft.co
  */
 
-class MT_Widget_Model_Widget_Source_Parallax_Video_Layout{
+namespace MT\Widget\Model\Widget\Source\Parallax\Video;
+
+class Layout implements \Magento\Framework\Option\ArrayInterface{
     public function toOptionArray(){
-        $types[] = array('value' => 'custom', 'label' => Mage::helper('mtwidget')->__('Custom'));
-        $types[] = array('value' => 'fullwidth', 'label' => Mage::helper('mtwidget')->__('Full Width'));
-        $types[] = array('value' => 'fullscreen', 'label' => Mage::helper('mtwidget')->__('Full Screen'));
+        $types[] = array('value' => 'custom', 'label' => __('Custom'));
+        $types[] = array('value' => 'fullwidth', 'label' => __('Full Width'));
+        $types[] = array('value' => 'fullscreen', 'label' => __('Full Screen'));
 
         return $types;
     }
