@@ -22,7 +22,7 @@
             <div class="fieldset coupon<?php strlen($block->getCouponCode()) ? ' applied' : ''?>">
                 <input type="hidden" name="remove" id="remove-coupon" value="0" />
                 <div class="field">
-                    <label for="coupon_code" class="label"><span><?php /* @escapeNotVerified */ echo __('Enter discount code') ?></span></label>
+                    <label for="coupon_code" class="label"><span><?php /* @escapeNotVerified */ echo __('Coupon code') ?></span></label>
                     <div class="control">
                         <input type="text" class="input-text" id="coupon_code" name="coupon_code" value="<?php echo $block->escapeHtml($block->getCouponCode()) ?>" placeholder="<?php echo $block->escapeHtml(__('Enter discount code'));?>" />
                     </div>

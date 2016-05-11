@@ -6,5 +6,20 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-
+    <preference for="Magento\Catalog\Controller\Category\View" type="MT\Filter\Controller\Category\View" />
+    <preference for="Magento\CatalogSearch\Model\Layer\Filter\Attribute" type="MT\Filter\Model\Layer\Filter\Attribute" />
+    <preference for="Magento\CatalogSearch\Model\Layer\Filter\Price" type="MT\Filter\Model\Layer\Filter\Price" />
+    <preference for="Magento\Swatches\Block\LayeredNavigation\RenderLayered"     type="MT\Filter\Block\Navigation\SwatchRenderer"/>
+    <preference for="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection" type="MT\Filter\Model\ResourceModel\Fulltext\Collection" />
+    <preference for="Magento\LayeredNavigation\Block\Navigation\FilterRenderer"     type="MT\Filter\Block\Navigation\FilterRenderer"/>
+    <virtualType name="MT\Filter\Model\Layer\Filter\ItemFactory" type="Magento\Catalog\Model\Layer\Filter\ItemFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">MT\Filter\Model\Layer\Filter\Item</argument>
+        </arguments>
+    </virtualType>
+    <type name="MT\Filter\Model\Layer\Filter\Attribute">
+        <arguments>
+            <argument name="filterItemFactory" xsi:type="object">MT\Filter\Model\Layer\Filter\ItemFactory</argument>
+        </arguments>
+    </type>
 </config>

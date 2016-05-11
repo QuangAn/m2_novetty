@@ -8,6 +8,12 @@
 <page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
+     <referenceBlock name="minicart" remove="true"/>
+        <!--<referenceContainer name="header.panel" remove="true"/>-->
+        <!--<referenceBlock name="top.search" remove="true"/>-->
+        <!--<referenceBlock name="catalog.compare.link" remove="true"/>-->
+        <!--<referenceBlock name="catalog.topnav" remove="true"/>-->
+        <!--<referenceContainer name="footer-container" remove="true"/>-->
 	<referenceContainer name="checkout.cart.items">
             <container name="checkout.cart.container" htmlTag="div" htmlClass="cart-container" before="-">
                 <container name="cart.summary" label="Cart Summary Container" htmlTag="div" htmlClass="cart-summary" after="-">
@@ -41,6 +47,7 @@
 	</referenceBlock>
         <referenceContainer name="checkout.cart.container">
             <container name="cart.discount" label="Cart Discount Container" htmlTag="div" htmlClass="cart-discount" after="-" />
+            <container htmlClass="left_checkout_cart" htmlTag="div" after="cart.summary" name="left.checkout.cart" />
         </referenceContainer>
         <move element="checkout.cart.crosssell" destination="checkout.cart.container" after="-" />
         <move element="checkout.cart.coupon" destination="cart.discount" />
@@ -49,7 +56,9 @@
         <referenceContainer name="footer-container">
             <referenceBlock name="home01.footer.top" remove="true"/> 
         </referenceContainer>
-		
+        <move element="checkout.cart.form" destination="left.checkout.cart" after="-" />
+        <move element="cart.discount" destination="left.checkout.cart" after="checkout.cart.form" />
+
     </body>
 </page>
 
