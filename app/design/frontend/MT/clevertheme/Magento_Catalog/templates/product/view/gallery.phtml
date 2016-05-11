@@ -23,13 +23,13 @@
 <?php
 $_settingHelper = $this->helper('MT\Mato\Helper\Data');
 /* Image size */
-if(!($main_width = $_settingHelper->getConfig('product_page/main_image_width')))
+if(!($main_width = $_settingHelper->getCfg('product_page/main_image_width')))
     $main_width = $block->getImageAttribute('product_page_image_medium', 'width');
-if(!($main_height = $_settingHelper->getConfig('product_page/main_image_height')))
+if(!($main_height = $_settingHelper->getCfg('product_page/main_image_height')))
     $main_height = $block->getImageAttribute('product_page_image_medium', 'height');
-if(!($thumb_width = $_settingHelper->getConfig('product_page/thumb_image_width')))
+if(!($thumb_width = $_settingHelper->getCfg('product_page/thumb_image_width')))
     $thumb_width = $block->getImageAttribute('product_page_image_small', 'width');
-if(!($thumb_height = $_settingHelper->getConfig('product_page/thumb_image_height')))
+if(!($thumb_height = $_settingHelper->getCfg('product_page/thumb_image_height')))
     $thumb_height = $block->getImageAttribute('product_page_image_small', 'height');
 
 ?>
@@ -49,7 +49,7 @@ if(!($thumb_height = $_settingHelper->getConfig('product_page/thumb_image_height
                     "showCaption": <?php /* @escapeNotVerified */ echo $block->getVar("gallery/caption"); ?>,
                     "width": <?php /* @escapeNotVerified */ echo $main_width; ?>,
                     "thumbwidth": <?php /* @escapeNotVerified */ echo $thumb_width; ?>,
-                    "thumbheight": <?php /* @escapeNotVerified */ echo $thumb_heigh ?: $thumb_width; ?>,
+                    "thumbheight": <?php /* @escapeNotVerified */ echo $thumb_height ?: $thumb_width; ?>,
                     "height": <?php /* @escapeNotVerified */ echo $main_height ?: $main_width; ?>,
                     "transitionduration": <?php /* @escapeNotVerified */  echo $block->getVar("gallery/transition/duration"); ?>,
                     "transition": "<?php /* @escapeNotVerified */  echo $block->getVar("gallery/transition/effect"); ?>",
