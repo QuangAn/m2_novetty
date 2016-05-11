@@ -17,7 +17,7 @@ class FilterRenderer extends \Magento\LayeredNavigation\Block\Navigation\FilterR
 
     public function render(FilterInterface $filter)
     {
-        if( $filter instanceof \Magento\CatalogSearch\Model\Layer\Filter\Category ) $filterCode = '';
+        if( $filter instanceof \MT\Filter\Model\Layer\Filter\Category ) $filterCode = '';
         else
             $filterCode = $filter->getAttributeModel()->getAttributeCode();
         if($filterCode == 'price' && $this->_helper->getConfig('mtfilter/catalog/price')) {

@@ -8,6 +8,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Magento\Catalog\Controller\Category\View" type="MT\Filter\Controller\Category\View" />
     <preference for="Magento\CatalogSearch\Model\Layer\Filter\Attribute" type="MT\Filter\Model\Layer\Filter\Attribute" />
+    <preference for="Magento\CatalogSearch\Model\Layer\Filter\Category" type="MT\Filter\Model\Layer\Filter\Category" />
     <preference for="Magento\CatalogSearch\Model\Layer\Filter\Price" type="MT\Filter\Model\Layer\Filter\Price" />
     <preference for="Magento\Swatches\Block\LayeredNavigation\RenderLayered"     type="MT\Filter\Block\Navigation\SwatchRenderer"/>
     <preference for="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection" type="MT\Filter\Model\ResourceModel\Fulltext\Collection" />

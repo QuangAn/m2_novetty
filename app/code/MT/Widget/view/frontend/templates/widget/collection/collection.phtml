@@ -21,11 +21,13 @@ $image = 'new_products_content_widget_grid';
     $showCart = true;
     $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
     $description = false;
-$items =        $productCollection->getItems();
-$count              = $productCollection ? $productCollection->count() : 0;
-$carousel           = $block->getData('carousel');
-$row                = $block->getData('row');
-$column             = $carousel == 1 && $row == 1 ? $count : ($carousel == 1 && $row > 1 ? $row : $block->getData('column'));
+    $theme = $this->helper('MT\Mato\Helper\Data');
+    $autoClipName = $theme->getCfg('category/auto_clip_long_name') ? $theme->getCfg('category/auto_clip_long_name') : 1;
+    $items =        $productCollection->getItems();
+    $count              = $productCollection ? $productCollection->count() : 0;
+    $carousel           = $block->getData('carousel');
+    $row                = $block->getData('row');
+    $column             = $carousel == 1 && $row == 1 ? $count : ($carousel == 1 && $row > 1 ? $row : $block->getData('column'));
     if($carousel != 1){
         $num = 12 / $column;
         $extClass = 'col-xs-12 col-xs-6 col-md-' . $num;
@@ -54,7 +56,7 @@ $column             = $carousel == 1 && $row == 1 ? $count : ($carousel == 1 && 
                     <?php echo $block->getImage($_item, $image)->toHtml(); ?>
                 </a>
                 <div class="product-item-details">
-                    <strong class="product-item-name">
+                    <strong class="product-item-name <?php if($autoClipName): ?>auto-clip-name<?php endif;?>">
                         <a title="<?php echo $block->escapeHtml($_item->getName()) ?>"
                            href="<?php /* @escapeNotVerified */ echo $block->getProductUrl($_item) ?>"
                            class="product-item-link">
@@ -65,9 +67,7 @@ $column             = $carousel == 1 && $row == 1 ? $count : ($carousel == 1 && 
                     echo $block->getProductPriceHtml($_item,  \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE);
                     ?>
 
-                    <?php if ($templateType): ?>
-                        <?php echo $block->getReviewsSummaryHtml($_item, $templateType,true) ?>
-                    <?php endif; ?>
+                        <?php echo $block->getReviewsSummaryHtml($_item, $templateType, true) ?>
 
                     <?php if ($showWishlist || $showCompare || $showCart): ?>
                         <div class="product-item-actions">

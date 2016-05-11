@@ -301,7 +301,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
         $column = $this->getCfg('category/alt_image_column');
         $value = $this->getCfg('category/alt_image_column_value');
         if ($images instanceof \Magento\Framework\Data\Collection) {
-            if ($altImg = $images->getItemByColumnValue('position', 2))
+            if ($altImg = $images->getItemByColumnValue($column, $value))
             {
                 $html =
                     '<span class="product-image-wrapper" style="padding-bottom: '. ($ratio * 100) .'%">' .

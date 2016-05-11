@@ -22,13 +22,14 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper{
         $this->_catalogImageHelper = $imageHelper;
     }
 
-    public function getImg($product, $w, $h, $imgVersion='image', $file=NULL)
+    public function getImg($product, $w, $h, $imgVersion='image')
     {
         if ($h <= 0)
         {
+
             return $url = $this->_catalogImageHelper
                 ->init($product, $imgVersion)
-                ->setImageFile($file)
+                ->constrainOnly(false)
                 ->keepAspectRatio(true)
                 ->keepFrame(true)
                 ->resize($w)
@@ -38,7 +39,8 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper{
         {
             return $url = $this->_catalogImageHelper
                 ->init($product, $imgVersion)
-                ->setImageFile($file)
+                ->keepAspectRatio(false)
+                ->constrainOnly(false)
                 ->resize($w, $h)
                 ->getUrl();
         }

@@ -94,11 +94,11 @@
                     </comment>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="aspect_ratio_size" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Image aspect ratio size</label>
-                    <source_model>MT\Mato\Model\System\Config\Source\Category\Grid\Ratioimage</source_model>
-                    <comment>If set to "Yes", custom Category Blocks will be displayed in the drop-down box even
-                        if the category doesn't have any sub-categories.</comment>
+                <field id="auto_clip_long_name" translate="label comment" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto clip long product name</label>
+                    <comment>Set "Yes", auto clip long product name, hover to show full name
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
                 <field id="alt_image" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Alternative Image</label>
@@ -128,6 +128,9 @@
                 <field id="image_height" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Image Height</label>
                     <comment>Set height image in page products list.</comment>
+                    <depends>
+                        <field id="aspect_ratio">0</field>
+                    </depends>
                 </field>
             </group>
             <group id="category_grid" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -205,6 +208,35 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>-->
+            <group id="product_page" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Product Page</label>
+                <field id="aspect_ratio" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Keep Image Aspect Ratio</label>
+                    <comment>Set "Yes", to keep aspect ratio of the product images (height of the images will be
+                        calculated automatically based on width).
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="main_image_width" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Main Image Width</label>
+                    <comment>Set main width image in product detail.</comment>
+                </field>
+                <field id="main_image_height" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Main Image Height</label>
+                    <comment>Set main height image in page product detail.</comment>
+                    <depends>
+                        <field id="aspect_ratio">0</field>
+                    </depends>
+                </field>
+                <field id="thumb_image_width" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Thumb Image Width</label>
+                    <comment>Set thumb width image in page products detail.</comment>
+                </field>
+                <field id="thumb_image_height" translate="label comment" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Thumb Image Height</label>
+                    <comment>Set thumb height image in page products detail.</comment>
+                </field>
+            </group>
             <group id="product_labels" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Product Labels</label>
                 <field id="new" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
