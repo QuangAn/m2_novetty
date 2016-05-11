@@ -79,7 +79,7 @@
                     </container>
                 </container>
             </container>
-            <container htmlClass="main_bottom" htmlTag="div" after="main.aside">
+            <container htmlClass="main_bottom" htmlTag="div" before="main.aside">
                 <container htmlTag="div" htmlClass="container">
                     <container htmlTag="div" htmlClass="row">
                         <container name="content.bottom" label="Main Content Bottom"/>

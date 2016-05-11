@@ -18,12 +18,29 @@ use Magento\Framework\App\Action\Action;
 <?php
 $_productCollection = $block->getLoadedProductCollection();
 $_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_matoHelper = $this->helper('MT\Mato\Helper\Data');
+$_imageHelper = $this->helper('MT\Mato\Helper\Image');
+$imgWidth = intval($_matoHelper->getCfg('category/image_width'));
+$imgHeight = intval($_matoHelper->getCfg('category/image_height'));
+
+
+//Image aspect ratio settings
+$keepAspectRatio = $_matoHelper->getCfg('category/aspect_ratio');
+echo $keepAspectRatio;
+if ($keepAspectRatio)
+{
+    $imgHeight = 0; //Height will be calculated automatically (based on width) to keep the aspect ratio
+    $catViewKeepFrame = FALSE;
+}
+else
+{
+    $catViewKeepFrame = TRUE;
+}
+
+
 $showWishlist = true;
 $showCompare = true;
 $showCart = true;
- $theme = $this->helper('MT\Mato\Helper\Data');
-    $imgWidth = $theme->getCfg('category/image_width') ? $theme->getCfg('category/image_width') : '';
-    $imgHeight = $theme->getCfg('category/image_height') ? $theme->getCfg('category/image_height') : '';
 ?>
 <?php if (!$_productCollection->count()): ?>
     <div class="message info empty">
@@ -59,23 +76,28 @@ $showCart = true;
             <?php foreach ($_productCollection as $_product): ?>
                 <?php /* @escapeNotVerified */
                 echo ($iterator++ == 1) ? '<li class="item product product-item">' : '</li><li class="item product product-item">' ?>
-                <div class="product-item-info <?php if ($alternative_img = $theme->getAltImgHtml($_product, $imgWidth, $imgHeight, $image)): ?> have-alternative-image <?php endif; ?>" data-container="product-grid">
+                <div class="product-item-info" data-container="product-grid">
                     <div class="inner-product-item-info">
                         <div class="mt-product-image">
 
-                        
+                            <?php
+                            $productImage = $block->getImage($_product, $image);
+                            if ($pos != null) {
+                                $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                                    . 'top:' . $productImage->getHeight() . 'px;"';
+                            }
+                            ?>
                             <?php // Product Image ?>
-                           
-							 <a href="<?php /* @escapeNotVerified */
-								echo $_product->getProductUrl() ?>" class="product-item-photo">
-									<?php echo $theme->getLabel($_product); ?>
-									<?php echo $block->getImage($_product, $image)->toHtml(); ?>
-									<?php if (!$theme->getCfg('category/alt_image')): ?>
-										<span class="product-img-additional alt-image">
-												 <?php echo $alternative_img; ?>
-											</span>
-									<?php endif; ?>
-								</a>
+                            <a href="<?php /* @escapeNotVerified */
+                            echo $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+                                <?php if(!$imgWidth) : ?>
+                                <?php echo $productImage->toHtml(); ?>
+                                <?php else: ?>
+                                    <img id="product-collection-image-<?php echo $_product->getId(); ?>"
+                                         src="<?php echo $_imageHelper->getImg($_product, $imgWidth, $imgHeight, $image); ?>"
+                                         alt="<?php echo $block->stripTags($_product->getName(), null, true) ?>" />
+                                <?php endif; ?>
+                            </a>
                         </div>
                         <div class="product details product-item-details">
                             <?php
@@ -125,7 +147,7 @@ $showCart = true;
                                                 <?php echo $block->getBlockHtml('formkey') ?>
                                                 <button type="submit"
                                                         title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
-                                                        class="action tocart primary gagaga">
+                                                        class="action tocart primary">
                                                     <span><?php /* @escapeNotVerified */
                                                         echo __('Add to Cart') ?></span>
                                                 </button>
@@ -186,15 +208,4 @@ $showCart = true;
 
         </script>
     <?php endif; ?>
-    <?php if($this->helper('MT\Mato\Helper\Data')->getCfg('category_grid/equal_height')): ?>
-    <script type="text/x-magento-init">
-    {
-        ".products-grid": {
-            "equalHeight": {
-                "target": ".product-item-info"
-            }
-        }
-    }
-</script>
-<?php endif;?>
 <?php endif; ?>

@@ -6,7 +6,7 @@
 var config = {
     map: {
         '*': {
-            equalHeight :        'MT_Mato/js/equalHeight'
+            equalHeight :        'MT_Mato/js/equalHeight',
         }
     }
 

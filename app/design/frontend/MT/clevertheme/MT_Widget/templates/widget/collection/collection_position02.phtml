@@ -76,7 +76,7 @@ use Magento\Framework\App\Action\Action;
                         echo $block->getProductUrl($_item) ?>" class="product-item-photo">
                             <?php echo $theme->getLabel($_item); ?>
                             <?php echo $block->getImage($_item, $image)->toHtml(); ?>
-                            <?php if (!$theme->getCfg('category/alt_image')): ?>
+                            <?php if ($theme->getCfg('category/alt_image')): ?>
                                 <span class="product-img-additional alt-image">
                                          <?php echo $alternative_img; ?>
                                     </span>
