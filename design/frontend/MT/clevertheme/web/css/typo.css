@@ -1,0 +1,45 @@
+@import url(//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,greek-ext,greek,vietnamese,cyrillic-ext,latin-ext,cyrillic);
+@import url(//fonts.googleapis.com/css?family=Poppins:400,300,500,600,700&subset=latin,devanagari,latin-ext);
+.font01 {
+  font-family: 'Roboto', sans-serif;
+}
+.font02 {
+  font-family: 'Poppins', sans-serif;
+}
+a,
+button,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.title,
+.heading {
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.product-item-name a {
+  font-family: 'Roboto', sans-serif;
+  color: #666;
+}
+.footer-link a {
+  font-family: 'Roboto', sans-serif;
+  color: #999;
+}
+.product.data.items > .item.content,
+.page-products .toolbar .limiter,
+.filter.block .filter-options-title,
+.page-with-filter .toolbar-amount,
+.sidebar-main .block.filter .block-subtitle,
+.subcriper_label {
+  font-family: 'Roboto', sans-serif;
+}

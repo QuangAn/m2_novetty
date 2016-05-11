@@ -1,0 +1,127 @@
+<?php
+/**
+ * Copyright ? 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+use Magento\Framework\App\Action\Action;
+?>
+<?php
+/**
+ * Template for displaying products list widget
+ *
+ * @var $block \Magento\CatalogWidget\Block\Product\ProductsList
+ */
+
+?>
+
+<?php if ($exist = ($block->getData('collection') && $block->getData('collection')->getSize())): ?>
+    <?php
+    $type = 'widget-product-grid';
+
+    $mode = 'grid';
+
+    $count = $block->getData('collection') ? $block->getData('collection')->count() : 0;
+    $carousel = $block->getData('carousel');
+
+    $row = $block->getData('row');
+    $column = $carousel == 1 && $row == 1 ? $count : ($carousel == 1 && $row > 1 ? $row : $block->getData('column'));
+
+    $image = 'new_products_content_widget_grid';
+    $items = $block->getData('collection')->getItems();
+
+    $showWishlist = true;
+    $showCompare = true;
+    $showCart = true;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    $description = false;
+    $theme = $this->helper('MT\Mato\Helper\Data');
+    $imgWidth = $theme->getCfg('category/image_width') ? $theme->getCfg('category/image_width') : '';
+    $imgHeight = $theme->getCfg('category/image_height') ? $theme->getCfg('category/image_height') : '';
+
+
+
+    if($carousel != 1){
+        $num = 12 / $column;
+        $extClass = 'col-xs-12 col-xs-6 col-md-' . $num;
+    }
+    ?>
+    <div class="block widget block-products-list <?php /* @escapeNotVerified */
+    echo $mode; ?>">
+        <div class="block-content">
+            <?php $i = 0;
+            foreach ($items as $_item): ?>
+                <?php if ($carousel == 1 && $row > 1 && $i == 0): ?>
+                    <div class="owl-carousel">
+                <?php endif ?>
+                <?php /* @escapeNotVerified */
+                echo '<!-- ' . $image . '-->' ?>
+                <?php if ($i % $column == 0 || ($row > 1 && $i % $row == 0)): ?>
+                <div class="products-<?php /* @escapeNotVerified */
+                echo $mode; ?> <?php /* @escapeNotVerified */
+                echo $mode; ?>">
+                <ol class="product-items <?php /* @escapeNotVerified */
+                echo $type; ?> <?php echo $carousel && $row == 1 ? ' owl-carousel' : '' ?>">
+            <?php endif ?>
+
+                <?php $i++ ?>
+                <?php /* @escapeNotVerified */
+                if($carousel == 1) echo ($i == 1) ? '<li>' : '</li><li>';
+                else echo ($i == 1) ? '<li class="'. $extClass .'">' : '</li><li class="' . $extClass .'">';
+                ?>
+                <div class="product-item-info  <?php if ($alternative_img = $theme->getAltImgHtml($_item, $imgWidth, $imgHeight, $image)): ?> have-alternative-image <?php endif; ?>">
+                    <div class="inner-product-item-info">
+                        <a href="<?php /* @escapeNotVerified */
+                        echo $block->getProductUrl($_item) ?>" class="product-item-photo">
+                            <?php echo $theme->getLabel($_item); ?>
+                            <?php echo $block->getImage($_item, $image)->toHtml(); ?>
+                            <?php if (!$theme->getCfg('category/alt_image')): ?>
+                                <span class="product-img-additional alt-image">
+                                         <?php echo $alternative_img; ?>
+                                    </span>
+                            <?php endif; ?>
+                        </a>
+                        <div class="product details product-item-details">
+                            <strong class="product-item-name">
+                                <a title="<?php echo $block->escapeHtml($_item->getName()) ?>"
+                                   href="<?php /* @escapeNotVerified */
+                                   echo $block->getProductUrl($_item) ?>"
+                                   class="product-item-link">
+                                    <?php echo $block->escapeHtml($_item->getName()) ?>
+
+                                </a>
+                            </strong>
+                            <?php if ($templateType): ?>
+                                <?php echo $block->getReviewsSummaryHtml($_item, $templateType,true) ?>
+                            <?php endif; ?>
+                            <?php
+                            echo $block->getProductPriceHtml($_item, \Magento\Catalog\Pricing\Price\FinalPrice::PRICE_CODE);
+                            ?>
+
+                            <?php echo $block->getColorSwatchDetailsHtml($_item); ?>
+
+                        </div>
+                    </div>
+                </div>
+                <?php echo ($i == count($items)) ? '</li>' : '' ?>
+                <?php if ($i == $count || $i % $column == 0 || ($row > 1 && $i % $row == 0)): ?>
+                </ol>
+                </div>
+            <?php endif ?>
+                <?php if ($carousel == 1 && $row > 1 && $i == $count): ?>
+                    </div>
+                <?php endif ?>
+            <?php endforeach ?>
+        </div>
+    </div>
+<?php endif; ?>
+<?php if (!$block->isRedirectToCartEnabled()) : ?>
+    <script type="text/x-magento-init">
+        {
+            "[data-role=tocart-form], .form.map.checkout": {
+                "catalogAddToCart": {}
+            }
+        }
+        </script>
+<?php endif; ?>
