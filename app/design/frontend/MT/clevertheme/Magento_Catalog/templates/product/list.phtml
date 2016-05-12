@@ -26,7 +26,7 @@ $imgHeight = intval($_matoHelper->getCfg('category/image_height'));
 
 //Image aspect ratio settings
 $keepAspectRatio = $_matoHelper->getCfg('category/aspect_ratio');
-
+echo $keepAspectRatio;
 if ($keepAspectRatio)
 {
     $imgHeight = 0; //Height will be calculated automatically (based on width) to keep the aspect ratio
@@ -94,7 +94,7 @@ $showCart = true;
                                 <?php echo $productImage->toHtml(); ?>
                                 <?php else: ?>
                                     <img id="product-collection-image-<?php echo $_product->getId(); ?>"
-                                         src="<?php echo $_imageHelper->getImg($_product, $imgWidth, $imgHeight,'category_page_grid'); ?>"
+                                         src="<?php echo $_imageHelper->getImg($_product, $imgWidth, $imgHeight, $image); ?>"
                                          alt="<?php echo $block->stripTags($_product->getName(), null, true) ?>" />
                                 <?php endif; ?>
                             </a>

@@ -50,7 +50,7 @@ use Magento\Framework\App\Action\Action;
     <div class="block widget block-products-list <?php /* @escapeNotVerified */
     echo $mode; ?>">
         <div class="block-content">
-            <?php $i = 0; 
+            <?php $i = 0;
             foreach ($items as $_item): ?>
                 <?php if ($carousel == 1 && $row > 1 && $i == 0): ?>
                     <div class="owl-carousel">
@@ -79,7 +79,7 @@ use Magento\Framework\App\Action\Action;
                                     <?php echo $theme->getLabel($_item); ?>
                                 </div>
                                 <?php echo $block->getImage($_item, $image)->toHtml(); ?>
-                                <?php if ($theme->getCfg('category/alt_image')): ?>
+                                <?php if (!$theme->getCfg('category/alt_image')): ?>
                                     <span class="product-img-additional alt-image" style="width: <?php echo $imgWidth; ?>px ;">
                                          <?php echo $alternative_img; ?>
                                     </span>
