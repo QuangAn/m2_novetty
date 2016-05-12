@@ -88,7 +88,7 @@
             </container>
             <container name="page.bottom.container" as="page_bottom_container" label="Before Page Footer Container"
                        after="main.content" htmlTag="div" htmlClass="page-bottom"/>
-        </referenceContainer>
+        </referenceContainer> 
 
         <referenceContainer name="main">
             <container htmlClass="main_content_area" htmlTag="div" name="main.content.wrapper">
@@ -122,18 +122,7 @@
             <block class="Magento\Framework\View\Element\FormKey" name="formkey"/>
         </referenceContainer>
 
-        <referenceContainer name="footer-container">
-            <container htmlTag="div" htmlClass="footer-top" name="footer.top.container">
-                <container htmlClass="container" htmlTag="div">
-                    <container name="footer.top" as="footer.top" label="Page Footer Top" htmlTag="div"
-                               htmlClass="inner-footer-top" before="-"/>
-                     <block class="Magento\Cms\Block\Block" name="home01.footer.top" as="home01.footer.top">
-                        <arguments>
-                            <argument name="block_id" xsi:type="string">home01-footer-top</argument>
-                        </arguments>
-                    </block>
-                </container>
-            </container>
+        <referenceContainer name="footer-container"> 
             <container htmlTag="div" htmlClass="footer-bottom" name="footer.bottom.container">
                 <container htmlClass="container" htmlTag="div">
                     <container name="footer.bottom" as="footer.bottom" label="Page Footer Bottom" htmlTag="div"

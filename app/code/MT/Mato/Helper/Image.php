@@ -31,7 +31,7 @@ class Image extends \Magento\Framework\App\Helper\AbstractHelper{
                 ->init($product, $imgVersion)
                 ->constrainOnly(false)
                 ->keepAspectRatio(true)
-                ->keepFrame(true)
+                ->keepFrame(false)
                 ->resize($w)
                 ->getUrl();
         }
