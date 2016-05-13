@@ -3364,12 +3364,26 @@ h2.title-cart {
   }
   .product-image-wrapper img{position:static;}
   .authentication-wrapper{
-        width: 100%;
-    clear: both;
-    margin: 0;
-    text-align: center;
-    float: left;
-    max-width: 100%;
+    padding-bottom: 10px;
+      clear: both;
+      float: none;
+      max-width: 100%;
+      text-align: center;
+      margin: 0 auto 30px auto;
+      display: table;
+      width: auto;
+      border-bottom: 1px solid #d7d7d7;
+    .authentication-dropdown{width: 320px;}
+    >span{
+
+      font-weight: 700;
+      color: #333;
+     
+    }
+    >button{
+      padding-left: 5px;
+      span{color: #fe528a;font-weight: bold;}
+    }
     .block-authentication{
       padding: 20px;
     }
@@ -3377,6 +3391,50 @@ h2.title-cart {
 }
 .checkout-index-index 
 {
+ 
+  .opc-sidebar{
+    margin-top:0;
+     .modal-header{display: none;}
+    .opc-block-summary{
+      padding-top:0;
+      > .title{
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .items-in-cart {
+        .minicart-items{
+          .product-item{
+            border-color:#d7d7d7;
+            .price{font-size: 16px;font-weight: 500;}
+            .product-item-name{
+              font-size: 14px;
+              display:inline-block;
+            }
+            .product-image-container{display: none;}
+            .product-item-details{
+              padding-left: 0;
+              .product-item-inner{
+                margin:0;
+              }
+            }
+          }
+        }
+        > .title {
+              padding: 20px 0;
+               border-color:#d7d7d7;
+               strong{
+                font-size: 14px;
+                font-weight: bold;
+               }
+          span{
+            display: inline-block;
+            font-size: 14px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
   .opc-progress-bar{padding-bottom: 20px;text-align: center;float:left;width:100%;}
   .nav-sections{display: block;}
   .modal-content{box-shadow: none;}
