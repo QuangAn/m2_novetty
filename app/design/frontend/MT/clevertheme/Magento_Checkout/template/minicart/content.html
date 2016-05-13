@@ -1,6 +1,6 @@
 <!--
 /**
- * Copyright © 2015 Magento. All rights reserved.
+ * Copyright © 2016 Magento. All rights reserved.
  * See COPYING.txt for license details.
  */
 -->
@@ -25,42 +25,6 @@
         <span><!-- ko i18n: 'Close' --><!-- /ko --></span>
     </button>
 
-    <!-- ko if: cart().summary_count -->
-        <div class="items-total">
-            <span class="count"><!-- ko text: cart().summary_count --><!-- /ko --></span>
-            <!-- ko if: cart().summary_count == 1 -->
-                <!-- ko i18n: 'item' --><!-- /ko -->
-            <!-- /ko -->
-            <!-- ko if: cart().summary_count > 1 -->
-                <!-- ko i18n: 'items' --><!-- /ko -->
-            <!-- /ko -->
-        </div>
-
-        <!-- ko if: cart().possible_onepage_checkout -->
-            <!-- ko foreach: getRegion('subtotalContainer') -->
-                <!-- ko template: getTemplate() --><!-- /ko -->
-            <!-- /ko -->
-        <!-- /ko -->
-
-        <!-- ko foreach: getRegion('extraInfo') -->
-            <!-- ko template: getTemplate() --><!-- /ko -->
-        <!-- /ko -->
-
-        <!-- ko if: cart().possible_onepage_checkout -->
-        <div class="actions">
-            <div class="primary">
-                <button
-                        id="top-cart-btn-checkout"
-                        type="button"
-                        class="action primary checkout"
-                        data-bind="attr: {title: $t('Go to Checkout')}">
-                    <!-- ko i18n: 'Go to Checkout' --><!-- /ko -->
-                </button>
-                <div data-bind="html: cart().extra_actions"></div>
-            </div>
-        </div>
-        <!-- /ko -->
-    <!-- /ko -->
 
     <!-- ko if: cart().summary_count -->
     <strong class="subtitle"><!-- ko i18n: 'Recently added item(s)' --><!-- /ko --></strong>
@@ -90,13 +54,48 @@
         <!-- /ko -->
     <!-- /ko -->
 
+
     <!-- ko if: cart().summary_count -->
-    <div class="actions">
-        <div class="secondary">
-            <a class="action viewcart" data-bind="attr: {href: shoppingCartUrl}">
-                <span><!-- ko i18n: 'View and edit cart' --><!-- /ko --></span>
-            </a>
+        <div class="items-total">
+            <span class="count"><!-- ko text: cart().summary_count --><!-- /ko --></span>
+            <!-- ko if: cart().summary_count == 1 -->
+                <!-- ko i18n: 'item' --><!-- /ko -->
+            <!-- /ko -->
+            <!-- ko if: cart().summary_count > 1 -->
+                <!-- ko i18n: 'items' --><!-- /ko -->
+            <!-- /ko -->
         </div>
+
+        <!-- ko if: cart().possible_onepage_checkout -->
+            <!-- ko foreach: getRegion('subtotalContainer') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            <!-- /ko -->
+        <!-- /ko -->
+
+        <!-- ko foreach: getRegion('extraInfo') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+
+    <!-- /ko -->
+    
+    
+    <!-- ko if: cart().summary_count --> 
+    <div class="actions"> 
+            <a class="btn btn-raised action viewcart" data-bind="attr: {href: shoppingCartUrl}">
+                <span><!-- ko i18n: 'View cart' --><!-- /ko --></span>
+            </a> 
+    </div>
+    <!-- /ko -->
+    
+    <!-- ko if: cart().possible_onepage_checkout -->
+    <div class="actions"> 
+            <a href="javascript:void(0)"  
+                    id="top-cart-btn-checkout"
+                    type="button"
+                    class=" btn btn-raised" >
+                <!-- ko i18n: 'Go to Checkout' --><!-- /ko -->
+            </a>
+            <div data-bind="html: cart().extra_actions"></div> 
     </div>
     <!-- /ko -->
 

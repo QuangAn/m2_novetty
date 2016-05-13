@@ -3347,7 +3347,12 @@ h2.title-cart {
   }
 }
 .cart-totals .grand .mark, .opc-block-summary .table-totals .grand .mark,.cart-totals .grand .amount, .opc-block-summary .table-totals .grand .amount{border-color: #e1e1e1;}
-
+.opc-block-summary{
+  .items-in-cart > .title{
+        padding: 10px 0px 10px 0;
+        &:after{display:none;}
+  }
+}
 #checkout{
   .checkout-payment-method{
   .payment-method-title{
@@ -3359,7 +3364,12 @@ h2.title-cart {
   }
   .product-image-wrapper img{position:static;}
   .authentication-wrapper{
-    margin-top:-170px; 
+        width: 100%;
+    clear: both;
+    margin: 0;
+    text-align: center;
+    float: left;
+    max-width: 100%;
     .block-authentication{
       padding: 20px;
     }
@@ -3367,7 +3377,7 @@ h2.title-cart {
 }
 .checkout-index-index 
 {
-  .opc-progress-bar{padding-bottom: 20px;text-align: center;}
+  .opc-progress-bar{padding-bottom: 20px;text-align: center;float:left;width:100%;}
   .nav-sections{display: block;}
   .modal-content{box-shadow: none;}
   .opc-wrapper{
