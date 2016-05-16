@@ -7,7 +7,9 @@
 <!-- ko foreach: getRegion('authentication') -->
 <!-- ko template: getTemplate() --><!-- /ko -->
 <!--/ko-->
-
+ <!-- ko foreach: getRegion('afterMethods') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
 <!-- ko foreach: getRegion('progressBar') -->
 <!-- ko template: getTemplate() --><!-- /ko -->
 <!--/ko-->

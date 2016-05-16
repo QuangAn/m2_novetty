@@ -12,8 +12,8 @@
 
     <div class="product-item-inner">
         <div class="product-item-name-block">
-            <span class="product-item-name" data-bind="text: $parent.name"></span>
-            <span class="details-qty">  <span> x </span>  <span class="value" data-bind="text: $parent.qty"></span></span>
+            <span class="wrap-product-name"><span class="product-item-name" data-bind="text: $parent.name"></span><span class="details-qty">   x  <span class="value" data-bind="text: $parent.qty"></span></span></span>
+            
         </div>
         <!-- ko foreach: getRegion('after_details') -->
             <!-- ko template: getTemplate() --><!-- /ko -->

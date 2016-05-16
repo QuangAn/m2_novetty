@@ -2626,7 +2626,7 @@ button.action.primary.tocart {
     }
 }
  
-.btn-novetty{
+.btn-novetty,button.action.primary.checkout{
     overflow: hidden;
     position: relative;
     padding: 15px 50px;
@@ -2635,7 +2635,8 @@ button.action.primary.tocart {
     border-radius: 3px;
     text-transform: uppercase;
     font-weight: 600; 
-    background: #ef3c79; 
+    background: #ef3c79!important; 
+    border:none !important;
     color: #Fff!important; 
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
@@ -3080,7 +3081,13 @@ button.action.primary.tocart {
     }
   }
   .contact-form{ 
-     input{width: 100%;margin-bottom: 0;}
+     input{width: 100%;margin-bottom: 0;padding:10px;
+      &:hover,&:active{border:none;}
+
+      }
+      textarea{padding:10px;
+        &:hover,&:active{border:none;}
+     }
     }
     .contact-address-block{
       h3{text-align: center;text-transform: uppercase;margin-bottom: 10px;}
@@ -3277,8 +3284,35 @@ h2.title-cart {
   }
 }
 .cart-container{
+.cart-discount{
+    width:100%;
+      padding: 35px;
+      border: 2px dotted #e7e7e7;
+      margin: 65px 0;
+      .actions-toolbar .action.primary:not(:focus){
+        border:none;
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+      }
+      .block {
+        width: 100%;
+        > .title h2{
+          font-size: 18px;
+          font-weight: 500;
+          text-align: center;
+        }
+        #coupon_code{
+     
+          padding: 0 25px;
+        }
+        .actions-toolbar{
+          button{height: 43px;    margin: 0 0 0 20px;}
+        }
+      }
+  }
   .cart-summary{
     background-color: #f4f4f4;
+    .block .field.note{display:block;}
     .summary.title{
       font-size: 14px;font-weight: bold;
     }
@@ -3319,33 +3353,9 @@ h2.title-cart {
     }
     .price{font-weight: 500;font-size: 16px;}
   }
-  .cart-discount{
-    width:100%;
-      padding: 35px;
-      border: 2px dotted #e7e7e7;
-      margin: 65px 0;
-      .actions-toolbar .action.primary:not(:focus){
-        border:none;
-        -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
-        box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
-      }
-      .block {
-        width: 100%;
-        > .title h2{
-          font-size: 18px;
-          font-weight: 500;
-          text-align: center;
-        }
-        #coupon_code{
-     
-          padding: 0 25px;
-        }
-        .actions-toolbar{
-          button{height: 43px;    margin: 0 0 0 20px;}
-        }
-      }
-  }
+  
 }
+
 .cart-totals .grand .mark, .opc-block-summary .table-totals .grand .mark,.cart-totals .grand .amount, .opc-block-summary .table-totals .grand .amount{border-color: #e1e1e1;}
 .opc-block-summary{
   .items-in-cart > .title{
@@ -3391,12 +3401,45 @@ h2.title-cart {
 }
 .checkout-index-index 
 {
- 
+ .table-checkout-shipping-method{
+ thead th{display:none;}
+  width: 100%;
+   td[class*="col-"],  th[class*="col-"]{
+    font-weight: 500;
+  }
+}
+.actions-toolbar{margin-top:20px;}
   .opc-sidebar{
     margin-top:0;
      .modal-header{display: none;}
+     .opc-block-shipping-information{
+        .shipping-information-title{
+          border-color: #d7d7d7;
+          font-size: 16px;
+          font-weight: 500;
+          .action-edit:before{
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+             content: "\f040";
+          }
+        }
+      } 
     .opc-block-summary{
+      background-color: transparent;
       padding-top:0;
+
+      .table-totals{    
+        border-color: #d7d7d7;
+        th,td{padding: 15px 0;}
+        .price{
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
       > .title{
         font-size: 24px;
         font-weight: bold;
@@ -3410,9 +3453,10 @@ h2.title-cart {
               font-size: 14px;
               display:inline-block;
             }
-            .product-image-container{display: none;}
+       
             .product-item-details{
-              padding-left: 0;
+             
+              .details-qty{    font-weight: 400;}
               .product-item-inner{
                 margin:0;
               }
@@ -3425,6 +3469,7 @@ h2.title-cart {
                strong{
                 font-size: 14px;
                 font-weight: bold;
+                margin-top:2px;
                }
           span{
             display: inline-block;
@@ -3437,13 +3482,17 @@ h2.title-cart {
   }
   .opc-progress-bar{padding-bottom: 20px;text-align: center;float:left;width:100%;}
   .nav-sections{display: block;}
-  .modal-content{box-shadow: none;}
+  .modal-content{box-shadow: none;background-color: transparent;}
   .opc-wrapper{
   background-color:#fff;
     -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     padding:20px !important;
     width:63% ;
+    .step-title{
+        font-size:24px;
+        font-weight:500;
+      }
   }
   .minicart-items .product-item:first-child{padding:20px 0;}
 
@@ -3455,3 +3504,8 @@ h2.title-cart {
     background-color: #fff;
 }
 .form.password.reset, .form.send.confirmation, .form.password.forget, .form.create.account{margin-bottom: 60px;}
+.form.create.account{
+  input[type="checkbox"]{
+    float:left;
+  }
+}
