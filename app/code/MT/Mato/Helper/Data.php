@@ -286,30 +286,25 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper{
      */
     public function getAltImgHtml($product, $w, $h, $imgVersion='small_image')
     {
-        if($w == '' || $h == ''){
-            $viewImageConfig = $this->_viewConfig->getViewConfig()->getMediaAttributes('Magento_Catalog', 'images', $imgVersion) ;
-            $w = $viewImageConfig['width'];
-            $h = $viewImageConfig['height'];
-        }
-        $ratio = 1;
-        if ($w && $h) {
-            $ratio =  $h / $w;
-        }
 
         $product->load('media_gallery_images');
         $images = $product->getMediaGalleryImages();
         $column = $this->getCfg('category/alt_image_column');
         $value = $this->getCfg('category/alt_image_column_value');
-        if ($images instanceof \Magento\Framework\Data\Collection) {
-            if ($altImg = $images->getItemByColumnValue($column, $value))
-            {
-                $html =
-                    '<span class="product-image-wrapper" style="padding-bottom: '. ($ratio * 100) .'%">' .
-                    '<img class="img-responsive alt-img lazy" src="' . $this->_imageHelper->getImg($product, $w, $h, $imgVersion, $altImg->getFile()) . '" alt="' . $product->getName() . '" />' .
-                    '</span>';
-                return $html;
-            }
+        $galleryImages = [];
+        foreach ($images as $image) {
+            /* @var \Magento\Framework\DataObject $image */
+            $galleryImages[] = $this->_imageHelper->getImg($product, $w, $h, $imgVersion, $image->getFile());
+
         }
+
+        $value = $this->getCfg('category/alt_image_column_value');
+        if(isset($galleryImages[($value-1)]))
+            $html =
+                '<img class="img-responsive alt-img" src="' . $galleryImages[($value-1)] . '" alt="' . $product->getName() . '" />';
+        else
+            $html = '';
+        return $html;
     }
 
     public function getPreviousProduct()

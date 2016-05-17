@@ -7,8 +7,8 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <head>
+        <link src="Magento_Backend::js/bootstrap/editor.js"/>
         <css src="Magento_Catalog::catalog/category-selector.css"/>
         <css src="MT_Widget/css/style.css"/>
-        <css src="lib/web/mage/adminhtml/browser.js"/>
     </head>
 </page>

@@ -9,4 +9,5 @@
     <type name="Magento\Checkout\CustomerData\Cart">
         <plugin name="cart_custom_data" type="MT\Mato\Plugin\Checkout\CustomerData\Cart"/>
     </type>
+    <preference for="Magento\Catalog\Block\Product\View\Gallery" type="MT\Mato\Block\Product\View\Gallery"/>
 </config>

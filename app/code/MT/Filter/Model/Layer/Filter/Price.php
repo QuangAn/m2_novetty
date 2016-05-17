@@ -41,6 +41,9 @@ class Price extends \Magento\CatalogSearch\Model\Layer\Filter\Price
         if(!$this->helper->getConfig('mtfilter/catalog/price')) {
             return parent::_initItems();
         }
+
+        $productCollection = clone $this->getLayer()->getProductCollection();
+
         $this->_items = [
             [
                 'from'          => $this->getCurrentFrom(),
@@ -48,6 +51,7 @@ class Price extends \Magento\CatalogSearch\Model\Layer\Filter\Price
                 'min'           => $this->getMinPrice(),
                 'max'           => $this->getMaxPrice(),
                 'requestVar'    => $this->getRequestVar(),
+                'count'           => $productCollection->count(),
                 'step'          => 4,
                 'template'      => $this->currencySymbol . '{amount}',
             ]

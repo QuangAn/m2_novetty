@@ -141,11 +141,11 @@ class Category extends AbstractFilter
                 ) {
 
                 }*/
-                if($category->getIsActive() && isset($optionsFacetedData[$category->getId()])){
+                if($category->getIsActive()){
                     $this->itemDataBuilder->addItemData(
                         $this->escaper->escapeHtml($category->getName()),
                         $category->getId(),
-                        $optionsFacetedData[$category->getId()]['count']
+                        isset($optionsFacetedData[$category->getId()]) ? $optionsFacetedData[$category->getId()]['count'] : 0
                     );
                 }
             }

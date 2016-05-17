@@ -6,6 +6,8 @@ namespace MT\Filter\Block\Navigation;
 
 use Magento\Catalog\Model\ResourceModel\Layer\Filter\AttributeFactory;
 use Magento\Eav\Model\Entity\Attribute;
+use Magento\Eav\Model\Entity\Attribute\Option;
+use Magento\Catalog\Model\Layer\Filter\Item as FilterItem;
 
 class SwatchRenderer extends \Magento\Swatches\Block\LayeredNavigation\RenderLayered
 {
@@ -24,6 +26,28 @@ class SwatchRenderer extends \Magento\Swatches\Block\LayeredNavigation\RenderLay
             $mediaHelper, $data
         );
         $this->urlBuilderHelper = $urlBuilderHelper;
+    }
+
+    /**
+     * @param FilterItem $filterItem
+     * @param Option $swatchOption
+     * @return array
+     */
+    protected function getOptionViewData(FilterItem $filterItem, Option $swatchOption)
+    {
+        $customStyle = '';
+        $linkToOption = $this->buildUrl($this->eavAttribute->getAttributeCode(), $filterItem->getValue());
+        if ($this->isOptionDisabled($filterItem)) {
+            $customStyle = 'disabled';
+            $linkToOption = 'javascript:void();';
+        }
+
+        return [
+            'label' => $swatchOption->getLabel(),
+            'link' => $linkToOption,
+            'count' => $filterItem->getCount(),
+            'custom_style' => $customStyle
+        ];
     }
 
     /**

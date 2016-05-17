@@ -23,8 +23,11 @@ define([
             }
         },
         collect: function(){
-            this.container = $('.main').eq(0);
-            this.layer = $('#layered-filter-block');
+            if(this.config.mainDOM) this.container = $(this.config.mainDOM).eq(0);
+            else this.container = $('.main').eq(0);
+            if(this.config.layerDOM) this.layer = $(this.config.layerDOM).eq(0);
+            else this.layer = $('#mt-layer-navigation');
+
             this.initLinkFilter();
             this.initPriceFilter();
         },
@@ -128,14 +131,12 @@ define([
                         try{
                             var   main = response.main ? response.main.replace(/setLocation/g, this.name+'.setAjaxLocation') : null,
                                 layer = response.layer || null;
-                            if (main && MTFilter.container) MTFilter.container.html(main);
+                            if (main && MTFilter.container) MTFilter.container.html(main).trigger('contentUpdated');
                             if (layer && MTFilter.layer) MTFilter.layer.html(layer);
                             //setGridItem($mt);
                             setTimeout(function(){
                                 MTFilter.collect();
                             });
-
-
 
                             if (success) success(response);
                         }catch(e){

@@ -22,7 +22,7 @@
 
                 <?php echo $filterItem->getLabel() ?>
                 <?php if ($this->helper('\Magento\Catalog\Helper\Data')->shouldDisplayProductCountOnLayer()): ?>
-                    <span class="count"><?php echo $filterItem->getCount()?><span class="filter-count-label">
+                    <span class="count" <?php if($filterItem->getCount() == 0):?> disabled="true" <?php endif;?>><?php echo $filterItem->getCount()?><span class="filter-count-label">
                             <?php if ($filterItem->getCount() == 1):?> <?php echo __('item')?><?php else:?> <?php echo __('items') ?><?php endif;?></span></span>
                 <?php endif; ?>
             </a>

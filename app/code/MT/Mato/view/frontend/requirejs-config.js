@@ -7,6 +7,7 @@ var config = {
     map: {
         '*': {
             equalHeight : 'MT_Mato/js/equalHeight',
+            hoverHeight : 'MT_Mato/js/hoverHeight',
             hoverPrevNext : 'MT_Mato/js/hoverPrevNext'
         }
     }
